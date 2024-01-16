@@ -1,0 +1,175 @@
+* {
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 0%;
+    scroll-behavior: smooth;
+}
+
+body{
+    background: linear-gradient(to right, #fafafa, #f5f5f5);
+}
+
+/* ============== using other fonts here */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Roboto:wght@100;300&display=swap');
+.main-content-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.side-navigation-area {
+    overflow-y: auto;
+    height: 100vh;
+    width: 18%;
+    position: fixed;
+}
+
+.content-area {
+    width: calc(100% - 18%);
+    flex: 1;
+    padding-left: 18%; /* Add left padding to accommodate the fixed sidebar */
+}
+
+@media only screen and (max-width: 768px) {
+    .side-navigation-area {
+        width: 100%;
+        position: static;
+        height: auto;
+    }
+    .content-area {
+        width: 100%;
+        padding-left: 0;
+    }
+}
+
+/* ================ css for the sidebar navigation links */
+.side-navigation-panel {
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.side-navigation-panel .navigation-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.side-navigation-area .navigation-item a{
+    text-decoration: none;
+    color: #212121;
+    font-size: 18px;
+    padding-top: 20px;
+    text-transform: capitalize;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+.side-navigation-area .navigation-item i {
+    padding-top: 20px;
+    font-size: 20px;
+    color: #1b5e20;
+}
+
+/* ======== the hover effect for the links ======= */
+.side-navigation-area .navigation-item a:hover{
+    color: #1b5e20;
+}
+
+/* ============= css for the staff details here ========= */
+.content-area .staff-details-form {
+    background: linear-gradient(to right, #F9EAFF, #f5f5f5);
+    border-radius: 5px;
+    height: 500px;
+    margin-top: 20px;
+}
+
+.control-buttons {
+    margin-top: 20px;
+}
+
+/* ================ css for the client intake form ========= */
+.content-area .patient-details-form {
+    background: linear-gradient(to right, #DBF9D8, #DBF2FF);
+    border-radius: 8px;
+    height: 2020px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.content-area .patient-details-form h1 {
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.content-area .patient-details-form .form-title h3 {
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-weight: bolder;
+}
+
+.content-area .patient-details-form .occupational-history h3{
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-weight: bolder;
+}
+
+.content-area .checking-working-status h3 {
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-weight: bolder;
+}
+
+.content-area .checking-history-status h3 {
+    padding-left: 20px;
+    padding-bottom: 5px;
+    text-transform: capitalize;
+    padding-top: 20px;
+    font-weight: bolder;
+}
+
+.content-area .checking-history-status p {
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.content-area .checking-method-payment h3 {
+    padding-left: 15px;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    text-transform: capitalize;
+    padding-top: 20px;
+}
+
+.content-area .for-office-use h3 {
+    padding-left: 20px;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    text-transform: capitalize;
+    padding-top: 20px;
+}
+
+.content-area .save-details-area {
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* =============== for the mobile area here ============== */
+@media only screen and (max-width: 768px) {
+    .content-area .patient-details-form {
+        background: linear-gradient(to right, #DBF9D8, #DBF2FF);
+        border-radius: 8px;
+        height: 2290px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+}
+
+/* =========== the css for the error message here */
+.patient-details-form .error-message {
+    color: red;
+    padding-left: 10px;
+    font-weight: bolder;
+}
