@@ -1,5 +1,7 @@
 <?php
 // ===========getting the values from the form here ==============//
+// inclusding the class here 
+include("Models/Patient.php");
 $first_name = "";
 $last_name = "";
 $guardian = "";
