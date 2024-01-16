@@ -126,9 +126,9 @@ class Connection{
     }
 }
 // calling the object class here
-$conn = new Connection("localhost", "root", "", "harmonymentalhealth");
-$conn->EstablishConnection();
+// $conn = new Connection("localhost", "root", "", "harmonymentalhealth");
+// $conn->EstablishConnection();
 
-// calling the create table function here
-$conn->CreatePatientTable();
+// // calling the create table function here
+// $conn->CreatePatientTable();
 ?>

@@ -65,7 +65,7 @@
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
              <i class="bi bi-file-earmark-bar-graph"></i>
-             <a href="#">records</a>
+             <a href="administrator_patient_records.php">records</a>
         </div>
         
     </div>

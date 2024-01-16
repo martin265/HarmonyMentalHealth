@@ -2,6 +2,9 @@
 // ===========getting the values from the form here ==============//
 // inclusding the class here 
 include("Models/Patient.php");
+// =============== creating an object for the class here
+
+
 $first_name = "";
 $last_name = "";
 $guardian = "";
@@ -291,8 +294,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $all_errors["guardian_signature"] = "enter something";
         }
         else {
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $referred_by)) {
-                $all_errors["guardian_signature"] = "provide current school";
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $guardian_signature)) {
+                $all_errors["guardian_signature"] = "enter valid signature";
             }
         }
         // ============= checking for the other input fields here ============//
@@ -301,26 +304,64 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $all_errors["reviewed_by_signature"] = "enter something";
         }
         else {
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $referred_by)) {
-                $all_errors["reviewed_by_signature"] = "provide current school";
-            }
-        }
-        // ============= checking for the other input fields here ============//
-        // checking if the fields are empty here
-        if (empty($_POST["reviewed_by_signature"])) {
-            $all_errors["reviewed_by_signature"] = "enter something";
-        }
-        else {
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $referred_by)) {
-                $all_errors["reviewed_by_signature"] = "provide current school";
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $reviewed_by_signature)) {
+                $all_errors["reviewed_by_signature"] = "provide valid signature";
             }
         }
 
         // ================ checking if the form has other errors here ===================//
-        if (array_filter($all_errors)) {
-            print("form has errors");
-        }else {
-            print("form is okay");
+        if (!array_filter($all_errors)) {
+            // getting the connection from the connect //
+            $connection = new Connection("localhost", "root", "", "harmonymentalhealth");
+            $connection->EstablishConnection();
+            $conn = $connection->get_connection(); //  getting the connection getter here
+            // ========== the records will be saved here
+            $first_name = mysqli_real_escape_string($conn, $_POST["first_name"]);
+            $last_name = mysqli_real_escape_string($conn, $_POST["last_name"]);
+            $guardian = mysqli_real_escape_string($conn, $_POST["guardian"]);
+            $address = mysqli_real_escape_string($conn, $_POST["address"]);
+            $cell_phone = mysqli_real_escape_string($conn, $_POST["cell_phone"]);
+            $other_phone = mysqli_real_escape_string($conn, $_POST["other_phone"]);
+            $email = mysqli_real_escape_string($conn, $_POST["email"]);
+            $emergency_contact = mysqli_real_escape_string($conn, $_POST["emergency_contact"]);
+            $telephone_number = mysqli_real_escape_string($conn, $_POST["telephone_number"]);
+            $date_birth = mysqli_real_escape_string($conn, $_POST["date_birth"]);
+            // ========================// ==============================//
+            $age = mysqli_real_escape_string($conn, $_POST["age"]);
+            $gender = mysqli_real_escape_string($conn, $_POST["gender"]);
+            $marital_status = mysqli_real_escape_string($conn, $_POST["marital_status"]);
+            $residence = mysqli_real_escape_string($conn, $_POST["residence"]);
+            $referred_by = mysqli_real_escape_string($conn, $_POST["referred_by"]);
+            $primary_care = mysqli_real_escape_string($conn, $_POST["primary_care"]);
+            $work_place = mysqli_real_escape_string($conn, $_POST["work_place"]);
+            $current_occupation = mysqli_real_escape_string($conn, $_POST["current_occupation"]);
+            $present_position = mysqli_real_escape_string($conn, $_POST["present_position"]);
+            $current_school = mysqli_real_escape_string($conn, $_POST["current_school"]);
+            // =====================// ===========================//
+            $college_year = mysqli_real_escape_string($conn, $_POST["college_year"]);
+            $previous_therapist = mysqli_real_escape_string($conn, $_POST["previous_therapist"]);
+            $heard_about_us = mysqli_real_escape_string($conn, $_POST["heard_about_us"]);
+            $payment_method = mysqli_real_escape_string($conn, $_POST["payment_method"]);
+            $signature = mysqli_real_escape_string($conn, $_POST["signature"]);
+            $signature_date = mysqli_real_escape_string($conn, $_POST["signature_date"]);
+            $guardian_signature = mysqli_real_escape_string($conn, $_POST["guardian_signature"]);
+            $signature_date = mysqli_real_escape_string($conn, $_POST["guardian_signature_date"]);
+            $reviewed_by_signature = mysqli_real_escape_string($conn, $_POST["reviewed_by_signature"]);
+            $reviewed_signature_date = mysqli_real_escape_string($conn, $_POST["reviewed_signature_date"]);
+            // ================// help me GOD this will work in the name of our lord JESUS CHRIST=============//
+            // ================ // calling the insert function here ===========//
+            $patient = new Patient(
+                $first_name, $last_name, $guardian, $address, $cell_phone, $other_phone,
+                $email, $emergency_contact, $telephone_number, $date_birth, $age, $gender,
+                $marital_status, $residence, $referred_by, $primary_care, $work_place,
+                $current_occupation, $present_position, $current_school, $college_year,
+                $previous_therapist, $heard_about_us, $payment_method, $signature,
+                $signature_date, $guardian_signature, $guardian_signature_date,
+                $reviewed_by_signature, $reviewed_signature_date
+            );
+            $patient->SavePatientDetails();
+            $success_message = "Patient details saved successfully";
+
         }
     }
 }
@@ -348,9 +389,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="col-lg-12">
                         <!-- the form details will be here for the patients -->
                         <div class="patient-details-form">
+                            <!-- ============ the container for the alert dialog here -->
                             <div class="form-title">
                                 <h3>Personal information</h3>
+                                <!-- Success message content goes here -->
+                                <div class="success-message mt-3 me-3 w-50 fw-bolder text-light">
+                                    <?php if (isset($success_message)) : ?>
+                                        <div id="successAlert" class="alert alert-primary" role="alert">
+                                            <?php echo $success_message; ?>
+                                        </div>
+                                        <script>
+                                            // Automatically dismiss the success alert after 5 seconds
+                                            setTimeout(function() {
+                                                document.getElementById("successAlert").style.display = "none";
+                                            }, 5000);
+                                        </script>
+                                    <?php elseif (isset($error_message)) : ?>
+                                        <div class="alert alert-success" role="alert">
+
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
                             </div>
+                            <!--  ================== // the main form here for the alert dialog ===== -->
                             <form action="administrator_patient_details.php" method="POST" class="needs-validation" novalidate>
                                 <div class="row g-2 mb-2">
                                     <div class="col ms-3 me-3">
@@ -713,7 +774,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="col ms-3 me-3">
                                         <label for="Occupation" class="fw-bold">How and where did you heard about Harmony Mental Wellness Solutions Clinic?</label>
                                         <div class="input-group">
-                                            <textarea name="hear_us" id="" class="form-control form-control-lg">
+                                            <textarea name="heard_about_us" id="" class="form-control form-control-lg">
 
                                             </textarea>
                                         </div>

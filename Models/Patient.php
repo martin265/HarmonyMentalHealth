@@ -1,5 +1,5 @@
 <?php
-
+include("Config/connection.php");
 // ============ the class that will control the save details and delete mechanism
 // ========== the connection will be included here ==========//
 //  ============= marting silungwe 2024 on GOD it will work ===============//
@@ -38,7 +38,7 @@ class Patient{
     public $connection;
 
     // Method to set values for all attributes
-    public function setAttributes(
+    public function __construct(
         $first_name, $last_name, $guardian, $address, $cell_phone, $other_phone,
         $email, $emergency_contact, $telephone_number, $date_birth, $age, $gender,
         $marital_status, $residence, $referred_by, $primary_care, $work_place,
@@ -77,13 +77,11 @@ class Patient{
         $this->guardian_signature_date = $guardian_signature_date;
         $this->reviewed_by_signature = $reviewed_by_signature;
         $this->reviewed_signature_date = $reviewed_signature_date;
+        $this->connection = new Connection("localhost", "root", "", "harmonymentalhealth");
     }
 
     // constructor function here //
     // Constructor that only initializes the connection property
-    public function __construct() {
-        $this->connection = new Connection("localhost", "root", "", "harmonymentalhealth");
-    }
     // ============== getters for the main class here ============ //
     public function Firstname() {
         return $this->first_name;
@@ -126,7 +124,7 @@ class Patient{
         return $this->date_birth;
     }
     // =============== // =======================//
-    public function age() {
+    public function Age() {
         return $this->age;
     }
     // =============== // =======================//
@@ -176,7 +174,7 @@ class Patient{
         return $this->previous_therapist;
     }
     // =============== // =======================//
-    public function HerdAboutUs() {
+    public function HeardAboutUs() {
         return $this->heard_about_us;
     }
     // =============== // =======================//
@@ -228,23 +226,24 @@ class Patient{
                     current_occupation, present_position, current_school, college_year,
                     previous_therapist, heard_about_us, payment_method, signature,
                     signature_date, guardian_signature, guardian_signature_date,
-                    reviewed_by_signature, reviewed_signature_date 
-                ) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ?, ?, ?, ?, ?, ?, ?, ?)"
+                    reviewed_by_signature, reviewed_by_signature_date 
+                ) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
             // ============== the query will be executed here =============//
             $sqlCommand->bind_param(
-                "s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s",
+                "ssssssssssssssssssssssssssssss",
                 $this->first_name, $this->last_name, $this->guardian, $this->address, $this->cell_phone,
-                $this->other_phone, $this->email, $this->emergency_contact, $this->telephone_number,$this->date_birth,
+                $this->other_phone, $this->email, $this->emergency_contact, $this->telephone_number, $this->date_birth,
                 $this->age, $this->gender, $this->marital_status, $this->residence, $this->referred_by,
                 $this->primary_care, $this->work_place, $this->current_occupation, $this->present_position,
                 $this->current_school, $this->college_year, $this->previous_therapist, $this->heard_about_us,
                 $this->payment_method, $this->signature, $this->signature_date, $this->guardian_signature,
                 $this->guardian_signature_date, $this->reviewed_by_signature, $this->reviewed_signature_date
             );
+            
             $sqlCommand->execute(); // running the query here
         }catch(Exception $ex) {
-
+            print($ex);
         }
     }
 

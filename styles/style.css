@@ -173,3 +173,40 @@ body{
     padding-left: 10px;
     font-weight: bolder;
 }
+
+.content-area .patient-details-form .form-title {
+    display: flex;
+    justify-content: space-between;
+}
+.content-area .patient-details-form .form-title .success-message{
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+/* ================== css for the records page will be here ============ */
+.content-area .all-records .patient-records-card {
+    height: 500px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #212121;
+    margin-left: 3px;
+    width: 350px;
+    margin-left: 5px;
+}
+
+.content-area .all-records .session-racords-card {
+    height: 500px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #212121;
+    width: 350px;
+}
+
+.content-area .all-records .payment-records-card {
+    height: 500px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #212121;
+    width: 350px;
+    margin-right: 5px;
+}
