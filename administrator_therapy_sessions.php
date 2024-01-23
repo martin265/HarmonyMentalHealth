@@ -1,7 +1,9 @@
 <?php
 // including the connection here
 include("Config/connection.php");
-
+$connection = new Connection("localhost", "root", "", "harmonymentalhealth");
+$connection->EstablishConnection();
+$conn = $connection->get_connection();
 // =========== the variables for the client table here ============ //
 $client_name = "";
 $date_intake = "";
@@ -18,12 +20,9 @@ $plan = "";
 $all_results = "";
 
 // fetching the records in the database here
-function FetchClientDetails() {
+function FetchClientDetails($conn) {
     try {
-        $connection = new Connection("localhost", "root", "", "harmonymentalhealth");
-        $connection->EstablishConnection();
-        $conn = $connection->get_connection(); // the connection getter here 
-
+         // the connection getter here 
         // getting the connection object here
         $sqlCommand = "SELECT * FROM PatientDetails";
         $results = mysqli_query($conn, $sqlCommand);
@@ -36,7 +35,7 @@ function FetchClientDetails() {
     }
 }
 
-$all_results = FetchClientDetails();
+$all_results = FetchClientDetails($conn);
 
 // =============== function to validate the attributes here ===========//
 function ValidateInputs($data) {
@@ -54,7 +53,7 @@ function ValidateInputs($data) {
 // ================ the array that will hold all the errors here ===========//
 $all_errors = array("client_name"=>"", "date_intake"=>"", "therapist"=>"",
 "session_1"=>"", "session_2"=>"", "session_3"=>"", "session_4"=>"", "present_problem"=>"",
-"previous_therepy_history"=>"", "diagnosis"=>"", "plan"=>"");
+"previous_therapy_history"=>"", "diagnosis"=>"", "plan"=>"");
 
 // ========= getting the values from the form here =========== //
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -70,117 +69,116 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $diagnosis = ValidateInputs($_POST["diagnosis"]);
     $plan = ValidateInputs($_POST["plan"]);
 
+   
     if (isset($_POST["save_details"])) {
-        try {
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["client_name"])) {
-                $all_errors["client_name"] = "fill in the blanks";
-            }
-            else{
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $client_name)){
-                    $all_errors["client_name"] = "enter valid characters for client";
-                }
-            }
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["date_intake"])) {
-                $all_errors["date_intake"] = "fill in the blanks";
-            }
-            else{
-                if (preg_match("/^[a-zA-Z-' ]*$/", $date_intake)){
-                    $all_errors["date_intake"] = "enter valid characters for date";
-                }
-            }
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["therapist"])) {
-                $all_errors["therapist"] = "fill in the blanks";
-            }
-            else{
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $therapist)){
-                    $all_errors["therapist"] = "enter valid characters...";
-                }
-            }
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["session_1"])) {
-                $all_errors["session_1"] = "fill in the blanks";
-            }
-            else{
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $session_1)){
-                    $all_errors["session_1"] = "enter valid characters for the session";
-                }
-            }
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["session_2"])) {
-                $all_errors["session_2"] = "fill in the blanks";
-            }
-            else{
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $session_2)){
-                    $all_errors["session_2"] = "enter valid characters...";
-                }
-            }
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["session_3"])) {
-                $all_errors["session_3"] = "fill in the blanks";
-            }
-            else{
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $session_3)){
-                    $all_errors["session_3"] = "enter valid characters...";
-                }
-            }
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["session_4"])) {
-                $all_errors["session_4"] = "fill in the blanks";
-            }
-            else{
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $session_4)){
-                    $all_errors["session_4"] = "enter valid characters...";
-                }
-            }
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["present_problem"])) {
-                $all_errors["present_problem"] = "fill in the blanks";
-            }
-            else{
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $present_problem)){
-                    $all_errors["present_problem"] = "numbers are not allowed here";
-                }
-            }
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["previous_therapy_history"])) {
-                $all_errors["previous_therapy_history"] = "fill in the blanks";
-            }
-            else{
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $previous_therapy_history)){
-                    $all_errors["previous_therapy_history"] = "enter valid characters...";
-                }
-            }
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["diagnosis"])) {
-                $all_errors["diagnosis"] = "fill in the blanks";
-            }
-            else{
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $diagnosis)){
-                    $all_errors["diagnosis"] = "enter valid characters...";
-                }
-            }
-            // =================== checking if the fields are empty here ==========//
-            if (empty($_POST["plan"])) {
-                $all_errors["plan"] = "fill in the blanks";
-            }
-            else{
-                if (!preg_match("/^[a-zA-Z-' ]*$/", $plan)){
-                    $all_errors["plan"] = "enter valid characters...";
-                }
-            }
-
-            // =========== checking if the whole form has some errors here ==========//
-            if(array_filter($all_errors)) {
-                //  ============== function to save the records will go here ========= //
-            }else {
-                $error_message = "something is wrong please check the form again";
-            }
-        }catch(Exception $ex) {
-            print($ex);
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["client_name"])) {
+            $all_errors["client_name"] = "fill in the blanks";
         }
+        else{
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $client_name)){
+                $all_errors["client_name"] = "enter valid characters for client";
+            }
+        }
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["date_intake"])) {
+            $all_errors["date_intake"] = "fill in the blanks";
+        }
+        else{
+            if (preg_match("/^[a-zA-Z-' ]*$/", $date_intake)){
+                $all_errors["date_intake"] = "enter valid characters for date";
+            }
+        }
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["therapist"])) {
+            $all_errors["therapist"] = "fill in the blanks";
+        }
+        else{
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $therapist)){
+                $all_errors["therapist"] = "enter valid characters...";
+            }
+        }
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["session_1"])) {
+            $all_errors["session_1"] = "fill in the blanks";
+        }
+        else{
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $session_1)){
+                $all_errors["session_1"] = "enter valid characters for the session";
+            }
+        }
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["session_2"])) {
+            $all_errors["session_2"] = "fill in the blanks";
+        }
+        else{
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $session_2)){
+                $all_errors["session_2"] = "enter valid characters...";
+            }
+        }
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["session_3"])) {
+            $all_errors["session_3"] = "fill in the blanks";
+        }
+        else{
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $session_3)){
+                $all_errors["session_3"] = "enter valid characters...";
+            }
+        }
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["session_4"])) {
+            $all_errors["session_4"] = "fill in the blanks";
+        }
+        else{
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $session_4)){
+                $all_errors["session_4"] = "enter valid characters...";
+            }
+        }
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["present_problem"])) {
+            $all_errors["present_problem"] = "fill in the blanks";
+        }
+        else{
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $present_problem)){
+                $all_errors["present_problem"] = "numbers are not allowed here";
+            }
+        }
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["previous_therapy_history"])) {
+            $all_errors["previous_therapy_history"] = "fill in the blanks";
+        }
+        else{
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $previous_therapy_history)){
+                $all_errors["previous_therapy_history"] = "enter valid characters...";
+            }
+        }
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["diagnosis"])) {
+            $all_errors["diagnosis"] = "fill in the blanks";
+        }
+        else{
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $diagnosis)){
+                $all_errors["diagnosis"] = "enter valid characters...";
+            }
+        }
+        // =================== checking if the fields are empty here ==========//
+        if (empty($_POST["plan"])) {
+            $all_errors["plan"] = "fill in the blanks";
+        }
+        else{
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $plan)){
+                $all_errors["plan"] = "enter valid characters...";
+            }
+        }
+
+        // =========== checking if the whole form has some errors here ==========//
+        if(!array_filter($all_errors)) {
+            //  ============== function to save the records will go here ========= //
+            
+        }else {
+            $error_message = "something is wrong please check the form again";
+        }
+       
     }
     
 }
@@ -319,9 +317,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                             </textarea>
                                         </div>
-                                        <div class="error-message">
-                                            <?php echo $all_errors["present_problem"]; ?>
-                                        </div>
                                     </div>
                                 </div>
 
@@ -335,6 +330,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                             </textarea>
                                         </div>
+                                        
                                     </div>
                                 </div>
 
@@ -348,8 +344,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                             </textarea>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
 
                                 <!-- =========== the row for the other part of the form -->

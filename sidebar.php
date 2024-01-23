@@ -30,13 +30,13 @@
     <div class="side-navigation-panel">
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
-            <i class="bi bi-house-fill"></i>
+            <i class="bi bi-house"></i>
             <a href="administrator_index.php" class="">home</a>
         </div>
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
-            <i class="bi bi-person-standing"></i>
-             <a href="administrator_staff.php">staff</a>
+            <i class="bi bi-person-down"></i>
+            <a href="administrator_staff.php">staff</a>
         </div>
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
@@ -48,7 +48,7 @@
         
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
-            <i class="bi bi-calendar2-check-fill"></i>      
+            <i class="bi bi-stickies"></i>    
             <a href="administrator_appointments.php">appointments</a>
         </div>
         <!-- the side bar navigation items will be here -->
