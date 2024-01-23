@@ -29,7 +29,7 @@ class Client {
         $this->previous_therapy_session = $previous_therapy_session;
         $this->diagnosis = $diagnosis;
         $this->plan = $plan;
-        $this->connection = mysqli_connect("localhost", "root", "", "harmonymentalhealth");
+        $this->connection = new Connection("localhost", "root", "", "harmonymentalhealth");
     }
 
     // =========== the getter for the connection object here 
@@ -46,7 +46,23 @@ class Client {
     }
 
     // =============== function to save the to save the client details here ====== //
-    
+    function SaveClientDetails($patient_id) {
+        try {
+            // ========= getting the connection here ============ //
+            $this->connection->EstablishConnection();
+            $conn = $this->connection->get_connection();
+            $sqlCommand = $conn->prepare(
+                "INSERT INTO ClientDetails(
+                    client_name, date_intake, therapist, session_1, session_2, session_3, session_4,
+                    present_problem, previous_therapy_history, diagnosis, plan, patient_id
+                ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)"
+            );
+            // binding the parameters to the query here ===========//
+            
+        }catch(Exception $ex) {
+            print($ex);
+        }
+    }
 }
 
 ?>
