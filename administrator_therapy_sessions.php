@@ -17,6 +17,7 @@ $present_problem = "";
 $previous_therapy_history = "";
 $diagnosis = "";
 $plan = "";
+$patient_id = "";
 
 $all_results = "";
 
@@ -52,7 +53,29 @@ function ValidateInputs($data) {
 }
 
 // ============== fuction to get the current client ID here ================== //
+function FetchClientID($conn) {
+    try {
+        if (isset($_POST["save_details"])) {
+            $client_name = mysqli_real_escape_string($conn, $_POST["client_name"]);
+            $sqlCommand = "SELECT patient_id FROM PatientDetails WHERE first_name = '$client_name'";
+            $results = mysqli_query($conn, $sqlCommand);
+            // =========== fetching the patient id here ==========//
+            $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
+            // ========== looping through the results ============= //
+            foreach($all_results as $single_result) {
+                return $single_result["patient_id"];
+            }
+        }
+    } catch(Exception $ex) {
+        // Handle exceptions here
+        print($ex);
+        return false;
+    }
+}
 
+
+$patient_id = FetchClientID($conn);
+print($patient_id);
 
 // ================ the array that will hold all the errors here ===========//
 $all_errors = array("client_name"=>"", "date_intake"=>"", "therapist"=>"",
@@ -240,7 +263,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <span class="input-group-text"><i class="bi bi-calendar2-heart-fill"></i></span>
                                             <select class="form-select form-control form-control-lg" aria-label="Default select example" name="client_name" id="client_name_select">
                                                 <?php foreach ($all_results as $client_name) { ?>
-                                                    <option value="<?php echo ($client_name["first_name"] . " " . $client_name["last_name"]); ?>"><?php echo ($client_name["first_name"] . " " . $client_name["last_name"]); ?></option>
+                                                    <option value="<?php echo ($client_name["first_name"]); ?>"><?php echo ($client_name["first_name"]); ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
