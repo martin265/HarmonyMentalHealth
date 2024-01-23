@@ -1,9 +1,10 @@
 <?php
 // including the connection here
-include("Config/connection.php");
+include("Models/Client.php");
 $connection = new Connection("localhost", "root", "", "harmonymentalhealth");
 $connection->EstablishConnection();
 $conn = $connection->get_connection();
+
 // =========== the variables for the client table here ============ //
 $client_name = "";
 $date_intake = "";
@@ -49,6 +50,9 @@ function ValidateInputs($data) {
         print($ex);
     }
 }
+
+// ============== fuction to get the current client ID here ================== //
+
 
 // ================ the array that will hold all the errors here ===========//
 $all_errors = array("client_name"=>"", "date_intake"=>"", "therapist"=>"",
@@ -174,6 +178,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // =========== checking if the whole form has some errors here ==========//
         if(!array_filter($all_errors)) {
             //  ============== function to save the records will go here ========= //
+            $client_name = mysqli_real_escape_string($conn, $_POST["client_name"]);
+            $date_intake = mysqli_real_escape_string($conn, $_POST["date_intake"]);
+            $therapist = mysqli_real_escape_string($conn, $_POST["therapist"]);
+            $session_1 = mysqli_real_escape_string($conn, $_POST["session_1"]);
+            $session_2 = mysqli_real_escape_string($conn, $_POST["session_2"]);
+            $session_3 = mysqli_real_escape_string($conn, $_POST["session_3"]);
+            $session_4 = mysqli_real_escape_string($conn, $_POST["session_4"]);
+            $present_problem = mysqli_real_escape_string($conn, $_POST["present_problem"]);
+            $previous_therapy_history = mysqli_real_escape_string($conn, $_POST["previous_therapy_history"]);
+            $diagnosis = mysqli_real_escape_string($conn, $_POST["diagnosis"]);
+            $plan = mysqli_real_escape_string($conn, $_POST["plan"]);
+
+            // ================== getting the object for the class here ================== //
+            $client = new Client(
+                $client_name, $date_intake, $therapist, $session_1, $session_2, $session_3, $session_4,
+                $present_problem, $previous_therapy_history, $diagnosis, $plan
+            );
+            // =========== calling the function from the class here ============== //
+            //$client->SaveClientDetails();
             
         }else {
             $error_message = "something is wrong please check the form again";

@@ -58,7 +58,14 @@ class Client {
                 ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)"
             );
             // binding the parameters to the query here ===========//
-            
+            $sqlCommand->bind_param(
+                "ssssssssssss",
+                $this->client_name, $this->date_intake, $this->therapist, $this->session_1,
+                $this->session_2, $this->session_3, $this->session_4, $this->present_problem, 
+                $this->previous_therapy_session, $this->diagnosis, $this->plan, $patient_id
+            );
+            // executing the database query here
+            $sqlCommand->execute();
         }catch(Exception $ex) {
             print($ex);
         }
