@@ -79,7 +79,7 @@ class Connection{
     public function CreatePatientTable() {
         try {
             $sqlCommand = "CREATE TABLE PatientDetails(
-                patinet_id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                patient_id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 first_name VARCHAR(50) NOT NULL,
                 last_name VARCHAR(50) NOT NULL,
                 guardian VARCHAR(50) NOT NULL,

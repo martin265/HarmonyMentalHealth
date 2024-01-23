@@ -210,3 +210,26 @@ body{
     width: 350px;
     margin-right: 5px;
 }
+
+/* ============ css for the client information page here */
+.client-information-page {
+    background: linear-gradient(to right, #DBF9D8, #DBF2FF);
+    border-radius: 8px;
+    height: 2020px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.content-area .client-therapy-session {
+    background: linear-gradient(to right, #DBF9D8, #DBF2FF);
+    border-radius: 8px;
+    height: 1000px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.content-area .client-therapy-session .error-message {
+    color: red;
+    padding-left: 10px;
+    font-weight: bolder;
+}

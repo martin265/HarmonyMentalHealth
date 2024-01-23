@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <!-- ============= css link here ========== -->
     <link rel="stylesheet" href="styles/style.css">
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- other links will be here -->
     <!-- Include Bootstrap DateTimePicker CSS and JavaScript -->
     <!-- Bootstrap CSS -->
@@ -42,15 +43,18 @@
             <i class="bi bi-building-gear"></i>
             <a href="administrator_patient_details.php">patient overview</a>
         </div>
+
+        <!-- ========== drop down for the therapy sessions will be here  -->
+        
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
             <i class="bi bi-calendar2-check-fill"></i>      
-            <a href="#">appointments</a>
+            <a href="administrator_appointments.php">appointments</a>
         </div>
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
             <i class="bi bi-calendar2-week"></i>
-            <a href="#">treatment plans</a>
+            <a href="administrator_therapy_sessions.php">treatment plans</a>
         </div>
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
