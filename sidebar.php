@@ -64,7 +64,7 @@
                 <i class="bi bi-brightness-low me-1"></i>Therapy Questions
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">General and Mental</a></li>
+                <li><a class="dropdown-item" href="administrator_general_mental_health.php">General and Mental</a></li>
                 <li><a class="dropdown-item" href="#">Administer PHQ 9</a></li>
                 <li><a class="dropdown-item" href="#">Administer GAD 7</a></li>
                 <li><a class="dropdown-item" href="#">Family Mental Health</a></li>
@@ -72,20 +72,9 @@
         </div>
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
-            <i class="bi bi-tree"></i>
-            <a href="#">medical schemes</a>
-        </div>
-        <!-- the side bar navigation items will be here -->
-        <div class="navigation-item">
-            <i class="bi bi-clock-history"></i>
-            <a href="#">recent activities</a>
-        </div>
-        <!-- the side bar navigation items will be here -->
-        <div class="navigation-item">
              <i class="bi bi-file-earmark-bar-graph"></i>
              <a href="administrator_patient_records.php">records</a>
         </div>
-        
     </div>
 </body>
 </html>

@@ -233,3 +233,33 @@ body{
     padding-left: 10px;
     font-weight: bolder;
 }
+
+
+/* ================== general health questions will be here ================ */
+.content-area .general-health-question-panel {
+    height: auto;
+    margin-top: 30px;
+    background: linear-gradient(to right, #DBF9D8, #DBF2FF);
+    border-radius: 8px;
+}
+.content-area .general-health-question-panel .page-title h1 {
+    font-size: 27px;
+    text-transform: capitalize;
+    text-align: center;
+    padding-top: 20px;
+    color: #33691e;
+    font-weight: bolder;
+}
+
+/* ============== for the page tag here ============ */
+.content-area .general-health-question-panel p {
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding-top: 20px;
+}
+
+.content-area .general-health-question-panel .explanation {
+    font-size: 20px;
+}
