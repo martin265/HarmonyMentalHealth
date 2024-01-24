@@ -52,10 +52,90 @@ function ValidateInputs($data) {
         print($ex);
     }
 }
+// ============ errors array  ====================== //
+$all_errors = array("explanation"=>"", "chronic_condition_explanation"=>"", "current_health_problems"=>"",
+"recurrent_dreams"=>"", "general_exercise"=>"", "exercise_type"=>"", "how_long"=>"");
 
 // ========================= getting the values from the forms here =================== //
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $explanation = ValidateInputs($_POST["explanation"]);
+    $chronic_condition_explanation = ValidateInputs($_POST["chronic_condition_explanation"]);
+    $current_health_problems = ValidateInputs($_POST["current_health_problems"]);
+    $recurrent_dreams = ValidateInputs($_POST["recurrent_dreams"]);
+    $general_exercise = ValidateInputs($_POST["general_exercise"]);
+    $exercise_type = ValidateInputs($_POST["exercise_type"]);
+    $how_long = ValidateInputs($_POST["how_long"]);
 
+    if (isset($_POST["save_session"])) {
+        // ========== checking if the values are empty here ===================== //
+        if (empty($_POST["explanation"])) {
+            $all_errors["explanation"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $explanation)) {
+                $all_errors["explanation"] = "provide valid characters";
+            }
+        }
+        // ========== checking if the values are empty here ===================== //
+        if (empty($_POST["chronic_condition_explanation"])) {
+            $all_errors["chronic_condition_explanation"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $chronic_condition_explanation)) {
+                $all_errors["chronic_condition_explanation"] = "provide valid characters";
+            }
+        }
+        // ========== checking if the values are empty here ===================== //
+        if (empty($_POST["current_health_problems"])) {
+            $all_errors["current_health_problems"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $current_health_problems)) {
+                $all_errors["current_health_problems"] = "provide valid characters";
+            }
+        }
+        // ========== checking if the values are empty here ===================== //
+        if (empty($_POST["recurrent_dreams"])) {
+            $all_errors["recurrent_dreams"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $recurrent_dreams)) {
+                $all_errors["recurrent_dreams"] = "provide valid characters";
+            }
+        }
+        // ========== checking if the values are empty here ===================== //
+        if (empty($_POST["general_exercise"])) {
+            $all_errors["general_exercise"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $general_exercise)) {
+                $all_errors["general_exercise"] = "provide valid characters";
+            }
+        }
+        // ========== checking if the values are empty here ===================== //
+        if (empty($_POST["exercise_type"])) {
+            $all_errors["exercise_type"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $exercise_type)) {
+                $all_errors["exercise_type"] = "provide valid characters";
+            }
+        }
+        // ========== checking if the values are empty here ===================== //
+        if (empty($_POST["how_long"])) {
+            $all_errors["how_long"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $explanation)) {
+                $all_errors["how_long"] = "provide valid characters";
+            }
+        }
+
+        // =============== checking if the form has errors here ================= //
+        if (!array_filter($all_errors)) {
+            // the main codes will be patched here
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -336,7 +416,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                     <div class="save-details-btn ms-3 mb-5">
                                         <!-- ================ the div for the button will be here to save the records ======== -->
-                                        <input type="submit" value="save session" name="save-session" class="btn btn-lg btn-success">
+                                        <input type="submit" value="save session" name="save_session" class="btn btn-lg btn-success">
                                     </div>
                                 </form>
                             </div>
