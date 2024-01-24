@@ -243,19 +243,13 @@ body{
     border-radius: 8px;
 }
 .content-area .general-health-question-panel .page-title h1 {
-    font-size: 27px;
+    font-size: 30px;
     text-transform: capitalize;
     text-align: center;
     padding-top: 20px;
+    padding-bottom: 30px;
     color: #33691e;
     font-weight: bolder;
-}
-
-/* ============== for the page tag here ============ */
-.content-area .general-health-question-panel p {
-    padding-left: 20px;
-    font-size: 20px;
-    font-weight: 600;
-    text-transform: capitalize;
-    padding-top: 20px;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }

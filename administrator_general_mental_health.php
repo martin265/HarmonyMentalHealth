@@ -262,8 +262,10 @@
                                         </div>
                                     </div>
 
-                                    <!-- ================ the div for the button will be here to save the records ======== -->
-                                    
+                                    <div class="save-details-btn ms-3 mb-5">
+                                        <!-- ================ the div for the button will be here to save the records ======== -->
+                                        <input type="submit" value="save session" name="save-session" class="btn btn-lg btn-success">
+                                    </div>
                                 </form>
                             </div>
                         </div>
