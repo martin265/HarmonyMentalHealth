@@ -206,13 +206,64 @@
                                         </div>
                                     </div>
                                     <!-- ============== the exercide part of the project ====== -->
-                                    <div class="row">
-                                        <div class="col">
+                                    <div class="row mb-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="Dreams" class="form-label-lg">
+                                                <span class="fw-bold">How many times per week do you generally exercise ?</span>
+                                            </label>
                                             <div class="input-group">
-                                                
+                                                <span class="input-group-text"><i class="bi bi-thermometer"></i></span>
+                                                <input type="number" class="form-control form-control-lg" placeholder="exercise per week" name="general_exercise">
                                             </div>
                                         </div>
                                     </div>
+                                     <!-- ============== the exercide part of the project ====== -->
+                                     <div class="row mb-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="Dreams" class="form-label-lg">
+                                                <span class="fw-bold">What types of exercise do you partcipate in ?</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="bi bi-flower3"></i></span>
+                                                <input type="number" class="form-control form-control-lg" placeholder="exercise type" name="exercise_type">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ================ the other controls will be here =========== -->
+                                    <!--  =================// the control for the marital status here ============= -->
+                                    <div class="row g-2 mt-3">
+                                        <div class="col ms-3">
+                                            <label for="Age" class="form-label-lg">
+                                                <span class="fw-bold">Are you currently exeperiencing sadness, grief or depression ?</span>
+                                            </label>
+                                            <!-- =============== the other radio button will be here ======== -->
+                                            <div class="form-check form-check-inline ms-3">
+                                                <input class="form-check-input" type="radio" name="overwhelming_sadness" id="inlineRadio1" value="Yes">
+                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                            </div>
+                                            <!-- ============== the radio buttons will be here -->
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="overwhelming_sadness" id="inlineRadio2" value="No">
+                                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =============== for the second explanation ============ -->
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="Age" class="form-label-lg">
+                                                <span class="fw-bold">If yes, for approximately how long ?</span>
+                                            </label>
+                                            <textarea name="how_long" class="form-control form-control-lg text-start">
+
+                                            </textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- ================ the div for the button will be here to save the records ======== -->
+                                    
                                 </form>
                             </div>
                         </div>
