@@ -54,7 +54,7 @@
                                             <label for="Age" class="form-label-lg">
                                                 <span class="fw-bold">If yes, Which ones ?</span>
                                             </label>
-                                            <textarea name="explanation" class="form-control form-control">
+                                            <textarea name="explanation" class="form-control form-control-lg text-start">
 
                                             </textarea>
                                         </div>
@@ -125,8 +125,92 @@
                                             <label for="Age" class="form-label-lg">
                                                 <span class="fw-bold">If yes, Which ?</span>
                                             </label>
-                                            <textarea name="chronic_condition_explanation" class="form-control form-control-lg">
+                                            <textarea name="chronic_condition_explanation" class="form-control form-control-lg text-start">
+
                                             </textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- ================ current problems will be here ============= -->
+                                    <div class="row">
+                                        <div class="col ms-3 me-3">
+                                            <label for="Age" class="form-label-lg">
+                                                <span class="fw-bold">Are there any specif health problems you are currently exeperiencing ?</span>
+                                            </label>
+                                            <textarea name="current_health_problems" id="" class="form-control form-control-lg text-start">
+
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <!--  =================// the control for the marital status here ============= -->
+                                    <div class="row g-2 mb-3 mt-3">
+                                        <div class="col ms-3">
+                                            <label for="Age" class="form-label-lg">
+                                                <span class="fw-bold">How would you rate your sleeping habits (Please circle one)</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="sleeping_habits" id="inlineRadio1" value="Poor">
+                                                    <label class="form-check-label" for="inlineRadio1">Poor</label>
+                                                </div>
+                                                <!--  -->
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="sleeping_habits" id="inlineRadio1" value="Unsatisfactory">
+                                                    <label class="form-check-label" for="inlineRadio1">Unsatisfactory</label>
+                                                </div>
+                                                <!--  -->
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="sleeping_habits" id="inlineRadio1" value="Satisfactory">
+                                                    <label class="form-check-label" for="inlineRadio1">Satisfactory</label>
+                                                </div>
+                                                <!--  -->
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="sleeping_habits" id="inlineRadio1" value="Good">
+                                                    <label class="form-check-label" for="inlineRadio1">Good</label>
+                                                </div>
+                                                <!--  -->
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="sleeping_habits" id="inlineRadio1" value="Very Good">
+                                                    <label class="form-check-label" for="inlineRadio1">Very Good</label>
+                                                </div>
+                                                <!--  -->
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="sleeping_habits" id="inlineRadio1" value="Excellent">
+                                                    <label class="form-check-label" for="inlineRadio1">Excellent</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ================ current problems will be here ============= -->
+                                    <div class="row mb-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="Age" class="form-label-lg">
+                                                <span class="fw-bold">Please describe any specific sleep problems you are currently exeperiencing:</span>
+                                            </label>
+                                            <textarea name="sleep_problems" id="" class="form-control form-control-lg text-start">
+
+                                            </textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- ================ current problems will be here ============= -->
+                                    <div class="row mb-3">
+                                        <!-- want to take this opportunity to tank you My Father and everything Lord Jesus Christ for everything== -->
+                                        <div class="col ms-3 me-3">
+                                            <label for="Dreams" class="form-label-lg">
+                                                <span class="fw-bold">Any recurrent/Vivid dreams ?</span>
+                                            </label>
+                                            <textarea name="recurrent_dreams" id="" class="form-control form-control-lg text-start">
+
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <!-- ============== the exercide part of the project ====== -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
