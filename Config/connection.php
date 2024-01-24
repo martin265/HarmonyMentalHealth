@@ -156,10 +156,44 @@ class Connection{
             print("failed to create table" . mysqli_error($this->connection));
         }
     }
+
+    // ============ function to create client questions_table =============== //
+    public function CreateGeneralMentalHealthInformation() {
+        try {
+            $sqlCommand = "CREATE TABLE IF NOT EXISTS GeneralMentalHealth (
+                general_mental_health_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                prescription_medication VARCHAR(50) NOT NULL,
+                explanation VARCHAR(50) NOT NULL,
+                physical_health VARCHAR(50) NOT NULL,
+                chronic_conditions VARCHAR(50) NOT NULL,
+                chronic_condition_explanation VARCHAR(100) NOT NULL,
+                current_health_problems VARCHAR(100) NOT NULL,
+                sleeping_habits VARCHAR(100) NOT NULL,
+                sleeping_problems VARCHAR(100) NOT NULL,
+                recurrent_dreams VARCHAR(100) NOT NULL,
+                general_exercise VARCHAR(100) NOT NULL,
+                exercise_type VARCHAR(100) NOT NULL,
+                overwhelming_sadness VARCHAR(100) NOT NULL,
+                how_long VARCHAR(100) NOT NULL,
+                client_name VARCHAR(50) NOT NULL,
+                client_id INT UNSIGNED,
+                FOREIGN KEY (client_id) REFERENCES ClientDetails(client_id),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )";
+            
+            $results = mysqli_query($this->connection, $sqlCommand);
+            if (!$results) {
+                print("failed to create the table");
+            }
+        }catch(Exception $ex) {
+            print("failed to create table" . mysqli_error($this->connection));
+        }
+    }
 }
 // calling the object class here
 // $conn = new Connection("localhost", "root", "", "harmonymentalhealth");
 // $conn->EstablishConnection();
+// $conn->CreateGeneralMentalHealthInformation();
 
 // // calling the create table function here
 // $conn->CreateClientTable();

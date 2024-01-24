@@ -1,5 +1,62 @@
 <?php
 
+// =============== inclusing the connection here ================ //
+include("Config/connection.php");
+$connection = new Connection("localhost", "root", "", "harmonymentalhealth");
+$connection->EstablishConnection();
+$conn = $connection->get_connection();
+
+// ================= creating the variables or the forms here =================//
+$prescription_medication = "";
+$explanation = "";
+$physical_health = "";
+$chronic_conditions = "";
+$chronic_condition_explanation = "";
+$current_health_problems = "";
+$sleeping_habits = "";
+$sleeping_problems = "";
+$recurrent_dreams = "";
+$general_exercise = "";
+$exercise_type = "";
+$overwhelming_sadness = "";
+$how_long = "";
+$connection = "";
+
+// ================== function to fetch the client name here ================== //
+function FetchClientDetails($conn) {
+    try {
+         // the connection getter here 
+        // getting the connection object here
+        $sqlCommand = "SELECT * FROM ClientDetails";
+        $results = mysqli_query($conn, $sqlCommand);
+        // passing the details into an associative array 
+        $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
+        // getting only the first name here
+        return $all_results;
+    } catch (Exception $ex) {
+        print($ex);
+    }
+}
+
+$all_results = FetchClientDetails($conn);
+
+// ============== validating the input fields here =================== //
+function ValidateInputs($data) {
+    try {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+
+        return $data;
+    }catch(Exception $ex) {
+        print($ex);
+    }
+}
+
+// ========================= getting the values from the forms here =================== //
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +83,21 @@
                                 <h1>general and mental health information</h1>
                             </div>
 
+                            <!-- ================== getting the client here for the  -->
+                            <div class="row mb-3">
+                                <div class="col ms-3 me-3">
+                                    <label for="Age" class="form-label-lg">
+                                        <span class="fw-bold">Select client name</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <select name="client_name" id="" class="form-control form-control-lg">
+                                            <?php foreach($all_results as $single_record) {?>
+                                                <option value="<?php echo($single_record["client_name"]); ?>"><?php echo($single_record["client_name"]); ?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- ============ the form for the details will be here ========= -->
                             <div class="questions-page">
                                 <form action="administrator_general_mental_health.php" method="POST">
