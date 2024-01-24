@@ -39,6 +39,7 @@ function FetchClientDetails($conn) {
 
 $all_results = FetchClientDetails($conn);
 
+
 // =============== function to validate the attributes here ===========//
 function ValidateInputs($data) {
     try {
@@ -75,7 +76,6 @@ function FetchClientID($conn) {
 
 
 $patient_id = FetchClientID($conn);
-print($patient_id);
 
 // ================ the array that will hold all the errors here ===========//
 $all_errors = array("client_name"=>"", "date_intake"=>"", "therapist"=>"",
@@ -219,7 +219,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $present_problem, $previous_therapy_history, $diagnosis, $plan
             );
             // =========== calling the function from the class here ============== //
-            //$client->SaveClientDetails();
+            $client->SaveClientDetails($patient_id);
+            $success_message = "therapy sessions saved successfully";
             
         }else {
             $error_message = "something is wrong please check the form again";
@@ -253,7 +254,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="container-xxl">
                 <div class="row">
                     <div class="col-lg-12">
+                    
                         <div class="client-therapy-session">
+                            <!-- ===================== // ================ -->
+                            <div class="success-message mt-3 me-3 w-50 fw-bolder text-light">
+                                <?php if (isset($success_message)) : ?>
+                                    <div id="successAlert" class="alert alert-primary" role="alert">
+                                        <?php echo $success_message; ?>
+                                    </div>
+                                    <script>
+                                        // Automatically dismiss the success alert after 5 seconds
+                                        setTimeout(function() {
+                                            document.getElementById("successAlert").style.display = "none";
+                                        }, 5000);
+                                    </script>
+                                <?php elseif (isset($error_message)) : ?>
+                                    <div class="alert alert-success" role="alert">
+
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <!--  ==================== // ============== // -->
                             <form action="administrator_therapy_sessions.php" method="POST">
                                 <div class="row g-2 mb-2">
                                     <!-- getting the client name and the intake date here-->

@@ -25,6 +25,7 @@
     <script src="assets/bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="assets\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="assets\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker3.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <div class="side-navigation-panel">
@@ -54,7 +55,20 @@
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
             <i class="bi bi-calendar2-week"></i>
-            <a href="administrator_therapy_sessions.php">treatment plans</a>
+            <a href="administrator_therapy_sessions.php">therapy sessions</a>
+        </div>
+
+        <!-- ------------- // the drop down for the links will be here // -->
+        <div class="dropdown mt-3">
+            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-brightness-low me-1"></i>Therapy Questions
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">General and Mental</a></li>
+                <li><a class="dropdown-item" href="#">Administer PHQ 9</a></li>
+                <li><a class="dropdown-item" href="#">Administer GAD 7</a></li>
+                <li><a class="dropdown-item" href="#">Family Mental Health</a></li>
+            </ul>
         </div>
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
