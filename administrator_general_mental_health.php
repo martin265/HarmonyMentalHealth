@@ -1,12 +1,31 @@
 <?php
-
-// =============== inclusing the connection here ================ //
+// ========= including the connection here ================= //
 include("Models/Questions.php");
 $connection = new Connection("localhost", "root", "", "harmonymentalhealth");
 $connection->EstablishConnection();
 $conn = $connection->get_connection();
 
-// ================= creating the variables or the forms here =================//
+// ================ function to get the client name here ==================== //
+function FetchClientName($conn) {
+    try {
+        // ================ using prepared statements here =============== //
+        $sqlCommand = "SELECT * FROM ClientDetails";
+        // ========== running the query here ========//
+        $results = mysqli_query($conn, $sqlCommand);
+        // ======== binding the results to the array here ============= //
+        $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
+        // =========== getting the client_name  here ========= //
+        return $all_results;
+
+    }catch(Exception $ex) {
+        print($ex);
+    }
+}
+
+$all_results = FetchClientName($conn);
+
+// ============ getting the values from the form here =============== //
+$client_name = "";
 $prescription_medication = "";
 $explanation = "";
 $physical_health = "";
@@ -20,177 +39,18 @@ $general_exercise = "";
 $exercise_type = "";
 $overwhelming_sadness = "";
 $how_long = "";
-$client_name = "";
 
-// ================== function to fetch the client name here ================== //
-function FetchClientDetails($conn) {
-    try {
-         // the connection getter here 
-        // getting the connection object here
-        $sqlCommand = "SELECT * FROM ClientDetails";
-        $results = mysqli_query($conn, $sqlCommand);
-        // passing the details into an associative array 
-        $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
-        // getting only the first name here
-        return $all_results;
-    } catch (Exception $ex) {
-        print($ex);
-    }
-}
-
-$all_results = FetchClientDetails($conn);
-// ============== fuction to get the current client ID here ================== //
-function FetchClientID($conn) {
-    try {
-        if (isset($_POST["save_session"])) {
-            $client_name = mysqli_real_escape_string($conn, $_POST["client_name"]);
-            $sqlCommand = "SELECT client_id FROM ClientDetails WHERE client_name = '$client_name'";
-            $results = mysqli_query($conn, $sqlCommand);
-            // =========== fetching the patient id here ==========//
-            $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
-            // ========== looping through the results ============= //
-            foreach($all_results as $single_result) {
-                return $single_result["client_id"];
-            }
-        }
-    } catch(Exception $ex) {
-        // Handle exceptions here
-        print($ex);
-        return false;
-    }
-}
-
-
-$client_id = FetchClientID($conn);
-
-
-// ============== validating the input fields here =================== //
-function ValidateInputs($data) {
-    try {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-
-        return $data;
-    }catch(Exception $ex) {
-        print($ex);
-    }
-}
-// ============ errors array  ====================== //
-$all_errors = array("explanation"=>"", "chronic_condition_explanation"=>"", "current_health_problems"=>"",
-"recurrent_dreams"=>"", "general_exercise"=>"", "exercise_type"=>"", "how_long"=>"", "client_name"=>"", "sleeping_problems"=>"");
-
-// ========================= getting the values from the forms here =================== //
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $explanation = ValidateInputs($_POST["explanation"]);
-    $chronic_condition_explanation = ValidateInputs($_POST["chronic_condition_explanation"]);
-    $current_health_problems = ValidateInputs($_POST["current_health_problems"]);
-    $recurrent_dreams = ValidateInputs($_POST["recurrent_dreams"]);
-    $general_exercise = ValidateInputs($_POST["general_exercise"]);
-    $exercise_type = ValidateInputs($_POST["exercise_type"]);
-    $how_long = ValidateInputs($_POST["how_long"]);
-
+    
     if (isset($_POST["save_session"])) {
-        // ========== checking if the values are empty here ===================== //
-        if (empty($_POST["explanation"])) {
-            $all_errors["explanation"] = "fill in the blanks";
-        }
-        else {
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $explanation)) {
-                $all_errors["explanation"] = "provide valid characters";
-            }
-        }
-        // ========== checking if the values are empty here ===================== //
-        if (empty($_POST["chronic_condition_explanation"])) {
-            $all_errors["chronic_condition_explanation"] = "fill in the blanks";
-        }
-        else {
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $chronic_condition_explanation)) {
-                $all_errors["chronic_condition_explanation"] = "provide valid characters";
-            }
-        }
-        // ========== checking if the values are empty here ===================== //
-        if (empty($_POST["current_health_problems"])) {
-            $all_errors["current_health_problems"] = "fill in the blanks";
-        }
-        else {
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $current_health_problems)) {
-                $all_errors["current_health_problems"] = "provide valid characters";
-            }
-        }
-        // ========== checking if the values are empty here ===================== //
-        if (empty($_POST["recurrent_dreams"])) {
-            $all_errors["recurrent_dreams"] = "fill in the blanks";
-        }
-        else {
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $recurrent_dreams)) {
-                $all_errors["recurrent_dreams"] = "provide valid characters";
-            }
-        }
-        // ========== checking if the values are empty here ===================== //
-        if (empty($_POST["general_exercise"])) {
-            $all_errors["general_exercise"] = "fill in the blanks";
-        }
-        else {
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $general_exercise)) {
-                $all_errors["general_exercise"] = "provide valid characters";
-            }
-        }
-        // ========== checking if the values are empty here ===================== //
-        if (empty($_POST["exercise_type"])) {
-            $all_errors["exercise_type"] = "fill in the blanks";
-        }
-        else {
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $exercise_type)) {
-                $all_errors["exercise_type"] = "provide valid characters";
-            }
-        }
-        // ========== checking if the values are empty here ===================== //
-        if (empty($_POST["how_long"])) {
-            $all_errors["how_long"] = "fill in the blanks";
-        }
-        else {
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $explanation)) {
-                $all_errors["how_long"] = "provide valid characters";
-            }
-        }
-
-        // =============== checking if the form has errors here ================= //
-        if (array_filter($all_errors)) {
-            // the main codes will be patched here
-            $prescription_medication = mysqli_real_escape_string($conn, $_POST["prescription_medication"]);
-            $explanation = mysqli_real_escape_string($conn, $_POST["explanation"]);
-            $physical_health = mysqli_real_escape_string($conn, $_POST["physical_health"]);
-            $chronic_conditions = mysqli_real_escape_string($conn, $_POST["chronic_conditions"]);
-            $chronic_condition_explanation = mysqli_real_escape_string($conn, $_POST["chronic_condition_explanation "]);
-            $current_health_problems = mysqli_real_escape_string($conn, $_POST["current_health_problems"]);
-            $sleeping_habits = mysqli_real_escape_string($conn, $_POST["sleeping_habits"]);
-            $sleeping_problems = mysqli_real_escape_string($conn, $_POST["sleeping_problems"]);
-            $recurrent_dreams = mysqli_real_escape_string($conn, $_POST["recurrent_dreams"]);
-            $general_exercise = mysqli_real_escape_string($conn, $_POST["general_exercise"]);
-            $exercise_type = mysqli_real_escape_string($conn, $_POST["exercise_type"]);
-            $overwhelming_sadness = mysqli_real_escape_string($conn, $_POST["overwhelming_sadness"]);
-            $how_long = mysqli_real_escape_string($conn, $_POST["how_long"]);
-
-            print($physical_health);
-            // =================== creating an object for the class here =============== //
-            $question = new Question(
-                $prescription_medication, $explanation, $physical_health, $chronic_conditions,
-                $chronic_condition_explanation, $current_health_problems, $sleeping_habits,
-                $sleeping_problems,  $recurrent_dreams, $general_exercise, $exercise_type,
-                $overwhelming_sadness, $how_long
-            );
-
-            // ================= calling the function for the class here ================ //
-            $question->SaveQuestionDetails($client_name, $client_id);
-            
-        }
-        else {
-            print("something is wrong");
-        }
+        $client_name = $_POST["client_name"];
+        print($client_name);
     }
 }
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
