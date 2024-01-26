@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $chronic_condition_explanation = mysqli_real_escape_string($conn, $_POST["chronic_condition_explanation"]);
             $current_health_problems = mysqli_real_escape_string($conn, $_POST["current_health_problems"]);
             $sleeping_habits = mysqli_real_escape_string($conn, $_POST["sleeping_habits"]);
-            $sleeping_problems = mysqli_real_escape_string($conn, $_POST["sleeping_problems"]);
+            $sleeping_problems = mysqli_real_escape_string($conn, $_POST["sleeping_problem"]);
             $recurrent_dreams = mysqli_real_escape_string($conn, $_POST["recurrent_dreams"]);
             $general_exercise = mysqli_real_escape_string($conn, $_POST["general_exercise"]);
             $exercise_type = mysqli_real_escape_string($conn, $_POST["exercise_type"]);
@@ -131,13 +131,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $question = new Question(
                 $prescription_medication, $explanation, $physical_health, $chronic_conditions,
                 $chronic_condition_explanation, $current_health_problems, $sleeping_habits,
-                $sleeping_problems,  $recurrent_dreams, $general_exercise, $exercise_type,
+                $sleeping_problems,$recurrent_dreams, $general_exercise, $exercise_type,
                 $overwhelming_sadness, $how_long
             );
 
             // =============== calling the function to save the details here =========== //
             $question->SaveQuestionDetails($client_name, $client_id);
-            print("saved successfully");
+            // ============ success message here ================= //
+            $success_message = "question saved successfully";
 
         }
     }
@@ -170,8 +171,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="page-title">
                                 <h1>general and mental health information</h1>
                             </div>
+                            <div class="success-message">
+                                <?php if (isset($success_message)) : ?>
+                                    <div id="successAlert" class="alert alert-success w-50" role="alert">
+                                        <?php echo $success_message; ?>
+                                    </div>
+                                    <script>
+                                        // Automatically dismiss the success alert after 5 seconds
+                                        setTimeout(function() {
+                                            document.getElementById("successAlert").style.display = "none";
+                                        }, 5000);
+                                    </script>
+                                    <?php elseif (isset($error_message)) : ?>
+                                        <div class="alert alert-success" role="alert">
 
-                            
+                                        </div>
+                                <?php endif; ?>
+                            </div>
                             <!-- ============ the form for the details will be here ========= -->
                             <div class="questions-page">
                                 <form action="administrator_general_mental_health.php" method="POST">
@@ -353,9 +369,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label for="Age" class="form-label-lg">
                                                 <span class="fw-bold">Please describe any specific sleeping problems you are currently exeperiencing:</span>
                                             </label>
-                                            <textarea name="sleeping_problems" id="" class="form-control form-control-lg text-start">
-
-                                            </textarea>
+                                            <textarea name="sleeping_problem" id="" class="form-control form-control-lg"></textarea>
                                         </div>
                                     </div>
 

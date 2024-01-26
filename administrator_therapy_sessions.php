@@ -268,10 +268,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             document.getElementById("successAlert").style.display = "none";
                                         }, 5000);
                                     </script>
-                                <?php elseif (isset($error_message)) : ?>
-                                    <div class="alert alert-success" role="alert">
+                                    <?php elseif (isset($error_message)) : ?>
+                                        <div class="alert alert-success" role="alert">
 
-                                    </div>
+                                        </div>
                                 <?php endif; ?>
                             </div>
                             <!--  ==================== // ============== // -->
