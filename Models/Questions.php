@@ -55,13 +55,12 @@ class Question{
         }
     }
 
-    // ================== function will be used to save the question details here ================ //
-    public function SaveQuestionDetails($client_name, $clinet_id) {
+    public function SaveQuestionDetails($client_name, $client_id) {
         try {
-
             // ========= getting the connection here ============ //
             $this->connection->EstablishConnection();
             $conn = $this->connection->get_connection();
+            
             $sqlCommand = $conn->prepare(
                 "INSERT INTO GeneralMentalHealth(
                     prescription_medication,
@@ -71,24 +70,26 @@ class Question{
                     overwhelming_sadness,
                     how_long, client_name, client_id
                 ) VALUES (
-                    ?,?,?,?,?,?,?,?,?,?,?,?,?,?
+                    ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
                 )"
             );
+    
             // ================= binding the parameters here ================== //
             $sqlCommand->bind_param(
                 "sssssssssssssss",
-                $prescription_medication, $explanation, $physical_health, $chronic_conditions,
-                $chronic_condition_explanation, $current_health_problems, $sleeping_habits,
-                $sleeping_problems,  $recurrent_dreams, $general_exercise, $exercise_type,
-                $overwhelming_sadness, $how_long, $client_name, $clinet_id
+                $this->prescription_medication, $this->explanation, $this->physical_health, $this->chronic_conditions,
+                $this->chronic_condition_explanation, $this->current_health_problems, $this->sleeping_habits,
+                $this->sleeping_problems,  $this->recurrent_dreams, $this->general_exercise, $this->exercise_type,
+                $this->overwhelming_sadness, $this->how_long, $client_name, $client_id
             );
             // ============= executing the query here ================ //
             $sqlCommand->execute();
             print("saved successfully");
-        }catch(Exception $ex) {
+        } catch (Exception $ex) {
             print($ex);
         }
     }
+    
 
 }
 ?>

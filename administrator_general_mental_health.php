@@ -1,7 +1,7 @@
 <?php
 
 // =============== inclusing the connection here ================ //
-include("Config/connection.php");
+include("Models/Questions.php");
 $connection = new Connection("localhost", "root", "", "harmonymentalhealth");
 $connection->EstablishConnection();
 $conn = $connection->get_connection();
@@ -20,7 +20,7 @@ $general_exercise = "";
 $exercise_type = "";
 $overwhelming_sadness = "";
 $how_long = "";
-$connection = "";
+$client_name = "";
 
 // ================== function to fetch the client name here ================== //
 function FetchClientDetails($conn) {
@@ -39,6 +39,30 @@ function FetchClientDetails($conn) {
 }
 
 $all_results = FetchClientDetails($conn);
+// ============== fuction to get the current client ID here ================== //
+function FetchClientID($conn) {
+    try {
+        if (isset($_POST["save_session"])) {
+            $client_name = mysqli_real_escape_string($conn, $_POST["client_name"]);
+            $sqlCommand = "SELECT client_id FROM ClientDetails WHERE client_name = '$client_name'";
+            $results = mysqli_query($conn, $sqlCommand);
+            // =========== fetching the patient id here ==========//
+            $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
+            // ========== looping through the results ============= //
+            foreach($all_results as $single_result) {
+                return $single_result["client_id"];
+            }
+        }
+    } catch(Exception $ex) {
+        // Handle exceptions here
+        print($ex);
+        return false;
+    }
+}
+
+
+$client_id = FetchClientID($conn);
+
 
 // ============== validating the input fields here =================== //
 function ValidateInputs($data) {
@@ -54,7 +78,7 @@ function ValidateInputs($data) {
 }
 // ============ errors array  ====================== //
 $all_errors = array("explanation"=>"", "chronic_condition_explanation"=>"", "current_health_problems"=>"",
-"recurrent_dreams"=>"", "general_exercise"=>"", "exercise_type"=>"", "how_long"=>"");
+"recurrent_dreams"=>"", "general_exercise"=>"", "exercise_type"=>"", "how_long"=>"", "client_name"=>"", "sleeping_problems"=>"");
 
 // ========================= getting the values from the forms here =================== //
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -132,8 +156,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // =============== checking if the form has errors here ================= //
-        if (!array_filter($all_errors)) {
+        if (array_filter($all_errors)) {
             // the main codes will be patched here
+            $prescription_medication = mysqli_real_escape_string($conn, $_POST["prescription_medication"]);
+            $explanation = mysqli_real_escape_string($conn, $_POST["explanation"]);
+            $physical_health = mysqli_real_escape_string($conn, $_POST["physical_health"]);
+            $chronic_conditions = mysqli_real_escape_string($conn, $_POST["chronic_conditions"]);
+            $chronic_condition_explanation = mysqli_real_escape_string($conn, $_POST["chronic_condition_explanation "]);
+            $current_health_problems = mysqli_real_escape_string($conn, $_POST["current_health_problems"]);
+            $sleeping_habits = mysqli_real_escape_string($conn, $_POST["sleeping_habits"]);
+            $sleeping_problems = mysqli_real_escape_string($conn, $_POST["sleeping_problems"]);
+            $recurrent_dreams = mysqli_real_escape_string($conn, $_POST["recurrent_dreams"]);
+            $general_exercise = mysqli_real_escape_string($conn, $_POST["general_exercise"]);
+            $exercise_type = mysqli_real_escape_string($conn, $_POST["exercise_type"]);
+            $overwhelming_sadness = mysqli_real_escape_string($conn, $_POST["overwhelming_sadness"]);
+            $how_long = mysqli_real_escape_string($conn, $_POST["how_long"]);
+
+            print($physical_health);
+            // =================== creating an object for the class here =============== //
+            $question = new Question(
+                $prescription_medication, $explanation, $physical_health, $chronic_conditions,
+                $chronic_condition_explanation, $current_health_problems, $sleeping_habits,
+                $sleeping_problems,  $recurrent_dreams, $general_exercise, $exercise_type,
+                $overwhelming_sadness, $how_long
+            );
+
+            // ================= calling the function for the class here ================ //
+            $question->SaveQuestionDetails($client_name, $client_id);
+            
+        }
+        else {
+            print("something is wrong");
         }
     }
 }
@@ -163,24 +216,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <h1>general and mental health information</h1>
                             </div>
 
-                            <!-- ================== getting the client here for the  -->
-                            <div class="row mb-3">
-                                <div class="col ms-3 me-3">
-                                    <label for="Age" class="form-label-lg">
-                                        <span class="fw-bold">Select client name</span>
-                                    </label>
-                                    <div class="input-group">
-                                        <select name="client_name" id="" class="form-control form-control-lg">
-                                            <?php foreach($all_results as $single_record) {?>
-                                                <option value="<?php echo($single_record["client_name"]); ?>"><?php echo($single_record["client_name"]); ?></option>
-                                            <?php }?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <!-- ============ the form for the details will be here ========= -->
                             <div class="questions-page">
                                 <form action="administrator_general_mental_health.php" method="POST">
+                                    <!-- ================== getting the client here for the  -->
+                                    <div class="row mb-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="Age" class="form-label-lg">
+                                                <span class="fw-bold">Select client name</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <select name="client_name" id="" class="form-control form-control-lg">
+                                                    <?php foreach($all_results as $single_record) {?>
+                                                        <option value="<?php echo($single_record["client_name"]); ?>"><?php echo($single_record["client_name"]); ?></option>
+                                                    <?php }?>
+                                                </select>
+                                            </div>
+                                            <!-- ============ the error message will be shown here ========= -->
+                                            <div class="error_message">
+                                                <?php echo($all_errors["client_name"]); ?>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <!-- =========== the input fields for the form will be here === -->
                                     <div class="row">
                                         <div class="col ms-3">
@@ -209,6 +267,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <textarea name="explanation" class="form-control form-control-lg text-start">
 
                                             </textarea>
+                                            <!-- ============ the error message will be shown here ========= -->
+                                            <div class="error_message">
+                                                <?php echo($all_errors["explanation"]); ?>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- ============== the other row will be here ========== -->
@@ -280,6 +342,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <textarea name="chronic_condition_explanation" class="form-control form-control-lg text-start">
 
                                             </textarea>
+                                            <!-- ============ the error message will be shown here ========= -->
+                                            <div class="error_message">
+                                                <?php echo($all_errors["chronic_condition_explanation"]); ?>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -292,6 +358,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <textarea name="current_health_problems" id="" class="form-control form-control-lg text-start">
 
                                             </textarea>
+                                            <!-- ============ the error message will be shown here ========= -->
+                                            <div class="error_message">
+                                                <?php echo($all_errors["current_health_problems"]); ?>
+                                            </div>
                                         </div>
                                     </div>
                                     <!--  =================// the control for the marital status here ============= -->
@@ -339,9 +409,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label for="Age" class="form-label-lg">
                                                 <span class="fw-bold">Please describe any specific sleep problems you are currently exeperiencing:</span>
                                             </label>
-                                            <textarea name="sleep_problems" id="" class="form-control form-control-lg text-start">
+                                            <textarea name="sleeping_problems" id="" class="form-control form-control-lg text-start">
 
                                             </textarea>
+                                            <!-- ============ the error message will be shown here ========= -->
+                                            <div class="error_message">
+                                                <?php echo($all_errors["sleeping_problems"]); ?>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -355,6 +429,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <textarea name="recurrent_dreams" id="" class="form-control form-control-lg text-start">
 
                                             </textarea>
+                                            <!-- ============ the error message will be shown here ========= -->
+                                            <div class="error_message">
+                                                <?php echo($all_errors["recurrent_dreams"]); ?>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- ============== the exercide part of the project ====== -->
@@ -367,6 +445,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <span class="input-group-text"><i class="bi bi-thermometer"></i></span>
                                                 <input type="number" class="form-control form-control-lg" placeholder="exercise per week" name="general_exercise">
                                             </div>
+                                            <!-- ============ the error message will be shown here ========= -->
+                                            <div class="error_message">
+                                                <?php echo($all_errors["general_exercise"]); ?>
+                                            </div>
                                         </div>
                                     </div>
                                      <!-- ============== the exercide part of the project ====== -->
@@ -377,7 +459,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="bi bi-flower3"></i></span>
-                                                <input type="number" class="form-control form-control-lg" placeholder="exercise type" name="exercise_type">
+                                                <input type="text" class="form-control form-control-lg" placeholder="exercise type" name="exercise_type">
+                                            </div>
+                                            <!-- ============ the error message will be shown here ========= -->
+                                            <div class="error_message">
+                                                <?php echo($all_errors["exercise_type"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -411,6 +497,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <textarea name="how_long" class="form-control form-control-lg text-start">
 
                                             </textarea>
+                                            <!-- ============ the error message will be shown here ========= -->
+                                            <div class="error_message">
+                                                <?php echo($all_errors["how_long"]); ?>
+                                            </div>
                                         </div>
                                     </div>
 
