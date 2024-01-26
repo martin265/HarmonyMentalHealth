@@ -253,3 +253,8 @@ body{
     font-family: 'Manrope', sans-serif;
     font-family: 'Roboto', sans-serif;
 }
+
+.content-area .general-health-question-panel .error-message {
+    color: red;
+    font-weight: bolder;
+}

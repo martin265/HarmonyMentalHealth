@@ -73,23 +73,38 @@ class Question{
                     ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
                 )"
             );
-    
+
+            $this->ensureNotNull();
             // ================= binding the parameters here ================== //
             $sqlCommand->bind_param(
                 "sssssssssssssss",
                 $this->prescription_medication, $this->explanation, $this->physical_health, $this->chronic_conditions,
                 $this->chronic_condition_explanation, $this->current_health_problems, $this->sleeping_habits,
-                $this->sleeping_problems,  $this->recurrent_dreams, $this->general_exercise, $this->exercise_type,
+                $this->sleeping_problems, $this->recurrent_dreams, $this->general_exercise, $this->exercise_type,
                 $this->overwhelming_sadness, $this->how_long, $client_name, $client_id
             );
             // ============= executing the query here ================ //
             $sqlCommand->execute();
-            print("saved successfully");
         } catch (Exception $ex) {
             print($ex);
         }
     }
-    
+    // ============= function to ensure that we are not passing null values ================ //
+    private function ensureNotNull() {
+        $this->prescription_medication = $this->prescription_medication ?? "";
+        $this->explanation = $this->explanation ?? "";
+        $this->physical_health = $this->physical_health ?? "";
+        $this->chronic_conditions = $this->chronic_conditions ?? "";
+        $this->chronic_condition_explanation = $this->chronic_condition_explanation ?? "";
+        $this->current_health_problems = $this->current_health_problems ?? "";
+        $this->sleeping_habits = $this->sleeping_habits ?? "";
+        $this->sleeping_problems = $this->sleeping_problems ?? "";
+        $this->recurrent_dreams = $this->recurrent_dreams ?? "";
+        $this->general_exercise = $this->general_exercise ?? "";
+        $this->exercise_type = $this->exercise_type ?? "";
+        $this->overwhelming_sadness = $this->overwhelming_sadness ?? "";
+        $this->how_long = $this->how_long ?? "";
+    }
 
 }
 ?>

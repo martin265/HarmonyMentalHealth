@@ -23,6 +23,29 @@ function FetchClientName($conn) {
 }
 
 $all_results = FetchClientName($conn);
+// ================ getting the current client is here ========== //
+// ============== fuction to get the current client ID here ================== //
+function FetchClientID($conn) {
+    try {
+        if (isset($_POST["save_session"])) {
+            $client_name = mysqli_real_escape_string($conn, $_POST["client_name"]);
+            $sqlCommand = "SELECT client_id FROM ClientDetails WHERE client_name = '$client_name'";
+            $results = mysqli_query($conn, $sqlCommand);
+            // =========== fetching the patient id here ==========//
+            $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
+            // ========== looping through the results ============= //
+            foreach($all_results as $single_result) {
+                return $single_result["client_id"];
+            }
+        }
+    } catch(Exception $ex) {
+        // Handle exceptions here
+        print($ex);
+        return false;
+    }
+}
+
+$client_id = FetchClientID($conn);
 
 // ============ getting the values from the form here =============== //
 $client_name = "";
@@ -40,11 +63,83 @@ $exercise_type = "";
 $overwhelming_sadness = "";
 $how_long = "";
 
+// ============ the array for the errors will be here =============== //
+$all_errors = array(
+    "client_name"=>"", "exercise_type"=>"", "general_exercise"=>""
+);
+// =========== validating the values here ============== //
+function ValidateInputs($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+
+    return $data;
+}
+
+// =============== getting the inputs from the form here ===========//
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+    $client_name = ValidateInputs($_POST["client_name"]);
+    $selectedClientName = isset($_POST["client_name"]) ? $_POST["client_name"] : "";
+
     if (isset($_POST["save_session"])) {
-        $client_name = $_POST["client_name"];
-        print($client_name);
+        // ============ validations here ============ //
+        if (empty($_POST["client_name"])) {
+            $all_errors["client_name"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $client_name)) {
+                $all_errors["client_name"] = "provide valid characters";
+            }
+        }
+        // ================= // ===================== //
+        if (empty($_POST["general_exercise"])) {
+            $all_errors["general_exercise"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $general_exercise)) {
+                $all_errors["general_exercise"] = "provide valid numbers";
+            }
+        }
+        // ===================== //===================== //
+        if (empty($_POST["exercise_type"])) {
+            $all_errors["exercise_type"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $exercise_type)) {
+                $all_errors["exercise_type"] = "provide valid characters";
+            }
+        }
+
+        // =============== checking the form for any errors ========== //
+        if (!array_filter($all_errors)) {
+            // =========== getting all the values from the form here ============= //
+            $client_name = mysqli_real_escape_string($conn, $_POST["client_name"]);
+            $prescription_medication = mysqli_real_escape_string($conn, $_POST["prescription_medication"]);
+            $explanation = mysqli_real_escape_string($conn, $_POST["explanation"]);
+            $physical_health = mysqli_real_escape_string($conn, $_POST["physical_health"]);
+            $chronic_conditions = mysqli_real_escape_string($conn, $_POST["chronic_conditions"]);
+            $chronic_condition_explanation = mysqli_real_escape_string($conn, $_POST["chronic_condition_explanation"]);
+            $current_health_problems = mysqli_real_escape_string($conn, $_POST["current_health_problems"]);
+            $sleeping_habits = mysqli_real_escape_string($conn, $_POST["sleeping_habits"]);
+            $sleeping_problems = mysqli_real_escape_string($conn, $_POST["sleeping_problems"]);
+            $recurrent_dreams = mysqli_real_escape_string($conn, $_POST["recurrent_dreams"]);
+            $general_exercise = mysqli_real_escape_string($conn, $_POST["general_exercise"]);
+            $exercise_type = mysqli_real_escape_string($conn, $_POST["exercise_type"]);
+            $overwhelming_sadness = mysqli_real_escape_string($conn, $_POST["overwhelming_sadness"]);
+            $how_long = mysqli_real_escape_string($conn, $_POST["how_long"]);
+            // ============== saving the records to the database will be here =============== //
+            $question = new Question(
+                $prescription_medication, $explanation, $physical_health, $chronic_conditions,
+                $chronic_condition_explanation, $current_health_problems, $sleeping_habits,
+                $sleeping_problems,  $recurrent_dreams, $general_exercise, $exercise_type,
+                $overwhelming_sadness, $how_long
+            );
+
+            // =============== calling the function to save the details here =========== //
+            $question->SaveQuestionDetails($client_name, $client_id);
+            print("saved successfully");
+
+        }
     }
 }
 
@@ -93,8 +188,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <?php }?>
                                                 </select>
                                             </div>
-                                            <!-- ============ the error message will be shown here ========= -->
-                                            <div class="error_message">
+                                            <!-- ============ the div to show the errors will be here -->
+                                            <div class="error-message">
                                                 <?php echo($all_errors["client_name"]); ?>
                                             </div>
                                         </div>
@@ -128,9 +223,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                             </textarea>
                                             <!-- ============ the error message will be shown here ========= -->
-                                            <div class="error_message">
-                                                <?php echo($all_errors["explanation"]); ?>
-                                            </div>
                                         </div>
                                     </div>
                                     <!-- ============== the other row will be here ========== -->
@@ -202,10 +294,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <textarea name="chronic_condition_explanation" class="form-control form-control-lg text-start">
 
                                             </textarea>
-                                            <!-- ============ the error message will be shown here ========= -->
-                                            <div class="error_message">
-                                                <?php echo($all_errors["chronic_condition_explanation"]); ?>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -218,10 +306,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <textarea name="current_health_problems" id="" class="form-control form-control-lg text-start">
 
                                             </textarea>
-                                            <!-- ============ the error message will be shown here ========= -->
-                                            <div class="error_message">
-                                                <?php echo($all_errors["current_health_problems"]); ?>
-                                            </div>
                                         </div>
                                     </div>
                                     <!--  =================// the control for the marital status here ============= -->
@@ -267,15 +351,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="row mb-3">
                                         <div class="col ms-3 me-3">
                                             <label for="Age" class="form-label-lg">
-                                                <span class="fw-bold">Please describe any specific sleep problems you are currently exeperiencing:</span>
+                                                <span class="fw-bold">Please describe any specific sleeping problems you are currently exeperiencing:</span>
                                             </label>
                                             <textarea name="sleeping_problems" id="" class="form-control form-control-lg text-start">
 
                                             </textarea>
-                                            <!-- ============ the error message will be shown here ========= -->
-                                            <div class="error_message">
-                                                <?php echo($all_errors["sleeping_problems"]); ?>
-                                            </div>
                                         </div>
                                     </div>
 
@@ -290,9 +370,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                             </textarea>
                                             <!-- ============ the error message will be shown here ========= -->
-                                            <div class="error_message">
-                                                <?php echo($all_errors["recurrent_dreams"]); ?>
-                                            </div>
                                         </div>
                                     </div>
                                     <!-- ============== the exercide part of the project ====== -->
@@ -303,10 +380,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="bi bi-thermometer"></i></span>
-                                                <input type="number" class="form-control form-control-lg" placeholder="exercise per week" name="general_exercise">
+                                                <input type="text" class="form-control form-control-lg" placeholder="exercise per week" name="general_exercise">
                                             </div>
                                             <!-- ============ the error message will be shown here ========= -->
-                                            <div class="error_message">
+                                            <!-- ============ the div to show the errors will be here -->
+                                            <div class="error-message">
                                                 <?php echo($all_errors["general_exercise"]); ?>
                                             </div>
                                         </div>
@@ -322,7 +400,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <input type="text" class="form-control form-control-lg" placeholder="exercise type" name="exercise_type">
                                             </div>
                                             <!-- ============ the error message will be shown here ========= -->
-                                            <div class="error_message">
+                                            <!-- ============ the div to show the errors will be here -->
+                                            <div class="error-message">
                                                 <?php echo($all_errors["exercise_type"]); ?>
                                             </div>
                                         </div>
@@ -358,9 +437,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                             </textarea>
                                             <!-- ============ the error message will be shown here ========= -->
-                                            <div class="error_message">
-                                                <?php echo($all_errors["how_long"]); ?>
-                                            </div>
                                         </div>
                                     </div>
 
