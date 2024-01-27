@@ -74,60 +74,58 @@ $all_errors = array("client_name"=>"", "desire_to_kill"=>"", "anything_to_stop"=
 // ================ value validations ================ //
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $client_name = ValidateInputs($_POST["client_name"]);
-    $feelings = ValidateInputs($_POST["feelings"]);
-    $current_feelings = ValidateInputs($_POST["current_feelings"]);
     $how_often = ValidateInputs($_POST["how_often"]);
     $desire_to_kill = ValidateInputs($_POST["desire_to_kill"]);
     $anything_to_stop = ValidateInputs($_POST["anything_to_stop"]);
-    $tried_to_kill = ValidateInputs($_POST["tried_to_kill"]);
     $last_time = ValidateInputs($_POST["last_time"]);
     $injurious_behaviour = ValidateInputs($_POST["injurious_behaviour"]);
-    $panic_attacks = ValidateInputs($_POST["panic_attacks"]);
     $begin_experience = ValidateInputs($_POST["begin_experience"]);
     $worries = ValidateInputs($_POST["worries"]);
 
-    // ================ checking if the fields are not empty here ================= //
-    if (empty($_POST["client_name"])) {
-        $all_errors["client_name"] = "feel in the blanks";
-    }
-    else {
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $client_name)) {
-            $all_errors["client_name"] = "provide valid characters";
+    if (isset($_POST["save_session"])) {
+        // ================ checking if the fields are not empty here ================= //
+        if (empty($_POST["client_name"])) {
+            $all_errors["client_name"] = "fill in the blanks";
         }
-    }
-    // ================ checking if the fields are not empty here ================= //
-    if (empty($_POST["desire_to_kill"])) {
-        $all_errors["desire_to_kill"] = "feel in the blanks";
-    }
-    else {
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $desire_to_kill)) {
-            $all_errors["desire_to_kill"] = "provide valid characters";
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $client_name)) {
+                $all_errors["client_name"] = "provide valid characters";
+            }
         }
-    }
-    // ================ checking if the fields are not empty here ================= //
-    if (empty($_POST["anything_to_stop"])) {
-        $all_errors["anything_to_stop"] = "feel in the blanks";
-    }
-    else {
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $anything_to_stop)) {
-            $all_errors["anything_to_stop"] = "provide valid characters";
+        // ================ checking if the fields are not empty here ================= //
+        if (empty($_POST["desire_to_kill"])) {
+            $all_errors["desire_to_kill"] = "fill in the blanks";
         }
-    }
-    // ================ checking if the fields are not empty here ================= //
-    if (empty($_POST["injurious_behaviour"])) {
-        $all_errors["injurious_behaviour"] = "feel in the blanks";
-    }
-    else {
-        if (!preg_match("/^[a-zA-Z-' ]*$/", $injurious_behaviour)) {
-            $all_errors["injurious_behaviour"] = "provide valid characters";
+        else {
+            if (preg_match("/^[a-zA-Z-' ]*$/", $desire_to_kill)) {
+                $all_errors["desire_to_kill"] = "provide valid characters";
+            }
         }
-    }
-    // ================ filtering the form here ================ //
-    if (array_filter($all_errors)) {
-        $error_message = "the form has errors";
-    }
-    else {
-        print("hello world");
+        // ================ checking if the fields are not empty here ================= //
+        if (empty($_POST["anything_to_stop"])) {
+            $all_errors["anything_to_stop"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $anything_to_stop)) {
+                $all_errors["anything_to_stop"] = "provide valid characters";
+            }
+        }
+        // ================ checking if the fields are not empty here ================= //
+        if (empty($_POST["injurious_behaviour"])) {
+            $all_errors["injurious_behaviour"] = "fill in the blanks";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $injurious_behaviour)) {
+                $all_errors["injurious_behaviour"] = "provide valid characters";
+            }
+        }
+        // ================ filtering the form here ================ //
+        if (array_filter($all_errors)) {
+            $error_message = "the form has errors";
+        }
+        else {
+            
+        }
     }
 }
 ?>
@@ -235,6 +233,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <span class="input-group-text"><i class="bi bi-exclamation-diamond"></i></span>
                                                 <input type="number" name="desire_to_kill" class="form-control form-control-lg" placeholder="">
                                             </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["desire_to_kill"]); ?>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- ================= anything to stop yourself here ================  -->
@@ -247,10 +248,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <span class="input-group-text"><i class="bi bi-sign-stop"></i></span>
                                                 <input type="text" name="anything_to_stop" id="" class="form-control form-control-lg">
                                             </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["anything_to_stop"]); ?>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- ====================== // the other controls will be here =========== -->
-                                    <div class="row">
+                                    <div class="row mb-3">
                                         <div class="col ms-3 me-3">
                                             <label for="Yes" class="form-label-lg">
                                                 <span class="fw-bold">Have you ever tried to kill or harm yourself before ?</span>
@@ -289,6 +293,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="bi bi-clipboard2-pulse"></i></span>
                                                 <input type="text" name="injurious_behaviour" class="form-control form-control-lg" placeholder="injurious behaviours...">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["injurious_behaviour"]); ?>
                                             </div>
                                         </div>
                                     </div>

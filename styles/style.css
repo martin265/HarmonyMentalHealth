@@ -288,3 +288,9 @@ body{
     text-transform: capitalize;
     font-size: 30px;
 }
+
+.content-area .administer-phq-9-page .error-message {
+    color: red;
+    font-weight: bolder;
+    padding-left: 10px;
+}
