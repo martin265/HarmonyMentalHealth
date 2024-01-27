@@ -1,10 +1,23 @@
 <?php
-
 // ================== validating the input fields here ===============//
 include("Models/Questions.php");
 $connection = new Connection("localhost", "root", "", "harmonymentalhealth");
 $connection->EstablishConnection();
 $conn = $connection->get_connection();
+
+// ========== passing the values here =============== //
+$client_name = "";
+$feelings = "";
+$current_feelings = "";
+$how_often = "";
+$desire_to_kill = "";
+$anything_to_stop = "";
+$tried_to_kill = "";
+$last_time = "";
+$injurious_behaviour = "";
+$panic_attacks = "";
+$begin_experience = "";
+$worries = "";
 
 // ================ function to get the client name here ==================== //
 function FetchClientName($conn) {
@@ -48,6 +61,75 @@ function FetchClientID($conn) {
 
 $client_id = FetchClientID($conn);
 
+// =================== validating the inputs here ================= //
+function ValidateInputs($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+
+    return $data;
+}
+// ============== // the array for the errors will be here ===============//
+$all_errors = array("client_name"=>"", "desire_to_kill"=>"", "anything_to_stop"=>"", "injurious_behaviour"=>"");
+// ================ value validations ================ //
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $client_name = ValidateInputs($_POST["client_name"]);
+    $feelings = ValidateInputs($_POST["feelings"]);
+    $current_feelings = ValidateInputs($_POST["current_feelings"]);
+    $how_often = ValidateInputs($_POST["how_often"]);
+    $desire_to_kill = ValidateInputs($_POST["desire_to_kill"]);
+    $anything_to_stop = ValidateInputs($_POST["anything_to_stop"]);
+    $tried_to_kill = ValidateInputs($_POST["tried_to_kill"]);
+    $last_time = ValidateInputs($_POST["last_time"]);
+    $injurious_behaviour = ValidateInputs($_POST["injurious_behaviour"]);
+    $panic_attacks = ValidateInputs($_POST["panic_attacks"]);
+    $begin_experience = ValidateInputs($_POST["begin_experience"]);
+    $worries = ValidateInputs($_POST["worries"]);
+
+    // ================ checking if the fields are not empty here ================= //
+    if (empty($_POST["client_name"])) {
+        $all_errors["client_name"] = "feel in the blanks";
+    }
+    else {
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $client_name)) {
+            $all_errors["client_name"] = "provide valid characters";
+        }
+    }
+    // ================ checking if the fields are not empty here ================= //
+    if (empty($_POST["desire_to_kill"])) {
+        $all_errors["desire_to_kill"] = "feel in the blanks";
+    }
+    else {
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $desire_to_kill)) {
+            $all_errors["desire_to_kill"] = "provide valid characters";
+        }
+    }
+    // ================ checking if the fields are not empty here ================= //
+    if (empty($_POST["anything_to_stop"])) {
+        $all_errors["anything_to_stop"] = "feel in the blanks";
+    }
+    else {
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $anything_to_stop)) {
+            $all_errors["anything_to_stop"] = "provide valid characters";
+        }
+    }
+    // ================ checking if the fields are not empty here ================= //
+    if (empty($_POST["injurious_behaviour"])) {
+        $all_errors["injurious_behaviour"] = "feel in the blanks";
+    }
+    else {
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $injurious_behaviour)) {
+            $all_errors["injurious_behaviour"] = "provide valid characters";
+        }
+    }
+    // ================ filtering the form here ================ //
+    if (array_filter($all_errors)) {
+        $error_message = "the form has errors";
+    }
+    else {
+        print("hello world");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,7 +167,9 @@ $client_id = FetchClientID($conn);
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="bi bi-person"></i></span>
                                                 <select name="client_name" id="" class="form-control form-control-lg">
-                                                    <option value=""></option>
+                                                    <?php foreach($all_results as $single_record) {?>
+                                                        <option value="<?php echo($single_record["client_name"]); ?>"><?php echo($single_record["client_name"]); ?></option>
+                                                    <?php }?>
                                                 </select>
                                             </div>
                                         </div>
