@@ -1,7 +1,52 @@
 <?php
 
 // ================== validating the input fields here ===============//
+include("Models/Questions.php");
+$connection = new Connection("localhost", "root", "", "harmonymentalhealth");
+$connection->EstablishConnection();
+$conn = $connection->get_connection();
 
+// ================ function to get the client name here ==================== //
+function FetchClientName($conn) {
+    try {
+        // ================ using prepared statements here =============== //
+        $sqlCommand = "SELECT * FROM ClientDetails";
+        // ========== running the query here ========//
+        $results = mysqli_query($conn, $sqlCommand);
+        // ======== binding the results to the array here ============= //
+        $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
+        // =========== getting the client_name  here ========= //
+        return $all_results;
+
+    }catch(Exception $ex) {
+        print($ex);
+    }
+}
+
+$all_results = FetchClientName($conn);
+// ================ getting the current client is here ========== //
+// ============== fuction to get the current client ID here ================== //
+function FetchClientID($conn) {
+    try {
+        if (isset($_POST["save_session"])) {
+            $client_name = mysqli_real_escape_string($conn, $_POST["client_name"]);
+            $sqlCommand = "SELECT client_id FROM ClientDetails WHERE client_name = '$client_name'";
+            $results = mysqli_query($conn, $sqlCommand);
+            // =========== fetching the patient id here ==========//
+            $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
+            // ========== looping through the results ============= //
+            foreach($all_results as $single_result) {
+                return $single_result["client_id"];
+            }
+        }
+    } catch(Exception $ex) {
+        // Handle exceptions here
+        print($ex);
+        return false;
+    }
+}
+
+$client_id = FetchClientID($conn);
 
 ?>
 <!DOCTYPE html>
