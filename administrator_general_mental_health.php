@@ -115,24 +115,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // =========== getting all the values from the form here ============= //
             $client_name = mysqli_real_escape_string($conn, $_POST["client_name"]);
             $prescription_medication = mysqli_real_escape_string($conn, $_POST["prescription_medication"]);
-            $explanation = mysqli_real_escape_string($conn, $_POST["explanation"]);
+            $explanation = mysqli_real_escape_string($conn, str_replace(["\r", "\n"], ' ', $_POST["explanation"]));
             $physical_health = mysqli_real_escape_string($conn, $_POST["physical_health"]);
             $chronic_conditions = mysqli_real_escape_string($conn, $_POST["chronic_conditions"]);
-            $chronic_condition_explanation = mysqli_real_escape_string($conn, $_POST["chronic_condition_explanation"]);
-            $current_health_problems = mysqli_real_escape_string($conn, $_POST["current_health_problems"]);
+            $chronic_condition_explanation = mysqli_real_escape_string($conn, str_replace(["\r", "\n"], ' ', $_POST["chronic_condition_explanation"]));
+            $current_health_problems = mysqli_real_escape_string($conn, str_replace(["\r", "\n"], ' ', $_POST["current_health_problems"]));
             $sleeping_habits = mysqli_real_escape_string($conn, $_POST["sleeping_habits"]);
-            $sleeping_problems = mysqli_real_escape_string($conn, $_POST["sleeping_problem"]);
-            $recurrent_dreams = mysqli_real_escape_string($conn, $_POST["recurrent_dreams"]);
+            $sleeping_problems = mysqli_real_escape_string($conn, str_replace(["\r", "\n"], ' ', $_POST["sleeping_problems"]));
+            $recurrent_dreams = mysqli_real_escape_string($conn, str_replace(["\r", "\n"], ' ', $_POST["recurrent_dreams"]));
             $general_exercise = mysqli_real_escape_string($conn, $_POST["general_exercise"]);
             $exercise_type = mysqli_real_escape_string($conn, $_POST["exercise_type"]);
             $overwhelming_sadness = mysqli_real_escape_string($conn, $_POST["overwhelming_sadness"]);
-            $how_long = mysqli_real_escape_string($conn, $_POST["how_long"]);
+            $how_long = mysqli_real_escape_string($conn, str_replace(["\r", "\n"], ' ', $_POST["how_long"]));
+
             // ============== saving the records to the database will be here =============== //
             $question = new Question(
-                $prescription_medication, $explanation, $physical_health, $chronic_conditions,
-                $chronic_condition_explanation, $current_health_problems, $sleeping_habits,
-                $sleeping_problems,$recurrent_dreams, $general_exercise, $exercise_type,
-                $overwhelming_sadness, $how_long
+                $prescription_medication,
+                $explanation, 
+                $physical_health,
+                $chronic_conditions,
+                $chronic_condition_explanation,
+                $current_health_problems,
+                $sleeping_habits,
+                $sleeping_problems,
+                $recurrent_dreams,
+                $general_exercise,
+                $exercise_type,
+                $overwhelming_sadness,
+                $how_long,
             );
 
             // =============== calling the function to save the details here =========== //
@@ -369,7 +379,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label for="Age" class="form-label-lg">
                                                 <span class="fw-bold">Please describe any specific sleeping problems you are currently exeperiencing:</span>
                                             </label>
-                                            <textarea name="sleeping_problem" id="" class="form-control form-control-lg"></textarea>
+                                            <textarea name="sleeping_problems" id="" class="form-control form-control-lg text-start">
+
+                                            </textarea>
                                         </div>
                                     </div>
 

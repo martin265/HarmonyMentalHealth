@@ -30,7 +30,8 @@ class Question{
         $this->chronic_conditions = $chronic_conditions;
         $this->chronic_condition_explanation = $chronic_condition_explanation;
         $this->current_health_problems = $current_health_problems;
-        $this->sleeping_habits = $sleeping_problems;
+        $this->sleeping_habits = $sleeping_habits;
+        $this->sleeping_problems = $sleeping_problems;
         $this->recurrent_dreams = $recurrent_dreams;
         $this->general_exercise = $general_exercise;
         $this->exercise_type = $exercise_type;
