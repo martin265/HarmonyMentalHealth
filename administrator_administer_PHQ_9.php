@@ -1,6 +1,6 @@
 <?php
 // ================== validating the input fields here ===============//
-include("Models/Questions.php");
+include("Models/PHQ9.php");
 $connection = new Connection("localhost", "root", "", "harmonymentalhealth");
 $connection->EstablishConnection();
 $conn = $connection->get_connection();
@@ -124,7 +124,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error_message = "the form has errors";
         }
         else {
-            
+            // =========== inserting the records into the database here ============== //
+            $client_name = mysqli_real_escape_string($conn, $_POST["client_name"]);
+            $feelings = mysqli_real_escape_string($conn, $_POST["feelings"]);
+            $current_feelings = mysqli_real_escape_string($conn, $_POST["current_feelings"]);
+            $how_often = mysqli_real_escape_string($conn, $_POST["how_often"]);
+            $desire_to_kill = mysqli_real_escape_string($conn, $_POST["desire_to_kill"]);
+            $anything_to_stop = mysqli_real_escape_string($conn, $_POST["anything_to_stop"]);
+            $tried_to_kill = mysqli_real_escape_string($conn, $_POST["tried_to_kill"]);
+            $last_time = mysqli_real_escape_string($conn, $_POST["last_time"]);
+            $injurious_behaviour = mysqli_real_escape_string($conn, $_POST["injurious_behaviour"]);
+            $panic_attacks = mysqli_real_escape_string($conn, $_POST["panic_attacks"]);
+            $begin_experience = mysqli_real_escape_string($conn, $_POST["begin_experience"]);
+            $worries = mysqli_real_escape_string($conn, $_POST["worries"]);
+            // ============= creating an object for the class here =============== //
+            $phq9 = new PHQ9(
+                $feelings, $current_feelings, $how_often, $desire_to_kill, $anything_to_stop,
+                $tried_to_kill, $last_time, $injurious_behaviour, $panic_attacks, $begin_experience, $worries,
+            );
+            // ================= calling the function to save the details here =============//
+            $phq9->SavePHQ9Questions(
+                $client_name, 
+                $client_id
+            );
+            $success_message = "questions saved successfully";
+
         }
     }
 }
@@ -152,10 +176,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="administer-title">
                                 <h1>administer PHQ 9 Questions</h1>
                             </div>
-
+                            <!-- ============ success message here ========= -->
+                            <div class="success-message">
+                                <?php if (isset($success_message)) : ?>
+                                    <div id="successAlert" class="alert alert-success w-50" role="alert">
+                                        <?php echo $success_message; ?>
+                                    </div>
+                                    <script>
+                                        // Automatically dismiss the success alert after 5 seconds
+                                        setTimeout(function() {
+                                            document.getElementById("successAlert").style.display = "none";
+                                        }, 5000);
+                                    </script>
+                                    <?php elseif (isset($error_message)) : ?>
+                                        <div class="alert alert-danger w-50" role="alert" id="errorAlert">
+                                            <?php echo($error_message); ?>
+                                        </div>
+                                        <script>
+                                            // Automatically dismiss the success alert after 5 seconds
+                                            setTimeout(function() {
+                                                document.getElementById("errorAlert").style.display = "none";
+                                            }, 5000);
+                                        </script>
+                                <?php endif; ?>
+                            </div>
                             <!-- =============== the form for the questions will be here ========== -->
                             <div class="question-phq-9-form">
                                 <form action="administrator_administer_PHQ_9.php" method="POST">
+                                    <!-- =============== success message will be shown here ======= -->
                                     <!-- ==================== // ================== // -->
                                     <div class="row mb-3 mt-3">
                                         <div class="col ms-3 me-3">

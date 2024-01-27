@@ -189,12 +189,39 @@ class Connection{
             print("failed to create table" . mysqli_error($this->connection));
         }
     }
+
+    // =================== function to create the PHQ9 TABLE ====================== //
+    public function CreatePHQ9Table() {
+        try {
+            $sqlCommand = "CREATE TABLE IF NOT EXISTS PHQ9Details(
+                phq9_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                feelings VARCHAR(50) NOT NULL,
+                current_feelings VARCHAR(50) NOT NULL,
+                how_often VARCHAR(100) NOT NULL,
+                desire_to_kill VARCHAR(100) NOT NULL,
+                anything_to_stop VARCHAR(100) NOT NULL,
+                tried_to_kill VARCHAR(100) NOT NULL,
+                last_time VARCHAR(100) NOT NULL,
+                injurious_behaviour VARCHAR(100) NOT NULL,
+                panic_attacks VARCHAR(100) NOT NULL,
+                begin_experience VARCHAR(100) NOT NULL,
+                worries VARCHAR(100) NOT NULL,
+                client_name VARCHAR(50) NOT NULL,
+                client_id INT UNSIGNED,
+                FOREIGN KEY (client_id) REFERENCES ClientDetails(client_id),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )";
+            $results = mysqli_query($this->connection, $sqlCommand);
+            if (!$results) {
+                print("failed to create the table");
+            }
+        }catch(Exception $ex) {
+            print($ex);
+        }
+    }
 }
 // calling the object class here
 // $conn = new Connection("localhost", "root", "", "harmonymentalhealth");
 // $conn->EstablishConnection();
-// $conn->CreateGeneralMentalHealthInformation();
 
-// // calling the create table function here
-// $conn->CreateClientTable();
 ?>
