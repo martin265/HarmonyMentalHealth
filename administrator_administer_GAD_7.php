@@ -1,5 +1,9 @@
 <?php
-
+// =============== getting the connection here ============ //
+include("Models/GAD7.php");
+$connection = new Connection("localhost", "root", "", "harmonymentalhealth");
+$connection->EstablishConnection();
+$conn = $connection->get_connection();
 
 // =============== validating the input fields here ================ //
 $short_tempered = "";
@@ -21,6 +25,48 @@ function ValidateInputs($data) {
 
     return $data;
 }
+
+// ================ function to get the client name here ==================== //
+function FetchClientName($conn) {
+    try {
+        // ================ using prepared statements here =============== //
+        $sqlCommand = "SELECT * FROM ClientDetails";
+        // ========== running the query here ========//
+        $results = mysqli_query($conn, $sqlCommand);
+        // ======== binding the results to the array here ============= //
+        $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
+        // =========== getting the client_name  here ========= //
+        return $all_results;
+
+    }catch(Exception $ex) {
+        print($ex);
+    }
+}
+
+$all_results = FetchClientName($conn);
+// ================ getting the current client is here ========== //
+// ============== fuction to get the current client ID here ================== //
+function FetchClientID($conn) {
+    try {
+        if (isset($_POST["save_session"])) {
+            $client_name = mysqli_real_escape_string($conn, $_POST["client_name"]);
+            $sqlCommand = "SELECT client_id FROM ClientDetails WHERE client_name = '$client_name'";
+            $results = mysqli_query($conn, $sqlCommand);
+            // =========== fetching the patient id here ==========//
+            $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
+            // ========== looping through the results ============= //
+            foreach($all_results as $single_result) {
+                return $single_result["client_id"];
+            }
+        }
+    } catch(Exception $ex) {
+        // Handle exceptions here
+        print($ex);
+        return false;
+    }
+}
+
+$client_id = FetchClientID($conn);
 // =========== arrsy for the errors ================= //
 $all_errors = array("short_tempered"=>"", "emotions"=>"", "type_of_drugs"=>"",
 "when"=>"", "where"=>"", "what_type"=>"", "how_long"=>"", "addicted"=>"", "concentration"=>"",
@@ -155,7 +201,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
         // ================ the other validations will be here ================= //
-        
+        // =========== filtering the results here ============ //
+        if (!array_filter($all_errors)) {
+            // =========== getting the values from the form here ============= //
+            $short_tempered = mysqli_real_escape_string($conn, $_POST["short_tempered"]);
+            $emotions = mysqli_real_escape_string($conn, $_POST["emotions"]);
+            $alcohol_drinking = mysqli_real_escape_string($conn, $_POST["alcohol_drinking"]);
+            $how_often = mysqli_real_escape_string($conn, $_POST["how_often"]);
+            $recreational_drugs = mysqli_real_escape_string($conn, $_POST["recreational_drugs"]);
+            $recreation_how_often = mysqli_real_escape_string($conn, $_POST["recreation_how_often"]);
+            $type_of_drugs = mysqli_real_escape_string($conn, $_POST["type_of_drugs"]);
+            $cage_questions = mysqli_real_escape_string($conn, $_POST["cage_questions"]);
+            $help = mysqli_real_escape_string($conn, $_POST["help"]);
+            $location_when = mysqli_real_escape_string($conn, $_POST["when"]);
+            $location_where = mysqli_real_escape_string($conn, $_POST["where"]);
+            $gamble = mysqli_real_escape_string($conn, $_POST["gamble"]);
+            $what_type = mysqli_real_escape_string($conn, $_POST["what_type"]);
+            $addicted = mysqli_real_escape_string($conn, $_POST["addicted"]);
+            $how_long = mysqli_real_escape_string($conn, $_POST["how_long"]);
+            $concentration = mysqli_real_escape_string($conn, $_POST["concentration"]);
+            $memory = mysqli_real_escape_string($conn, $_POST["memory"]);
+
+            // =============== creating an object for the class here ============== //
+            $gad7 = new GAD7(
+                $short_tempered,
+                $emotions,$alcohol_drinking,  $how_often,$recreational_drugs,
+                $recreation_how_often,$type_of_drugs,$cage_questions, $help,$location_when,
+                $location_where,$gamble,  $what_type, $addicted,$how_long,$concentration,
+                $memory,  
+            );
+            // ============== calling the main function here =============== //
+
+        }
+        else {
+            $error_message = "the form still has errors";
+        }
 
     }
 }
@@ -186,9 +266,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <h1>administer GAD 7 questions</h1>
                             </div>
 
+                             <!-- ============ success message here ========= -->
+                             <div class="success-message">
+                                <?php if (isset($success_message)) : ?>
+                                    <div id="successAlert" class="alert alert-success w-50" role="alert">
+                                        <?php echo $success_message; ?>
+                                    </div>
+                                    <script>
+                                        // Automatically dismiss the success alert after 5 seconds
+                                        setTimeout(function() {
+                                            document.getElementById("successAlert").style.display = "none";
+                                        }, 5000);
+                                    </script>
+                                    <?php elseif (isset($error_message)) : ?>
+                                        <div class="alert alert-danger w-50" role="alert" id="errorAlert">
+                                            <?php echo($error_message); ?>
+                                        </div>
+                                        <script>
+                                            // Automatically dismiss the success alert after 5 seconds
+                                            setTimeout(function() {
+                                                document.getElementById("errorAlert").style.display = "none";
+                                            }, 5000);
+                                        </script>
+                                <?php endif; ?>
+                            </div>
+
+
                             <!-- ============= the form will be here for the controls ===== -->
                             <div class="administer-gad-7-form">
                                 <form action="" method="POST">
+
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="Age" class="form-label-lg">
+                                                <span class="fw-bold">Select client</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                                <select name="client_name" id="" class="form-control form-control-lg">
+                                                    <?php foreach($all_results as $single_record) {?>
+                                                        <option value="<?php echo($single_record["client_name"]); ?>"><?php echo($single_record["client_name"]); ?></option>
+                                                    <?php }?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row mb-3">
                                         <div class="col ms-3 me-3">
                                             <label for="ForShorttempred">

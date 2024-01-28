@@ -225,7 +225,23 @@ class Connection{
         try {
             $sqlCommand = "CREATE TABLE IF NOT EXISTS GAD7Details(
                 gad7_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                
+                short_tempered VARCHAR(100) NOT NULL,
+                emotions VARCHAR(100) NOT NULL,
+                alcohol_drinking VARCHAR(100) NOT NULL,
+                how_often VARCHAR(100) NOT NULL,
+                recreational_drugs VARCHAR(100) NOT NULL,
+                recreation_how_often VARCHAR(100) NOT NULL,
+                type_of_drugs VARCHAR(100) NOT NULL,
+                cage_questions VARCHAR(100) NOT NULL,
+                help VARCHAR(100) NOT NULL,
+                location_when VARCHAR(100) NOT NULL,
+                location_where VARCHAR(100) NOT NULL,
+                gamble VARCHAR(100) NOT NULL,
+                what_type VARCHAR(100) NOT NULL,
+                addicted VARCHAR(100) NOT NULL,
+                how_long VARCHAR(100) NOT NULL,
+                concentration VARCHAR(100) NOT NULL,
+                memory VARCHAR(100) NOT NULL,
                 client_name VARCHAR(50) NOT NULL,
                 client_id INT UNSIGNED,
                 FOREIGN KEY (client_id) REFERENCES ClientDetails(client_id),
@@ -243,5 +259,7 @@ class Connection{
 // calling the object class here
 // $conn = new Connection("localhost", "root", "", "harmonymentalhealth");
 // $conn->EstablishConnection();
+// $conn->get_connection();
+// $conn->CreateGAD7Table();
 
 ?>
