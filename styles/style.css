@@ -304,3 +304,22 @@ body{
     font-size: 20px;
     text-transform: capitalize
 }
+
+/* ================== css for the administrator administer GAD 7 */
+.content-area .administer_GAD_7-page {
+    background: linear-gradient(to right, #DBF9D8, #DBF2FF);
+    border-radius: 8px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.content-area .administer_GAD_7-page .administer-header-title h1 {
+    text-align: center;
+    font-weight: bolder;
+    color: #1b5e20;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-transform: capitalize;
+    font-size: 30px;
+}

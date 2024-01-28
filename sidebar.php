@@ -66,7 +66,7 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="administrator_general_mental_health.php">General and Mental</a></li>
                 <li><a class="dropdown-item" href="administrator_administer_PHQ_9.php">Administer PHQ 9</a></li>
-                <li><a class="dropdown-item" href="#">Administer GAD 7</a></li>
+                <li><a class="dropdown-item" href="administrator_administer_GAD_7.php">Administer GAD 7</a></li>
                 <li><a class="dropdown-item" href="#">Family Mental Health</a></li>
             </ul>
         </div>
