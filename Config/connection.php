@@ -219,6 +219,26 @@ class Connection{
             print($ex);
         }
     }
+
+    // ================ function to create the GAD7 TABLE =============== //
+    public function CreateGAD7Table() {
+        try {
+            $sqlCommand = "CREATE TABLE IF NOT EXISTS GAD7Details(
+                gad7_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                
+                client_name VARCHAR(50) NOT NULL,
+                client_id INT UNSIGNED,
+                FOREIGN KEY (client_id) REFERENCES ClientDetails(client_id),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )";
+            $results = mysqli_query($this->connection, $sqlCommand);
+            if (!$results) {
+                print("failed to create the table");
+            }
+        }catch(Exception $ex) {
+            print($ex);
+        }
+    }
 }
 // calling the object class here
 // $conn = new Connection("localhost", "root", "", "harmonymentalhealth");
