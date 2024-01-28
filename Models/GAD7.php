@@ -52,44 +52,47 @@ class GAD7 {
 
     // =============== function to save the details here =============== //
     public function SaveGAD7Questions($client_name, $client_id) {
-        // =========== inserting the records here ==========//
-        $this->connection->EstablishConnection();
-        $conn = $this->connection->get_connection();
-        $sqlCommand = $conn->prepare(
-            "INSERT INTO GAD7Details (
-                short_tempered,
-                emotions, alcohol_drinking, how_often, recreational_drugs, recreation_how_often,
-                type_of_drugs, cage_questions, help, location_when, location_where,
-                gamble, what_type, addicted, how_long, concentration, memory, client_name, client_id
-            ) VALUES (
-                ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
-            )"
-        );
-        // ============binding the parameters here ============== //
-        $sqlCommand->bind_param(
-            "sssssssssssssssssss",
-            $this->short_tempered,
-            $this->emotions,
-            $this->alcohol_drinking,
-            $this->how_often,
-            $this->recreational_drugs,
-            $this->recreation_how_often,
-            $this->type_of_drugs,
-            $this->cage_questions,
-            $this->help,
-            $this->location_when,
-            $this->location_where,
-            $this->gamble,
-            $this->what_type,
-            $this->how_long,
-            $this->addicted,
-            $this->concentration,
-            $this->memory,
-            $client_id, $client_name
-        );
-        // ================== running the query here ============ //
-        $sqlCommand->execute();
-
+        try {
+            // =========== inserting the records here ==========//
+            $this->connection->EstablishConnection();
+            $conn = $this->connection->get_connection();
+            $sqlCommand = $conn->prepare(
+                "INSERT INTO GAD7Details (
+                    short_tempered,
+                    emotions, alcohol_drinking, how_often, recreational_drugs, recreation_how_often,
+                    type_of_drugs, cage_questions, help, location_when, location_where,
+                    gamble, what_type, addicted, how_long, concentration, memory, client_name, client_id
+                ) VALUES (
+                    ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
+                )"
+            );
+            // ============binding the parameters here ============== //
+            $sqlCommand->bind_param(
+                "sssssssssssssssssss",
+                $this->short_tempered,
+                $this->emotions,
+                $this->alcohol_drinking,
+                $this->how_often,
+                $this->recreational_drugs,
+                $this->recreation_how_often,
+                $this->type_of_drugs,
+                $this->cage_questions,
+                $this->help,
+                $this->location_when,
+                $this->location_where,
+                $this->gamble,
+                $this->what_type,
+                $this->how_long,
+                $this->addicted,
+                $this->concentration,
+                $this->memory,
+                $client_id, $client_name
+            );
+            // ================== running the query here ============ //
+            $sqlCommand->execute();
+        }catch(Exception $ex) {
+            print($ex);
+        }
         
     }
 }

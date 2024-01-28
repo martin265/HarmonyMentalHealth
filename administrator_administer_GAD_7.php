@@ -6,6 +6,7 @@ $connection->EstablishConnection();
 $conn = $connection->get_connection();
 
 // =============== validating the input fields here ================ //
+$client_name = "";
 $short_tempered = "";
 $emotions = "";
 $type_of_drugs = "";
@@ -67,12 +68,15 @@ function FetchClientID($conn) {
 }
 
 $client_id = FetchClientID($conn);
+
+
 // =========== arrsy for the errors ================= //
 $all_errors = array("short_tempered"=>"", "emotions"=>"", "type_of_drugs"=>"",
 "when"=>"", "where"=>"", "what_type"=>"", "how_long"=>"", "addicted"=>"", "concentration"=>"",
 "memory"=>"");
 // ============= getting the inputs from the form here ============= //
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $client_name = ValidateInputs($_POST["client_name"]);
     $short_tempered = ValidateInputs($_POST["short_tempered"]);
     $emotions = ValidateInputs($_POST["emotions"]);
     $type_of_drugs = ValidateInputs($_POST["type_of_drugs"]);
@@ -213,6 +217,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $type_of_drugs = mysqli_real_escape_string($conn, $_POST["type_of_drugs"]);
             $cage_questions = mysqli_real_escape_string($conn, $_POST["cage_questions"]);
             $help = mysqli_real_escape_string($conn, $_POST["help"]);
+
             $location_when = mysqli_real_escape_string($conn, $_POST["when"]);
             $location_where = mysqli_real_escape_string($conn, $_POST["where"]);
             $gamble = mysqli_real_escape_string($conn, $_POST["gamble"]);
@@ -226,12 +231,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $gad7 = new GAD7(
                 $short_tempered,
                 $emotions,$alcohol_drinking,  $how_often,$recreational_drugs,
-                $recreation_how_often,$type_of_drugs,$cage_questions, $help,$location_when,
-                $location_where,$gamble,  $what_type, $addicted,$how_long,$concentration,
+                $recreation_how_often,$type_of_drugs,$cage_questions, $help, $location_when,
+                $location_where, $gamble,  $what_type, $addicted,$how_long,$concentration,
                 $memory,  
             );
             // ============== calling the main function here =============== //
+            $gad7->SaveGAD7Questions($client_name, $client_id);
 
+            $success_message = "question details saved successfully";
         }
         else {
             $error_message = "the form still has errors";
