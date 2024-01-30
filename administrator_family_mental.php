@@ -129,128 +129,99 @@ function ValidateInputs($data) {
                                                 Ever had a family member suffer from mental disorder ?
                                             </span>
                                         </label>
+                                    </div>
 
-                                        <div class="row mt-3">
-                                            <div class="col ms-3">
-                                                <span class="fw-bold">Condition</span>
-                                                <p class="lead mt-3">Anxiety</p>
-                                                <p class="lead">Depression</p>
-                                                <p class="lead">Domestic Violence</p>
-                                                <p class="lead">Criminal Behaviour/Imprisonment</p>
-                                                <p class="lead">Schizophrenia (Mental illness)</p>
-                                                <p class="lead">Suicide Attempts</p>
-                                                <p class="lead">Mental Handcap</p>
-                                                <p class="lead">Substance Use</p>
+                                    <div class="family-health-table">
+                                        <div class="row ms-3 me-3">
+                                            <div class="col">
+                                                <div class="family-table-title-1">
+                                                    <h1>condition</h1>
+                                                </div>
+                                                <div class="conditions-panel">
+                                                    <p>hello</p>
+                                                    <p>hello</p>
+                                                    <p>hello</p>
+                                                    <p>hello</p>
+                                                    <p>hello</p>
+                                                </div>
                                             </div>
                                             <div class="col">
-                                                <span class="fw-bold ms-5">YES/NO</span>
-                                                <p class="mb-3">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <!-- =============== the other radio button will be here ======== -->
-                                                            <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
-                                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                                            </div>
-                                                            <!-- ============== the radio buttons will be here -->
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
-                                                                <label class="form-check-label" for="inlineRadio2">No</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </p>
-
-                                                <p class="mb-3">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <!-- =============== the other radio button will be here ======== -->
-                                                            <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
-                                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                                            </div>
-                                                            <!-- ============== the radio buttons will be here -->
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
-                                                                <label class="form-check-label" for="inlineRadio2">No</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </p>
-                                                <p class="mb-3">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <!-- =============== the other radio button will be here ======== -->
-                                                            <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
-                                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                                            </div>
-                                                            <!-- ============== the radio buttons will be here -->
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
-                                                                <label class="form-check-label" for="inlineRadio2">No</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </p>
-                                                <!-- =============== // ================== -->
-                                                <p class="mb-3">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <!-- =============== the other radio button will be here ======== -->
-                                                            <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
-                                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                                            </div>
-                                                            <!-- ============== the radio buttons will be here -->
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
-                                                                <label class="form-check-label" for="inlineRadio2">No</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </p>
-                                                <!-- ================== // =============== -->
-                                                <p class="mb-3">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <!-- =============== the other radio button will be here ======== -->
-                                                            <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
-                                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                                            </div>
-                                                            <!-- ============== the radio buttons will be here -->
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
-                                                                <label class="form-check-label" for="inlineRadio2">No</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </p>
-                                                <!-- ==================== //==================== // -->
-                                                <p >
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <!-- =============== the other radio button will be here ======== -->
-                                                            <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
-                                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
-                                                            </div>
-                                                            <!-- ============== the radio buttons will be here -->
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
-                                                                <label class="form-check-label" for="inlineRadio2">No</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </p>
+                                                <div class="family-table-title-2">
+                                                    <h1>yes/no</h1>
+                                                </div>
+                                                <div class="conditions-panel">
+                                                    <p>hello</p>
+                                                    <p>hello</p>
+                                                    <p>hello</p>
+                                                    <p>hello</p>
+                                                    <p>hello</p>
+                                                </div>
                                             </div>
                                             <div class="col">
-                                                <p>1</p>
-                                                <p>1</p>
-                                                <p>1</p>
+                                                <div class="family-table-title-3">
+                                                    <h1>which family member</h1>
+                                                </div>
+                                                <div class="input-fields">
+                                                    <div class="col mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text"><i class="bi bi-body-text"></i></span>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <!-- =========== the second input-group will be here -->
+                                                    <div class="col mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text"><i class="bi bi-body-text"></i></span>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <!-- =========== the second input-group will be here -->
+                                                    <div class="col mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text"><i class="bi bi-body-text"></i></span>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <!-- =========== the second input-group will be here -->
+                                                    <div class="col mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text"><i class="bi bi-body-text"></i></span>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <!-- =========== the second input-group will be here -->
+                                                    <div class="col mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text"><i class="bi bi-body-text"></i></span>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <!-- =========== the second input-group will be here -->
+                                                    <div class="col mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text"><i class="bi bi-body-text"></i></span>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <!-- =========== the second input-group will be here -->
+                                                    <div class="col mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text"><i class="bi bi-body-text"></i></span>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                    <!-- =========== the second input-group will be here -->
+                                                    <div class="col mb-2">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text"><i class="bi bi-body-text"></i></span>
+                                                            <input type="text" class="form-control form-control-sm">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <!-- =========== the column for the content will be here ====== -->
                                     </div>
                                 </form>
                                 <!-- =============== the other main section will be here ============ -->

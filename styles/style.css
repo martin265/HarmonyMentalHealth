@@ -380,6 +380,30 @@ body{
     text-transform: capitalize
 }
 
-.content-area .familly-mental-health-section-page .title-text {
-    text-align: center;
+.content-area .familly-mental-health-section-page .family-mentalhealth-table {
+    margin-top: 30px;
+}
+.content-area .familly-mental-health-section-page .family-health-table .family-table-title-1 h1 {
+    font-size: 24px;
+    font-weight: bolder;
+    color: #1b5e20;
+    text-transform: capitalize;
+}
+
+.content-area .familly-mental-health-section-page .family-health-table .family-table-title-2 h1 {
+    font-size: 24px;
+    font-weight: bolder;
+    color: #1b5e20;
+    text-transform: capitalize;
+}
+
+.content-area .familly-mental-health-section-page .family-health-table .family-table-title-3 h1 {
+    font-size: 24px;
+    font-weight: bolder;
+    color: #1b5e20;
+    text-transform: capitalize;
+}
+
+.content-area .familly-mental-health-section-page .family-health-table {
+    margin-top: 30px;
 }
