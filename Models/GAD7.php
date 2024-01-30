@@ -86,7 +86,8 @@ class GAD7 {
                 $this->addicted,
                 $this->concentration,
                 $this->memory,
-                $client_id, $client_name
+                $client_id,
+                $client_name
             );
             // ================== running the query here ============ //
             $sqlCommand->execute();

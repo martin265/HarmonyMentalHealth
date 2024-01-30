@@ -237,6 +237,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
             // ============== calling the main function here =============== //
             $gad7->SaveGAD7Questions($client_name, $client_id);
+            print($client_id);
 
             $success_message = "question details saved successfully";
         }
