@@ -231,6 +231,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
+                                            
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">

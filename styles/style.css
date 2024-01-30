@@ -350,3 +350,36 @@ body{
     font-size: 20px;
     text-transform: capitalize
 }
+
+/* ==================== the css for the family health section will be here =========== */
+.content-area .familly-mental-health-section-page {
+    background: linear-gradient(to right, #DBF9D8, #DBF2FF);
+    border-radius: 8px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.content-area .familly-mental-health-section-page .family-mental-health-title h1 {
+    text-align: center;
+    font-weight: bolder;
+    color: #1b5e20;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-transform: capitalize;
+    font-size: 30px;
+}
+
+.content-area .familly-mental-health-section-page .success-message {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    text-transform: capitalize
+}
+
+.content-area .familly-mental-health-section-page .title-text {
+    text-align: center;
+}
