@@ -57,6 +57,8 @@ class Client {
                     present_problem, previous_therapy_history, diagnosis, plan, patient_id
                 ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)"
             );
+            // ============ passing the function here ================ //
+            $this->ensureNotNull();
             // binding the parameters to the query here ===========//
             $sqlCommand->bind_param(
                 "ssssssssssss",
@@ -66,6 +68,24 @@ class Client {
             );
             // executing the database query here
             $sqlCommand->execute();
+        }catch(Exception $ex) {
+            print($ex);
+        }
+    }
+
+    private function ensureNotNull() {
+        try {
+            $this->client_name = $client_name ?? "";
+            $this->date_intake = $date_intake ?? "";
+            $this->therapist = $therapist ?? "";
+            $this->session_1 = $session_1 ?? "";
+            $this->session_2 = $session_2 ?? "";
+            $this->session_3 = $session_3 ?? "";
+            $this->session_4 = $session_4 ?? "";
+            $this->present_problem = $present_problem ?? "";
+            $this->previous_therapy_session = $previous_therapy_session ?? "";
+            $this->diagnosis = $diagnosis ?? "";
+            $this->plan = $plan ?? "";
         }catch(Exception $ex) {
             print($ex);
         }

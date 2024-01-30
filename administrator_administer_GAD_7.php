@@ -230,7 +230,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // =============== creating an object for the class here ============== //
             $gad7 = new GAD7(
                 $short_tempered,
-                $emotions,$alcohol_drinking,  $how_often,$recreational_drugs,
+                $emotions,$alcohol_drinking, $how_often,$recreational_drugs,
                 $recreation_how_often,$type_of_drugs,$cage_questions, $help, $location_when,
                 $location_where, $gamble,  $what_type, $addicted,$how_long,$concentration,
                 $memory,  

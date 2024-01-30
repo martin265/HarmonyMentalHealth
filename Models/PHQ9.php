@@ -48,6 +48,8 @@ class PHQ9 {
                     ?,?,?,?,?,?,?,?,?,?,?,?,?
                 )"
             );
+            // ============== function to ensure not null values to be passed here ===== //
+            $this->ensureNotNull();
             // ============ binding the parameters here ================ //
             $sqlCommand->bind_param(
                 "sssssssssssss",
@@ -57,6 +59,24 @@ class PHQ9 {
             );
             // ============== running the query here ===============//
             $sqlCommand->execute();
+        }catch(Exception $ex) {
+            print($ex);
+        }
+    }
+
+    private function ensureNotNull() {
+        try {
+            $this->feelings = $feelings ?? "";
+            $this->current_feeings = $current_feeings ?? "";
+            $this->how_often = $how_often ?? "";
+            $this->desire_to_kill = $desire_to_kill ?? "";
+            $this->anything_to_stop = $anything_to_stop ?? "";
+            $this->tried_to_kill = $tried_to_kill ?? "";
+            $this->last_time = $last_time ?? "";
+            $this->injurious_behaviour = $injurious_behaviour ?? "";
+            $this->panic_attacks = $panic_attacks ?? "";
+            $this->begin_experirnce = $begin_experirnce ?? "";
+            $this->worries = $worries ?? "";
         }catch(Exception $ex) {
             print($ex);
         }

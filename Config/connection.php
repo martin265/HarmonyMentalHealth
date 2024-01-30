@@ -258,8 +258,8 @@ class Connection{
 }
 // calling the object class here
 $conn = new Connection("localhost", "root", "", "harmonymentalhealth");
-$conn->EstablishConnection();
-$conn->get_connection();
-$conn->CreateGAD7Table();
+// $conn->EstablishConnection();
+// $conn->get_connection();
+// $conn->CreateGAD7Table();
 
 ?>

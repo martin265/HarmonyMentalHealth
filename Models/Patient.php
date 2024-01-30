@@ -229,6 +229,7 @@ class Patient{
                     reviewed_by_signature, reviewed_by_signature_date 
                 ) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
+            $this->ensureNotNull();
             // ============== the query will be executed here =============//
             $sqlCommand->bind_param(
                 "ssssssssssssssssssssssssssssss",
@@ -242,6 +243,44 @@ class Patient{
             );
             
             $sqlCommand->execute(); // running the query here
+        }catch(Exception $ex) {
+            print($ex);
+        }
+    }
+
+    // =============== function to ensure that null values can be passed in here ========= //
+    private function ensureNotNull() {
+        try {
+            $this->first_name = $first_name ?? "";
+            $this->last_name = $last_name ?? "";
+            $this->guardian = $guardian ?? "";
+            $this->address = $address ?? "";
+            $this->cell_phone = $cell_phone ?? "";
+            $this->other_phone = $other_phone ?? "";
+            $this->email = $email ?? "";
+            $this->emergency_contact = $emergency_contact ?? "";
+            $this->telephone_number = $telephone_number ?? "";
+            $this->date_birth = $date_birth ?? "";
+            $this->age = $age ?? "";
+            $this->gender = $gender ?? "";
+            $this->marital_status = $marital_status ?? "";
+            $this->residence = $residence ?? "";
+            $this->referred_by = $referred_by ?? "";
+            $this->primary_care = $primary_care ?? "";
+            $this->work_place = $work_place ?? "";
+            $this->current_occupation = $current_occupation ?? "";
+            $this->present_position = $present_position ?? "";
+            $this->current_school = $current_school ?? "";
+            $this->college_year = $college_year ?? "";
+            $this->previous_therapist = $previous_therapist ?? "";
+            $this->heard_about_us = $heard_about_us ?? "";
+            $this->payment_method = $payment_method ?? "";
+            $this->signature = $signature ?? "";
+            $this->signature_date = $signature_date ?? "";
+            $this->guardian_signature = $guardian_signature ?? "";
+            $this->guardian_signature_date = $guardian_signature_date ?? "";
+            $this->reviewed_by_signature = $reviewed_by_signature ?? "";
+            $this->reviewed_signature_date = $reviewed_signature_date ?? "";
         }catch(Exception $ex) {
             print($ex);
         }

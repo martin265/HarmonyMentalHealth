@@ -66,6 +66,9 @@ class GAD7 {
                     ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
                 )"
             );
+
+            // ============= passing the function that can ensure that null values can be passed here ===== //
+            $this->ensureNotNull();
             // ============binding the parameters here ============== //
             $sqlCommand->bind_param(
                 "sssssssssssssssssss",
@@ -86,8 +89,8 @@ class GAD7 {
                 $this->addicted,
                 $this->concentration,
                 $this->memory,
+                $client_name,
                 $client_id,
-                $client_name
             );
             // ================== running the query here ============ //
             $sqlCommand->execute();
@@ -95,6 +98,31 @@ class GAD7 {
             print($ex);
         }
         
+    }
+
+    // ================ the function will check if the admin will send a null record here =======//
+    private function ensureNotNull() {
+        try {
+            $this->short_tempered = $short_tempered ?? "";
+            $this->emotions = $emotions ?? "";
+            $this->alcohol_drinking = $alcohol_drinking ?? "";
+            $this->how_often = $how_often ?? "";
+            $this->recreational_drugs = $recreational_drugs ?? "";
+            $this->recreation_how_often = $recreation_how_often ?? "";
+            $this->type_of_drugs = $type_of_drugs ?? "";
+            $this->cage_questions = $cage_questions ?? "";
+            $this->help = $help ?? "";
+            $this->location_when = $location_when ?? "";
+            $this->location_where = $location_where ?? "";
+            $this->gamble = $gamble ?? "";
+            $this->what_type = $what_type ?? "";
+            $this->how_long = $how_long ?? "";
+            $this->addicted = $addicted ?? "";
+            $this->concentration = $concentration ?? "";
+            $this->memory = $memory ?? "";
+        }catch(Exception $ex) {
+            print($ex);
+        }
     }
 }
 
