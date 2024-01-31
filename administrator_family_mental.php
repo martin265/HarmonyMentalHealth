@@ -157,13 +157,13 @@ function ValidateInputs($data) {
                                                         <div class="col">
                                                             <!-- =============== the other radio button will be here ======== -->
                                                             <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
+                                                                <input class="form-check-input" type="radio" name="anxiety" id="inlineRadio1" value="Yes">
                                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                             </div>
                                                             
                                                             <!-- ============== the radio buttons will be here -->
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
+                                                                <input class="form-check-input" type="radio" name="anxiety" id="inlineRadio2" value="No">
                                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                                             </div>
                                                         </div>
@@ -173,13 +173,13 @@ function ValidateInputs($data) {
                                                         <div class="col">
                                                             <!-- =============== the other radio button will be here ======== -->
                                                             <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
+                                                                <input class="form-check-input" type="radio" name="depression" id="inlineRadio1" value="Yes">
                                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                             </div>
                                                             
                                                             <!-- ============== the radio buttons will be here -->
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
+                                                                <input class="form-check-input" type="radio" name="depression" id="inlineRadio2" value="No">
                                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                                             </div>
                                                         </div>
@@ -189,13 +189,13 @@ function ValidateInputs($data) {
                                                         <div class="col">
                                                             <!-- =============== the other radio button will be here ======== -->
                                                             <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
+                                                                <input class="form-check-input" type="radio" name="domestic_violence" id="inlineRadio1" value="Yes">
                                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                             </div>
                                                             
                                                             <!-- ============== the radio buttons will be here -->
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
+                                                                <input class="form-check-input" type="radio" name="domestic_violence" id="inlineRadio2" value="No">
                                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                                             </div>
                                                         </div>
@@ -205,13 +205,13 @@ function ValidateInputs($data) {
                                                         <div class="col">
                                                             <!-- =============== the other radio button will be here ======== -->
                                                             <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
+                                                                <input class="form-check-input" type="radio" name="criminal_behaviour" id="inlineRadio1" value="Yes">
                                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                             </div>
                                                             
                                                             <!-- ============== the radio buttons will be here -->
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
+                                                                <input class="form-check-input" type="radio" name="criminal_behaviour" id="inlineRadio2" value="No">
                                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                                             </div>
                                                         </div>
@@ -221,13 +221,13 @@ function ValidateInputs($data) {
                                                         <div class="col">
                                                             <!-- =============== the other radio button will be here ======== -->
                                                             <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
+                                                                <input class="form-check-input" type="radio" name="schizophrenia" id="inlineRadio1" value="Yes">
                                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                             </div>
                                                             
                                                             <!-- ============== the radio buttons will be here -->
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
+                                                                <input class="form-check-input" type="radio" name="schizophrenia" id="inlineRadio2" value="No">
                                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                                             </div>
                                                         </div>
@@ -237,13 +237,13 @@ function ValidateInputs($data) {
                                                         <div class="col">
                                                             <!-- =============== the other radio button will be here ======== -->
                                                             <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
+                                                                <input class="form-check-input" type="radio" name="suicide" id="inlineRadio1" value="Yes">
                                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                             </div>
                                                             
                                                             <!-- ============== the radio buttons will be here -->
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
+                                                                <input class="form-check-input" type="radio" name="suicide" id="inlineRadio2" value="No">
                                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                                             </div>
                                                         </div>
@@ -253,13 +253,13 @@ function ValidateInputs($data) {
                                                         <div class="col">
                                                             <!-- =============== the other radio button will be here ======== -->
                                                             <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
+                                                                <input class="form-check-input" type="radio" name="mental_handcap" id="inlineRadio1" value="Yes">
                                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                             </div>
                                                             
                                                             <!-- ============== the radio buttons will be here -->
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
+                                                                <input class="form-check-input" type="radio" name="mental_handcap" id="inlineRadio2" value="No">
                                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                                             </div>
                                                         </div>
@@ -269,13 +269,13 @@ function ValidateInputs($data) {
                                                         <div class="col">
                                                             <!-- =============== the other radio button will be here ======== -->
                                                             <div class="form-check form-check-inline ms-3">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio1" value="Yes">
+                                                                <input class="form-check-input" type="radio" name="substance_use" id="inlineRadio1" value="Yes">
                                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                                             </div>
                                                             
                                                             <!-- ============== the radio buttons will be here -->
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="feelings" id="inlineRadio2" value="No">
+                                                                <input class="form-check-input" type="radio" name="substance_use" id="inlineRadio2" value="No">
                                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                                             </div>
                                                         </div>
@@ -290,56 +290,56 @@ function ValidateInputs($data) {
                                                     <div class="col mb-2">
                                                         <div class="input-group">
                                                             <span class="input-group-text"><i class="bi bi-body-text"></i></span>
-                                                            <input type="text" class="form-control form-control-sm" placeholder="family member...">
+                                                            <input type="text" class="form-control form-control-sm" placeholder="family member..." name="anxiety_family_member">
                                                         </div>
                                                     </div>
                                                     <!-- =========== the second input-group will be here -->
                                                     <div class="col mb-2">
                                                         <div class="input-group">
                                                             <span class="input-group-text"><i class="bi bi-body-text"></i></span>
-                                                            <input type="text" class="form-control form-control-sm" placeholder="family member...">
+                                                            <input type="text" class="form-control form-control-sm" placeholder="family member..." name="depression_family_member">
                                                         </div>
                                                     </div>
                                                     <!-- =========== the second input-group will be here -->
                                                     <div class="col mb-2">
                                                         <div class="input-group">
                                                             <span class="input-group-text"><i class="bi bi-body-text"></i></span>
-                                                            <input type="text" class="form-control form-control-sm" placeholder="family member...">
+                                                            <input type="text" class="form-control form-control-sm" placeholder="family member..." name="domestic_violence_family_member">
                                                         </div>
                                                     </div>
                                                     <!-- =========== the second input-group will be here -->
                                                     <div class="col mb-2">
                                                         <div class="input-group">
                                                             <span class="input-group-text"><i class="bi bi-body-text"></i></span>
-                                                            <input type="text" class="form-control form-control-sm" placeholder="family member...">
+                                                            <input type="text" class="form-control form-control-sm" placeholder="family member..." name="criminal_behaviour_family_member">
                                                         </div>
                                                     </div>
                                                     <!-- =========== the second input-group will be here -->
                                                     <div class="col mb-2">
                                                         <div class="input-group">
                                                             <span class="input-group-text"><i class="bi bi-body-text"></i></span>
-                                                            <input type="text" class="form-control form-control-sm" placeholder="family member...">
+                                                            <input type="text" class="form-control form-control-sm" placeholder="family member..." name="schizophrenia_family_member">
                                                         </div>
                                                     </div>
                                                     <!-- =========== the second input-group will be here -->
                                                     <div class="col mt-2">
                                                         <div class="input-group">
                                                             <span class="input-group-text"><i class="bi bi-body-text"></i></span>
-                                                            <input type="text" class="form-control form-control-sm" placeholder="family member...">
+                                                            <input type="text" class="form-control form-control-sm" placeholder="family member..." name="suicide_family_member">
                                                         </div>
                                                     </div>
                                                     <!-- =========== the second input-group will be here -->
                                                     <div class="col mt-2">
                                                         <div class="input-group">
                                                             <span class="input-group-text"><i class="bi bi-body-text"></i></span>
-                                                            <input type="text" class="form-control form-control-sm" placeholder="family member...">
+                                                            <input type="text" class="form-control form-control-sm" placeholder="family member..." name="mental_handcap_family_member">
                                                         </div>
                                                     </div>
                                                     <!-- =========== the second input-group will be here -->
                                                     <div class="col mt-3">
                                                         <div class="input-group">
                                                             <span class="input-group-text"><i class="bi bi-body-text"></i></span>
-                                                            <input type="text" class="form-control form-control-sm" placeholder="family member...">
+                                                            <input type="text" class="form-control form-control-sm" placeholder="family member..." name="substance_family_member">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -357,7 +357,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span></span>
-                                                <input type="text" name="" class="form-control form-control-lg">
+                                                <input type="text" name="voices" class="form-control form-control-lg">
                                             </div>
                                         </div>
                                     </div>
@@ -372,7 +372,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span></span>
-                                                <input type="text" name="" class="form-control form-control-lg">
+                                                <input type="text" name="spying" class="form-control form-control-lg">
                                             </div>
                                         </div>
                                     </div>
@@ -386,7 +386,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span></span>
-                                                <input type="text" name="" class="form-control form-control-lg">
+                                                <input type="text" name="visions" class="form-control form-control-lg">
                                             </div>
                                         </div>
                                     </div>
@@ -402,7 +402,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span></span>
-                                                <input type="text" name="" class="form-control form-control-lg">
+                                                <input type="text" name="behaviour" class="form-control form-control-lg">
                                             </div>
                                         </div>
                                     </div>
@@ -417,13 +417,13 @@ function ValidateInputs($data) {
                                             </label>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio1" value="Yes">
+                                                <input class="form-check-input" type="radio" name="relationsip" id="inlineRadio1" value="Yes">
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio2" value="No">
+                                                <input class="form-check-input" type="radio" name="relationsip" id="inlineRadio2" value="No">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
                                         </div>
@@ -436,7 +436,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="bi bi-body-text"></i></span>
-                                                <textarea name="" class="form-control form-control-lg text-start">
+                                                <textarea name="relationship_how_long" class="form-control form-control-lg text-start">
 
                                                 </textarea>
                                             </div>
@@ -452,47 +452,52 @@ function ValidateInputs($data) {
                                             <br>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio1" value="Yes">
+                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="1">
                                                 <label class="form-check-label" for="inlineRadio1">1</label>
                                             </div>
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="panic_attacks" id="inlineRadio2" value="No">
+                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio2" value="2">
                                                 <label class="form-check-label" for="inlineRadio2">2</label>
                                             </div>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio1" value="Yes">
+                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="3">
                                                 <label class="form-check-label" for="inlineRadio1">3</label>
                                             </div>
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="panic_attacks" id="inlineRadio2" value="No">
+                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio2" value="4">
                                                 <label class="form-check-label" for="inlineRadio2">4</label>
                                             </div>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio1" value="Yes">
+                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="5">
                                                 <label class="form-check-label" for="inlineRadio1">5</label>
                                             </div>
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="panic_attacks" id="inlineRadio2" value="No">
+                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio2" value="6">
                                                 <label class="form-check-label" for="inlineRadio2">6</label>
                                             </div>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio1" value="Yes">
+                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="7">
                                                 <label class="form-check-label" for="inlineRadio1">7</label>
                                             </div>
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="panic_attacks" id="inlineRadio2" value="No">
+                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio2" value="8">
                                                 <label class="form-check-label" for="inlineRadio2">8</label>
                                             </div>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio1" value="Yes">
+                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="9">
+                                                <label class="form-check-label" for="inlineRadio1">9</label>
+                                            </div>
+                                            <!-- =============== the other radio button will be here ======== -->
+                                            <div class="form-check form-check-inline ms-3">
+                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="10">
                                                 <label class="form-check-label" for="inlineRadio1">10</label>
                                             </div>
                                         </div>
@@ -508,7 +513,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span></span>
-                                                <input type="text" name="" class="form-control form-control-lg">
+                                                <input type="text" name="unresolved_issues" class="form-control form-control-lg">
                                             </div>
                                         </div>
                                     </div>
@@ -521,7 +526,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="bi bi-calendar-range"></i></span>
-                                                <textarea name="" id="" class="form-control form-control-lg"></textarea>
+                                                <textarea name="unresolved_issues_how_long" id="" class="form-control form-control-lg"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -536,7 +541,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span></span>
-                                                <input type="text" name="" class="form-control form-control-lg">
+                                                <input type="text" name="significant_life_changes" class="form-control form-control-lg">
                                             </div>
                                         </div>
                                     </div>
@@ -549,12 +554,12 @@ function ValidateInputs($data) {
                                             </label>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio1" value="Yes">
+                                                <input class="form-check-input" type="radio" name="employed_studying" id="inlineRadio1" value="Yes">
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio2" value="No">
+                                                <input class="form-check-input" type="radio" name="employed_studying" id="inlineRadio2" value="No">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
                                         </div>
@@ -568,7 +573,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="bi bi-calendar-range"></i></span>
-                                                <textarea name="" id="" class="form-control form-control-lg"></textarea>
+                                                <textarea name="current_situation" id="" class="form-control form-control-lg"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -581,7 +586,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="bi bi-calendar-range"></i></span>
-                                                <textarea name="" id="" class="form-control form-control-lg text-start"></textarea>
+                                                <textarea name="anything_stressful" id="" class="form-control form-control-lg text-start"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -594,12 +599,12 @@ function ValidateInputs($data) {
                                             </label>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio1" value="Yes">
+                                                <input class="form-check-input" type="radio" name="religion" id="inlineRadio1" value="Yes">
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="" id="inlineRadio2" value="No">
+                                                <input class="form-check-input" type="radio" name="religion" id="inlineRadio2" value="No">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
                                         </div>
@@ -613,7 +618,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="bi bi-calendar-range"></i></span>
-                                                <textarea name="" id="" class="form-control form-control-lg text-start"></textarea>
+                                                <textarea name="describe_faith" id="" class="form-control form-control-lg text-start"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -629,7 +634,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span></span>
-                                                <input type="text" name="" class="form-control form-control-lg">
+                                                <input type="text" name="feel_about" class="form-control form-control-lg">
                                             </div>
                                         </div>
                                     </div>
@@ -644,7 +649,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span></span>
-                                                <input type="text" name="" class="form-control form-control-lg">
+                                                <input type="text" name="strengths" class="form-control form-control-lg">
                                             </div>
                                         </div>
                                     </div>
@@ -659,7 +664,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span></span>
-                                                <input type="text" name="" class="form-control form-control-lg">
+                                                <input type="text" name="weaknesses" class="form-control form-control-lg">
                                             </div>
                                         </div>
                                     </div>
@@ -674,7 +679,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span></span>
-                                                <input type="text" name="" class="form-control form-control-lg">
+                                                <input type="text" name="living_situation" class="form-control form-control-lg">
                                             </div>
                                         </div>
                                     </div>
@@ -689,7 +694,7 @@ function ValidateInputs($data) {
                                             </label>
                                             <div class="input-group">
                                                 <span class="input-group-text"></span>
-                                                <textarea name="" id="" class="form-control form-control-lg text-start"></textarea>
+                                                <textarea name="accomplishment" id="" class="form-control form-control-lg text-start"></textarea>
                                             </div>
                                         </div>
                                     </div>
