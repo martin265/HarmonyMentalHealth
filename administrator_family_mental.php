@@ -4,6 +4,19 @@ $connection = new Connection("localhost", "root", "", "harmonymentalhealth");
 $connection->EstablishConnection();
 $conn = $connection->get_connection();
 
+// =============== the variables will be here ================ //
+$voices = "";
+$spying = "";
+$visions = "";
+$behaviour = "";
+$unresolved_issues = "";
+$significant_life_changes = "";
+$feel_about = "";
+$strengths = "";
+$weaknesses = "";
+$living_situation = "";
+
+
 // ================ function to get the client name here ==================== //
 function FetchClientName($conn) {
     try {
@@ -54,6 +67,135 @@ function ValidateInputs($data) {
 
     return $data;
 }
+
+// ============== array for the errors here ============ //
+$all_errors = array(
+    "voices"=>"", "spying"=>"", "visions"=>"", "behaviour"=>"", "unresolved_issues"=>"",
+    "significant_life_changes"=>"", "feel_about"=>"", "strengths"=>"", "weaknesses"=>"",
+    "living_situation"=>""
+);
+
+// ============== function to validate the input fields here ================ //
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $voices = ValidateInputs($_POST["voices"]);
+    $spying = ValidateInputs($_POST["spying"]);
+    $visions = ValidateInputs($_POST["visions"]);
+    $behaviour = ValidateInputs($_POST["behaviour"]);
+    $unresolved_issues = ValidateInputs($_POST["unresolved_issues"]);
+    $significant_life_changes = ValidateInputs($_POST["significant_life_changes"]);
+    $feel_about = ValidateInputs($_POST["feel_about"]);
+    $strengths = ValidateInputs($_POST["strengths"]);
+    $weaknesses = ValidateInputs($_POST["weaknesses"]);
+    $living_situation = ValidateInputs($_POST["living_situation"]);
+
+    // =============== checking if the fields are empty here =========== //
+    if (isset($_POST["save_session"])) {
+
+        if (empty($_POST["voices"])) {
+            $all_errors["voices"] = "fill in the blanks please";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $voices)) {
+                $all_errors["voices"] = "provide valid characters";
+            }
+        }
+
+        // ====================== // GOD IS GOOD  // ============================ //
+        if (empty($_POST["spying"])) {
+            $all_errors["spying"] = "fill in the blanks please";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $spying)) {
+                $all_errors["spying"] = "provide valid characters";
+            }
+        }
+
+        // ====================== // GOD IS GOOD  // ============================ //
+        if (empty($_POST["visions"])) {
+            $all_errors["visions"] = "fill in the blanks please";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $visions)) {
+                $all_errors["visions"] = "provide valid characters";
+            }
+        }
+
+        // ====================== // GOD IS GOOD  // ============================ //
+        if (empty($_POST["behaviour"])) {
+            $all_errors["behaviour"] = "fill in the blanks please";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $behaviour)) {
+                $all_errors["behaviour"] = "provide valid characters";
+            }
+        }
+
+        // ====================== // GOD IS GOOD  // ============================ //
+        if (empty($_POST["unresolved_issues"])) {
+            $all_errors["unresolved_issues"] = "fill in the blanks please";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $unresolved_issues)) {
+                $all_errors["unresolved_issues"] = "provide valid characters";
+            }
+        }
+
+        // ====================== // GOD IS GOOD  // ============================ //
+        if (empty($_POST["significant_life_changes"])) {
+            $all_errors["significant_life_changes"] = "fill in the blanks please";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $significant_life_changes)) {
+                $all_errors["significant_life_changes"] = "provide valid characters";
+            }
+        }
+
+        // ====================== // GOD IS GOOD  // ============================ //
+        if (empty($_POST["feel_about"])) {
+            $all_errors["feel_about"] = "fill in the blanks please";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $feel_about)) {
+                $all_errors["feel_about"] = "valid characters please";
+            }
+        }
+
+        // ====================== // GOD IS GOOD  // ============================ //
+        if (empty($_POST["strengths"])) {
+            $all_errors["strengths"] = "fill in the blanks please";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $strengths)) {
+                $all_errors["strengths"] = "provide valid characters";
+            }
+        }
+
+        // ====================== // GOD IS GOOD  // ============================ //
+        if (empty($_POST["weaknesses"])) {
+            $all_errors["weaknesses"] = "fill in the blanks please";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $weaknesses)) {
+                $all_errors["weaknesses"] = "enter valid characters only";
+            }
+        }
+
+        // ====================== // GOD IS GOOD  // ============================ //
+        if (empty($_POST["living_situation"])) {
+            $all_errors["living_situation"] = "fill in the blanks please";
+        }
+        else {
+            if (!preg_match("/^[a-zA-Z-' ]*$/", $living_situation)) {
+                $all_errors["living_situation"] = "no numbers are allowed in these field";
+            }
+        }
+
+
+        
+        
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -697,6 +839,10 @@ function ValidateInputs($data) {
                                                 <textarea name="accomplishment" id="" class="form-control form-control-lg text-start"></textarea>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="save-session-button ms-3 mt-4">
+                                        <input type="submit" class="btn btn-lg btn-success" value="save session" name="save_session">
                                     </div>
                                 </form>
                                 <!-- =============== the other main section will be here ============ -->
