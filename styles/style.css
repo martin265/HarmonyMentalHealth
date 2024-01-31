@@ -408,3 +408,10 @@ body{
 .content-area .familly-mental-health-section-page .family-health-table {
     margin-top: 30px;
 }
+
+/* ================== the erros will be shown here for the system ======== */
+.content-area .familly-mental-health-section-page .error-message {
+    color: red;
+    font-weight: bolder;
+    padding-left: 10px;
+}

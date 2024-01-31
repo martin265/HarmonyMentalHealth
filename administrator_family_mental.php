@@ -498,8 +498,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <span class="fw-bold">Have you ever heard things other people couldn't hear, such as voices in your head ?</span>
                                             </label>
                                             <div class="input-group">
-                                                <span></span>
+                                                <span class="input-group-text"><i class="bi bi-receipt"></i></span>
                                                 <input type="text" name="voices" class="form-control form-control-lg">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["voices"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -513,8 +516,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 </span>
                                             </label>
                                             <div class="input-group">
-                                                <span></span>
+                                                <span class="input-group-text"><i class="bi bi-rocket"></i></span>
                                                 <input type="text" name="spying" class="form-control form-control-lg">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["spying"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -527,8 +533,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 </span>
                                             </label>
                                             <div class="input-group">
-                                                <span></span>
+                                                <span class="input-group-text"><i class="bi bi-moon-stars"></i></span>
                                                 <input type="text" name="visions" class="form-control form-control-lg">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["visions"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -543,8 +552,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 </span>
                                             </label>
                                             <div class="input-group">
-                                                <span></span>
+                                                <span class="input-group-text"><i class="bi bi-person-wheelchair"></i></span>
                                                 <input type="text" name="behaviour" class="form-control form-control-lg">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["behaviour"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -654,8 +666,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 </span>
                                             </label>
                                             <div class="input-group">
-                                                <span></span>
+                                                <span class="input-group-text"><i class="bi bi-layout-wtf"></i></span>
                                                 <input type="text" name="unresolved_issues" class="form-control form-control-lg">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["unresolved_issues"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -667,7 +682,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <span class="fw-bold">If YES, what ?</span>
                                             </label>
                                             <div class="input-group">
-                                                <span class="input-group-text"><i class="bi bi-calendar-range"></i></span>
+                                                <span class="input-group-text"><i class="bi bi-body-text"></i></span>
                                                 <textarea name="unresolved_issues_how_long" id="" class="form-control form-control-lg"></textarea>
                                             </div>
                                         </div>
@@ -682,8 +697,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 </span>
                                             </label>
                                             <div class="input-group">
-                                                <span></span>
+                                                <span class="input-group-text"><i class="bi bi-life-preserver"></i></span>
                                                 <input type="text" name="significant_life_changes" class="form-control form-control-lg">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["significant_life_changes"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -714,7 +732,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <span class="fw-bold">If YES, what is your current employment/study stituation like ?</span>
                                             </label>
                                             <div class="input-group">
-                                                <span class="input-group-text"><i class="bi bi-calendar-range"></i></span>
+                                                <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
                                                 <textarea name="current_situation" id="" class="form-control form-control-lg"></textarea>
                                             </div>
                                         </div>
@@ -727,7 +745,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <span class="fw-bold">Do you enjoy work/studies ? Is there anything stressful about your current work/school</span>
                                             </label>
                                             <div class="input-group">
-                                                <span class="input-group-text"><i class="bi bi-calendar-range"></i></span>
+                                                <span class="input-group-text"><i class="bi bi-fire"></i></span>
                                                 <textarea name="anything_stressful" id="" class="form-control form-control-lg text-start"></textarea>
                                             </div>
                                         </div>
@@ -759,7 +777,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <span class="fw-bold">If yes, describe your faith or belief/ involvement</span>
                                             </label>
                                             <div class="input-group">
-                                                <span class="input-group-text"><i class="bi bi-calendar-range"></i></span>
+                                                <span class="input-group-text"><i class="bi bi-crosshair"></i></span>
                                                 <textarea name="describe_faith" id="" class="form-control form-control-lg text-start"></textarea>
                                             </div>
                                         </div>
@@ -775,8 +793,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 </span>
                                             </label>
                                             <div class="input-group">
-                                                <span></span>
+                                                <span class="input-group-text"><i class="bi bi-calendar2-heart"></i></span>
                                                 <input type="text" name="feel_about" class="form-control form-control-lg">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["feel_about"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -790,8 +811,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 </span>
                                             </label>
                                             <div class="input-group">
-                                                <span></span>
+                                                <span class="input-group-text"><i class="bi bi-hammer"></i></span>
                                                 <input type="text" name="strengths" class="form-control form-control-lg">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["strengths"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -805,8 +829,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 </span>
                                             </label>
                                             <div class="input-group">
-                                                <span></span>
+                                                <span class="input-group-text"><i class="bi bi-moon"></i></span>
                                                 <input type="text" name="weaknesses" class="form-control form-control-lg">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["weaknesses"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -820,8 +847,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 </span>
                                             </label>
                                             <div class="input-group">
-                                                <span></span>
+                                                <span class="input-group-text"><i class="bi bi-houses"></i></span>
                                                 <input type="text" name="living_situation" class="form-control form-control-lg">
+                                            </div>
+                                            <div class="error-message">
+                                                <?php echo($all_errors["living_situation"]); ?>
                                             </div>
                                         </div>
                                     </div>
@@ -835,7 +865,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 </span>
                                             </label>
                                             <div class="input-group">
-                                                <span class="input-group-text"></span>
+                                                <span class="input-group-text"><i class="bi bi-archive"></i></span>
                                                 <textarea name="accomplishment" id="" class="form-control form-control-lg text-start"></textarea>
                                             </div>
                                         </div>

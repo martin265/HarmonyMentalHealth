@@ -255,11 +255,72 @@ class Connection{
             print($ex);
         }
     }
+
+    // ==================== // function for the Family mental health table  ============ //
+    public function createMentalHealthTable() {
+        try {
+            $sqlCommand = "CREATE TABLE IF NOT EXISTS FamilyHealthDetails(
+                family_health_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+
+                axienty VARCHAR(50) NOT NULL,
+                depression VARCHAR(50) NOT NULL,
+                domestic_violence VARCHAR(50) NOT NULL,
+                criminal_behaviour VARCHAR(50) NOT NULL,
+                schizophrenia VARCHAR(50) NOT NULL,
+                suicide VARCHAR(50) NOT NULL,
+                mental_handcap VARCHAR(50) NOT NULL,
+                substance_use VARCHAR(50) NOT NULL,
+                
+                axienty_family_member VARCHAR(50) NOT NULL,
+                depression_family_member VARCHAR(50) NOT NULL,
+                domestic_violence_family_member VARCHAR(50) NOT NULL,
+                criminal_behaviour_family_member VARCHAR(50) NOT NULL,
+                schizophrenia_family_member VARCHAR(50) NOT NULL,
+                suicide_family_member VARCHAR(50) NOT NULL,
+                mental_handcap_family_member VARCHAR(50) NOT NULL,
+                substance_use_family_member VARCHAR(50) NOT NULL,
+
+                voices VARCHAR(50) NOT NULL,
+                spying VARCHAR(50) NOT NULL,
+                visions VARCHAR(50) NOT NULL,
+                behaviour VARCHAR(50) NOT NULL,
+                relationship VARCHAR(50) NOT NULL,
+                relationship_how_long VARCHAR(100) NOT NULL,
+                rate_relationship VARCHAR(50) NOT NULL,
+                unresolved_issues VARCHAR(100) NOT NULL,
+
+                unresolved_issues_how_long VARCHAR(100) NOT NULL,
+                significant_life_changes VARCHAR(100) NOT NULL,
+                employed_studying VARCHAR(40) NOT NULL,
+                current_situation VARCHAR(100) NOT NULL,
+                anything_stressful VARCHAR(100) NOT NULL,
+                religion VARCHAR(100) NOT NULL,
+                describe_faith VARCHAR(100) NOT NULL,
+                feel_about VARCHAR(100) NOT NULL,
+                strengths VARCHAR(100) NOT NULL,
+
+                weeknesses VARCHAR(100) NOT NULL,
+                living_situation VARCHAR(100) NOT NULL,
+                accomplishment VARCHAR(100) NOT NULL,
+                client_name VARCHAR(50) NOT NULL,
+                client_id INT UNSIGNED,
+                FOREIGN KEY (client_id) REFERENCES ClientDetails(client_id),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )";
+            $results = mysqli_query($this->connection, $sqlCommand);
+            if (!$results) {
+                print("failed to create the table");
+            }
+        }catch(Exception $ex) {
+            print($ex);
+        }
+    }
+
+    // ================= // ===================== //
 }
 // calling the object class here
 $conn = new Connection("localhost", "root", "", "harmonymentalhealth");
 // $conn->EstablishConnection();
 // $conn->get_connection();
-// $conn->CreateGAD7Table();
-
+// $conn->createMentalHealthTable();
 ?>
