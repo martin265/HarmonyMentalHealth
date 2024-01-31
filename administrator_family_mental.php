@@ -618,11 +618,85 @@ function ValidateInputs($data) {
                                         </div>
                                     </div>
 
+                                    <!-- ==================== // ===================== // -->
+                                    <div class="row mb-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="ForSomethingGood">
+                                                <span class="fw-bold">
+                                                    How do you feel about yourself as a person on a scale of 1-10 ? 1 = don't like myself at all,
+                                                    10 = like myself very much indeed
+                                                </span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span></span>
+                                                <input type="text" name="" class="form-control form-control-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= // =============== // ================ // -->
+                                    <div class="row mb-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="ForSomethingGood">
+                                                <span class="fw-bold">
+                                                    What do you consider to be some of your strengths ?
+                                                </span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span></span>
+                                                <input type="text" name="" class="form-control form-control-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= // =============== // ================ // -->
+                                    <div class="row mb-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="ForSomethingGood">
+                                                <span class="fw-bold">
+                                                    What do you consider to be some of your weaknesses ?
+                                                </span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span></span>
+                                                <input type="text" name="" class="form-control form-control-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= // =============== // ================ // -->
+                                    <div class="row mb-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="ForSomethingGood">
+                                                <span class="fw-bold">
+                                                    What is your current living situation ? / Who else do you live with ?
+                                                </span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span></span>
+                                                <input type="text" name="" class="form-control form-control-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =============== begining exeprience here -->
+                                    <div class="row mb-3">
+                                        <div class="col ms-3 me-3">
+                                            <label for="Yes" class="form-label-lg">
+                                                <span class="fw-bold">
+                                                    What would you like to accomplish out of your time in therapy ?
+                                                </span>
+                                            </label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"></span>
+                                                <textarea name="" id="" class="form-control form-control-lg text-start"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                                 <!-- =============== the other main section will be here ============ -->
 
                              </div>
-                             <!-- =============== the other section will be here ============= -->
                         </div>
                     </div>
                 </div>
