@@ -1,10 +1,11 @@
 <?php
-include("Models/PHQ9.php");
+include("Models/FamilyHealth.php");
 $connection = new Connection("localhost", "root", "", "harmonymentalhealth");
 $connection->EstablishConnection();
 $conn = $connection->get_connection();
 
 // =============== the variables will be here ================ //
+$client_name = "";
 $voices = "";
 $spying = "";
 $visions = "";
@@ -188,6 +189,100 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (!preg_match("/^[a-zA-Z-' ]*$/", $living_situation)) {
                 $all_errors["living_situation"] = "no numbers are allowed in these field";
             }
+        }
+
+        // ============== filtering the errors array here ================== //
+        if (!filter_var($all_errors)) {
+            // getting the values from the main form here =========//
+            $client_name = isset($_POST["client_name"]) ? mysqli_real_escape_string($conn, $_POST["client_name"]) : "";
+            $anxiety = mysqli_real_escape_string($conn, $_POST["anxiety"]);
+            $depression = isset($_POST["depression"]) ? mysqli_real_escape_string($conn, $_POST["depression"]) : "";
+            $domestic_violence = isset($_POST["domestic_violence"]) ? mysqli_real_escape_string($conn, $_POST["domestic_violence"]) : "";
+            $criminal_behaviour = isset($_POST["criminal_behaviour"]) ? mysqli_real_escape_string($conn, $_POST["criminal_behaviour"]) : "";
+            $schizophrenia = isset($_POST["schizophrenia"]) ? mysqli_real_escape_string($conn, $_POST["schizophrenia"]) : "";
+            $suicide = isset($_POST["suicide"]) ? mysqli_real_escape_string($conn, $_POST["suicide"]) : "";
+            $mental_handcap = isset($_POST["mental_handcap"]) ? mysqli_real_escape_string($conn, $_POST["mental_handcap"]) : "";
+            $substance_use = isset($_POST["substance_use"]) ? mysqli_real_escape_string($conn, $_POST["substance_use"]) : "";
+            $axienty_family_member = isset($_POST["anxiety_family_member"]) ? mysqli_real_escape_string($conn, $_POST["anxiety_family_member"]) : "";
+            $depression_family_member = isset($_POST["depression_family_member"]) ? mysqli_real_escape_string($conn, $_POST["depression_family_member"]) : "";
+            $domestic_violence_family_member = isset($_POST["domestic_violence_family_member"]) ? mysqli_real_escape_string($conn, $_POST["domestic_violence_family_member"]) : "";
+            $criminal_behaviour_family_member = isset($_POST["criminal_behaviour_family_member"]) ? mysqli_real_escape_string($conn, $_POST["criminal_behaviour_family_member"]) : "";
+            $schizophrenia_family_member = isset($_POST["schizophrenia_family_member"]) ? mysqli_real_escape_string($conn, $_POST["schizophrenia_family_member"]) : "";
+            $suicide_family_member = isset($_POST["suicide_family_member"]) ? mysqli_real_escape_string($conn, $_POST["suicide_family_member"]) : "";
+            $mental_handcap_family_member = isset($_POST["mental_handcap_family_member"]) ? mysqli_real_escape_string($conn, $_POST["mental_handcap_family_member"]) : "";
+            $substance_use_family_member = isset($_POST["substance_use_family_member"]) ? mysqli_real_escape_string($conn, $_POST["substance_use_family_member"]) : "";
+            $voices = isset($_POST["voices"]) ? mysqli_real_escape_string($conn, $_POST["voices"]) : "";
+            $spying = isset($_POST["spying"]) ? mysqli_real_escape_string($conn, $_POST["spying"]) : "";
+            $visions = isset($_POST["visions"]) ? mysqli_real_escape_string($conn, $_POST["visions"]) : "";
+            $behaviour = isset($_POST["behaviour"]) ? mysqli_real_escape_string($conn, $_POST["behaviour"]) : "";
+            $relationship = isset($_POST["relationship"]) ? mysqli_real_escape_string($conn, $_POST["relationship"]) : "";
+            $relationship_how_long = isset($_POST["relationship_how_long"]) ? mysqli_real_escape_string($conn, $_POST["relationship_how_long"]) : "";
+            $rate_relationship = isset($_POST["rate_relationship"]) ? mysqli_real_escape_string($conn, $_POST["rate_relationship"]) : "";
+            $unresolved_issues = isset($_POST["unresolved_issues"]) ? mysqli_real_escape_string($conn, $_POST["unresolved_issues"]) : "";
+            $unresolved_issues_how_long = isset($_POST["unresolved_issues_how_long"]) ? mysqli_real_escape_string($conn, $_POST["unresolved_issues_how_long"]) : "";
+            $significant_life_changes = isset($_POST["significant_life_changes"]) ? mysqli_real_escape_string($conn, $_POST["significant_life_changes"]) : "";
+            $employed_studying = isset($_POST["employed_studying"]) ? mysqli_real_escape_string($conn, $_POST["employed_studying"]) : "";
+            $current_situation = isset($_POST["current_situation"]) ? mysqli_real_escape_string($conn, $_POST["current_situation"]) : "";
+            $anything_stressful = isset($_POST["anything_stressful"]) ? mysqli_real_escape_string($conn, $_POST["anything_stressful"]) : "";
+            $religion = isset($_POST["religion"]) ? mysqli_real_escape_string($conn, $_POST["religion"]) : "";
+            $describe_faith = isset($_POST["describe_faith"]) ? mysqli_real_escape_string($conn, $_POST["describe_faith"]) : "";
+            $feel_about = isset($_POST["feel_about"]) ? mysqli_real_escape_string($conn, $_POST["feel_about"]) : "";
+            $strengths = isset($_POST["strengths"]) ? mysqli_real_escape_string($conn, $_POST["strengths"]) : "";
+            $weeknesses = isset($_POST["weaknesses"]) ? mysqli_real_escape_string($conn, $_POST["weaknesses"]) : "";
+            $living_situation = isset($_POST["living_situation"]) ? mysqli_real_escape_string($conn, $_POST["living_situation"]) : "";
+            $accomplishment = isset($_POST["accomplishment"]) ? mysqli_real_escape_string($conn, $_POST["accomplishment"]) : "";
+
+            // =============== calling the function to save the details here =================== //
+            $family_planning = new FamilyHealth(
+                $anxiety,
+                $depression,
+                $domestic_violence,
+                $criminal_behaviour,
+                $schizophrenia,
+                $suicide,
+                $mental_handcap,
+                $substance_use,
+                $axienty_family_member,
+                $depression_family_member,
+                $domestic_violence_family_member,
+                $criminal_behaviour_family_member,
+                $schizophrenia_family_member,
+                $suicide_family_member,
+                $mental_handcap_family_member,
+                $substance_use_family_member,
+                $voices,
+                $spying,
+                $visions,
+                $behaviour,
+                $relationship,
+                $relationship_how_long,
+                $rate_relationship,
+                $unresolved_issues,
+                $unresolved_issues_how_long,
+                $significant_life_changes,
+                $employed_studying,
+                $current_situation,
+                $anything_stressful,
+                $religion,
+                $describe_faith,
+                $feel_about,
+                $strengths,
+                $weeknesses,
+                $living_situation,
+                $accomplishment,
+            );
+
+            print_r($family_planning);
+
+            // ================= calling the main function here =============== //
+            $family_planning->saveFamilyHealthDetails(
+                $client_name,
+                $client_id
+            );
+            $success_message = "question details saved successfully";
+        }
+        else {
+            $error_message = "the form has errors";
         }
 
 
