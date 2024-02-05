@@ -199,6 +199,8 @@ class FamilyHealth {
     
             // Executing the query
             $sqlCommand->execute();
+
+            // print($this->anxiety);
             
         } catch (Exception $ex) {
             print($ex);

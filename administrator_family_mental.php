@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!filter_var($all_errors)) {
             // getting the values from the main form here =========//
             $client_name = isset($_POST["client_name"]) ? mysqli_real_escape_string($conn, $_POST["client_name"]) : "";
-            $anxiety = mysqli_real_escape_string($conn, $_POST["anxiety"]);
+            $anxiety = isset($_POST["anxiety"]) ? mysqli_real_escape_string($conn, $_POST["anxiety"]): "";
             $depression = isset($_POST["depression"]) ? mysqli_real_escape_string($conn, $_POST["depression"]) : "";
             $domestic_violence = isset($_POST["domestic_violence"]) ? mysqli_real_escape_string($conn, $_POST["domestic_violence"]) : "";
             $criminal_behaviour = isset($_POST["criminal_behaviour"]) ? mysqli_real_escape_string($conn, $_POST["criminal_behaviour"]) : "";
@@ -272,7 +272,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $accomplishment,
             );
 
-            print_r($family_planning);
+            // print_r($family_planning);
 
             // ================= calling the main function here =============== //
             $family_planning->saveFamilyHealthDetails(
