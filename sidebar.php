@@ -87,7 +87,7 @@
         <!-- ================= the section for the container that will hold the logout buttons here ===== -->
         <div class="logout-and-other-controls shadow-sm">
             <!-- the button to logout the administrator will be here -->
-            <input type="text" class="">
+            <input type="text" class="btn btn-sm btn-primary">
         </div>
     </div>
 </body>
