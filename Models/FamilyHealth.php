@@ -152,7 +152,7 @@ class FamilyHealth {
             );
     
             // Allowing for NULL values
-            $this->allowNotNull(); 
+            //$this->allowNotNull(); 
     
             // Binding the parameters
             $sqlCommand->bind_param(
