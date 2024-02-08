@@ -210,7 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $schizophrenia_family_member = isset($_POST["schizophrenia_family_member"]) ? mysqli_real_escape_string($conn, $_POST["schizophrenia_family_member"]) : "";
             $suicide_family_member = isset($_POST["suicide_family_member"]) ? mysqli_real_escape_string($conn, $_POST["suicide_family_member"]) : "";
             $mental_handcap_family_member = isset($_POST["mental_handcap_family_member"]) ? mysqli_real_escape_string($conn, $_POST["mental_handcap_family_member"]) : "";
-            $substance_use_family_member = isset($_POST["substance_use_family_member"]) ? mysqli_real_escape_string($conn, $_POST["substance_use_family_member"]) : "";
+            $substance_use_family_member = isset($_POST["substance_family_member"]) ? mysqli_real_escape_string($conn, $_POST["substance_family_member"]) : "";
             $voices = isset($_POST["voices"]) ? mysqli_real_escape_string($conn, $_POST["voices"]) : "";
             $spying = isset($_POST["spying"]) ? mysqli_real_escape_string($conn, $_POST["spying"]) : "";
             $visions = isset($_POST["visions"]) ? mysqli_real_escape_string($conn, $_POST["visions"]) : "";
@@ -273,6 +273,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
 
             // print_r($family_planning);
+            print($behaviour);
 
             // ================= calling the main function here =============== //
             $family_planning->saveFamilyHealthDetails(
@@ -666,13 +667,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             </label>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="relationsip" id="inlineRadio1" value="Yes">
+                                                <input class="form-check-input" type="radio" name="relationship" id="inlineRadio1" value="Yes">
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="relationsip" id="inlineRadio2" value="No">
+                                                <input class="form-check-input" type="radio" name="relationship" id="inlineRadio2" value="No">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
                                         </div>
