@@ -67,16 +67,44 @@ $totalRecords = countPatientRecords($conn);
                                     <div class="total-clients-header">
                                         <span><i class="bi bi-clipboard2-pulse"></i></span>
                                     </div>
+
                                     <div class="total-clients-title">
                                         <p>total clients</p>
                                     </div>
+
                                     <div class="total-clients-count">
                                         <p><?php echo($totalRecords); ?></p>
                                     </div>
                                 </div>
                                 <!-- ============ the second container for the patients will be here ===== -->
-                                <div class="patient-count-page-2 shadow-sm">2</div>
-                                <div class="patient-count-page-3 shadow-sm">3</div>
+                                <div class="patient-count-page-2 shadow-sm">
+                                    <div class="total-appointments-header">
+                                        <span><i class="bi bi-calendar2-week"></i></span>
+                                    </div>
+
+                                    <div class="total-appointments-title">
+                                        <p>total appointments</p>
+                                    </div>
+
+                                    <div class="total-appointments-count">
+                                        <p><?php echo($totalRecords); ?></p>
+                                    </div>
+                                </div>
+                                <!-- =========================== // ========================== // -->
+                                <div class="patient-count-page-3 shadow-sm">
+
+                                    <div class="total-saved-questions-header">
+                                        <span><i class="bi bi-patch-question-fill"></i></span>
+                                    </div>
+
+                                    <div class="total-saved-questions-title">
+                                        <p>total sessions</p>
+                                    </div>
+
+                                    <div class="total-saved-questions-count">
+                                        <p><?php echo($totalRecords); ?></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

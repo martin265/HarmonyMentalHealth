@@ -511,7 +511,7 @@ body{
     text-align: center;
     padding-top: 10px;
     font-size: 50px;
-    color: white;
+    color: #1A237E;
 }
 
 .content-area .main-dashboard-items .patient-count-page-1 .total-clients-title p {
@@ -533,3 +533,56 @@ body{
     font-weight: bolder;
 }
 
+/* ========================= ========================== */
+.content-area .main-dashboard-items .patient-count-page-2 .total-appointments-header {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 50px;
+    color: white;
+}
+
+.content-area .main-dashboard-items .patient-count-page-2 .total-appointments-title p{
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
+.content-area .main-dashboard-items .patient-count-page-2 .total-appointments-count p {
+    text-align: center;
+    text-transform: capitalize;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    color: white;
+    font-weight: bolder;
+}
+
+/* ========================= ========================== */
+.content-area .main-dashboard-items .patient-count-page-3 .total-saved-questions-header {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 50px;
+    color: #2F4858;
+}
+
+.content-area .main-dashboard-items .patient-count-page-3 .total-saved-questions-title p{
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
+.content-area .main-dashboard-items .patient-count-page-3 .total-saved-questions-count p {
+    text-align: center;
+    text-transform: capitalize;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    color: white;
+    font-weight: bolder;
+}
