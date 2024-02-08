@@ -702,52 +702,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <br>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="1">
+                                                <input class="form-check-input" type="radio" name="rate_relationship" id="inlineRadio1" value="1">
                                                 <label class="form-check-label" for="inlineRadio1">1</label>
                                             </div>
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio2" value="2">
+                                                <input class="form-check-input" type="radio" name="rate_relationship" id="inlineRadio2" value="2">
                                                 <label class="form-check-label" for="inlineRadio2">2</label>
                                             </div>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="3">
+                                                <input class="form-check-input" type="radio" name="rate_relationship" id="inlineRadio1" value="3">
                                                 <label class="form-check-label" for="inlineRadio1">3</label>
                                             </div>
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio2" value="4">
+                                                <input class="form-check-input" type="radio" name="rate_relationship" id="inlineRadio2" value="4">
                                                 <label class="form-check-label" for="inlineRadio2">4</label>
                                             </div>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="5">
+                                                <input class="form-check-input" type="radio" name="rate_relationship" id="inlineRadio1" value="5">
                                                 <label class="form-check-label" for="inlineRadio1">5</label>
                                             </div>
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio2" value="6">
+                                                <input class="form-check-input" type="radio" name="rate_relationship" id="inlineRadio2" value="6">
                                                 <label class="form-check-label" for="inlineRadio2">6</label>
                                             </div>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="7">
+                                                <input class="form-check-input" type="radio" name="rate_relationship" id="inlineRadio1" value="7">
                                                 <label class="form-check-label" for="inlineRadio1">7</label>
                                             </div>
                                             <!-- ============== the radio buttons will be here -->
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio2" value="8">
+                                                <input class="form-check-input" type="radio" name="rate_relationship" id="inlineRadio2" value="8">
                                                 <label class="form-check-label" for="inlineRadio2">8</label>
                                             </div>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="9">
+                                                <input class="form-check-input" type="radio" name="rate_relationship" id="inlineRadio1" value="9">
                                                 <label class="form-check-label" for="inlineRadio1">9</label>
                                             </div>
                                             <!-- =============== the other radio button will be here ======== -->
                                             <div class="form-check form-check-inline ms-3">
-                                                <input class="form-check-input" type="radio" name="rate_relationsip" id="inlineRadio1" value="10">
+                                                <input class="form-check-input" type="radio" name="rate_relationship" id="inlineRadio1" value="10">
                                                 <label class="form-check-label" for="inlineRadio1">10</label>
                                             </div>
                                         </div>
