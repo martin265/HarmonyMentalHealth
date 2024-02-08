@@ -28,6 +28,24 @@ function countPatientRecords($conn) {
 
 $totalRecords = countPatientRecords($conn);
 
+
+// ================= function to fetch patient details here ===============//
+function fetchPatientDetails($conn) {
+    try {
+        $sqlCommand = "SELECT * FROM PatientDetails";
+        // =========== getting the results here =================//
+        $results = mysqli_query($conn, $sqlCommand);
+        // ============== passing the results into an array here ==========//
+        $all_results = mysqli_fetch_all($results, MYSQLI_ASSOC);
+
+        return $all_results;
+        
+    }catch(Exception $ex) {
+        print($ex);
+    }
+}
+
+$all_results = fetchPatientDetails($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,6 +135,40 @@ $totalRecords = countPatientRecords($conn);
                                     <div class="header-text">
                                         <h1>recent activity</h1>
                                     </div>
+                                </div>
+
+                                <div class="recent-activity-data-table">
+                                    <table id="recent-table" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="text-capitalize">first name</th>
+                                                <th scope="col">last name</th>
+                                                <th scope="col">quardian</th>
+                                                <th scope="col">address</th>
+                                                <th scope="col">cellphone</th>
+                                                <th scope="col">email</th>
+                                                <th scope="col">gender</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- ============== looping through the results here ====== -->
+                                            <?php if ($all_results): ?>
+                                                <?php foreach($all_results as $single_record) {?>
+                                                    <tr>
+                                                        <td><?php echo($single_record["first_name"]); ?></td>
+                                                        <td><?php echo($single_record["last_name"]); ?></td>
+                                                        <td><?php echo($single_record["guardian"]); ?></td>
+                                                        <td><?php echo($single_record["address"]); ?></td>
+                                                        <td><?php echo($single_record["cell_phone"]); ?></td>
+                                                        <td><?php echo($single_record["email"]); ?></td>
+                                                        <td><?php echo($single_record["gender"]); ?></td>
+                                                    </tr>
+                                                <?php }?>
+                                                <?php else: ?>
+
+                                                <?php endif; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
