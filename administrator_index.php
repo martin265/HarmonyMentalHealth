@@ -142,12 +142,13 @@ $all_results = fetchPatientDetails($conn);
                                         <thead>
                                             <tr>
                                                 <th scope="col" class="text-capitalize">first name</th>
-                                                <th scope="col">last name</th>
-                                                <th scope="col">quardian</th>
-                                                <th scope="col">address</th>
-                                                <th scope="col">cellphone</th>
-                                                <th scope="col">email</th>
-                                                <th scope="col">gender</th>
+                                                <th scope="col" class="text-capitalize">last name</th>
+                                                <th scope="col" class="text-capitalize">quardian</th>
+                                                <th scope="col" class="text-capitalize">address</th>
+                                                <th scope="col" class="text-capitalize">cellphone</th>
+                                                <th scope="col" class="text-capitalize">email</th>
+                                                <th scope="col" class="text-capitalize">gender</th>
+                                                <th scope="col" class="text-capitalize">action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -162,6 +163,10 @@ $all_results = fetchPatientDetails($conn);
                                                         <td><?php echo($single_record["cell_phone"]); ?></td>
                                                         <td><?php echo($single_record["email"]); ?></td>
                                                         <td><?php echo($single_record["gender"]); ?></td>
+                                                        <!-- ============ for the button here -->
+                                                        <td>
+                                                            <input type="submit" class="btn btn-sm btn-success" value="details">
+                                                        </td>
                                                     </tr>
                                                 <?php }?>
                                                 <?php else: ?>
