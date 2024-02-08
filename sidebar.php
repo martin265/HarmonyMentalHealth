@@ -71,10 +71,23 @@
                 <li><a class="dropdown-item" href="administrator_family_mental.php">Family Mental Health</a></li>
             </ul>
         </div>
+
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
-             <i class="bi bi-file-earmark-bar-graph"></i>
-             <a href="administrator_patient_records.php">records</a>
+            <i class="bi bi-file-earmark-bar-graph"></i>
+            <a href="administrator_patient_records.php">records</a>
+        </div>
+
+         <!-- the side bar navigation items will be here -->
+         <div class="navigation-item">
+            <i class="bi bi-bar-chart"></i>
+            <a href="administrator_patient_records.php">analytics</a>
+        </div>
+
+        <!-- ================= the section for the container that will hold the logout buttons here ===== -->
+        <div class="logout-and-other-controls shadow-sm">
+            <!-- the button to logout the administrator will be here -->
+            <input type="text" class="">
         </div>
     </div>
 </body>
