@@ -106,6 +106,7 @@ $totalRecords = countPatientRecords($conn);
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>

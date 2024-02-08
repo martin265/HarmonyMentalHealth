@@ -586,3 +586,17 @@ body{
     color: white;
     font-weight: bolder;
 }
+
+/* =============== CSS FOR THE DATE AND TIME SENCTION ========== */
+.main-dashboard-panel .date-time-section {
+    background-color: #00A771;
+    margin-top: 20px;
+    margin-left: 610px;
+    text-align: center;
+}
+
+.main-dashboard-panel .date-time-section p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+}
