@@ -272,9 +272,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $accomplishment,
             );
 
-            // print_r($family_planning);
-            print($behaviour);
-
             // ================= calling the main function here =============== //
             $family_planning->saveFamilyHealthDetails(
                 $client_name,
