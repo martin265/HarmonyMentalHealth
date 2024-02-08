@@ -46,6 +46,7 @@ function fetchPatientDetails($conn) {
 }
 
 $all_results = fetchPatientDetails($conn);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -165,7 +166,7 @@ $all_results = fetchPatientDetails($conn);
                                                         <td><?php echo($single_record["gender"]); ?></td>
                                                         <!-- ============ for the button here -->
                                                         <td>
-                                                            <input type="submit" class="btn btn-sm btn-success" value="details">
+                                                            <a href="administrator_client_profile.php?client_id=<?php echo($single_record["patient_id"]); ?>" class="btn btn-success btn-sm"><span><i class="bi bi-body-text me-2"></i></span>Details</a>
                                                         </td>
                                                     </tr>
                                                 <?php }?>

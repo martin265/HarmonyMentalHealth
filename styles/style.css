@@ -637,4 +637,11 @@ body{
     margin-right: 20px;
     border-radius: 10px;
     margin-top: 20px;
+    width: 100%;
+}
+
+@medi only screen and (max-width: 768px) {
+    .main-dashboard-panel .recent-activity-data-table {
+        display: none;
+    }
 }
