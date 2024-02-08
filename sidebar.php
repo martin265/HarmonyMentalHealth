@@ -27,6 +27,17 @@
     <link rel="stylesheet" href="assets\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="assets\bootstrap-datepicker-1.9.0-dist\css\bootstrap-datepicker3.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ================= something will happen here ====================== -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <!-- ================= something will also happen here ============== -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 </head>
 <body>
     <div class="side-navigation-panel">
@@ -35,11 +46,7 @@
             <i class="bi bi-house"></i>
             <a href="administrator_index.php" class="">home</a>
         </div>
-        <!-- the side bar navigation items will be here -->
-        <div class="navigation-item">
-            <i class="bi bi-person-down"></i>
-            <a href="administrator_staff.php">staff</a>
-        </div>
+        
         <!-- the side bar navigation items will be here -->
         <div class="navigation-item">
             <i class="bi bi-building-gear"></i>
@@ -87,7 +94,7 @@
         <!-- ================= the section for the container that will hold the logout buttons here ===== -->
         <div class="logout-and-other-controls shadow-sm">
             <!-- the button to logout the administrator will be here -->
-            <input type="text" class="btn btn-sm btn-primary">
+            
         </div>
     </div>
 </body>

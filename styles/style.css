@@ -626,9 +626,9 @@ body{
 }
 
 /* =============== the container for the logout and other controls ============= */
-.logout-and-other-controls {
+/* .logout-and-other-controls {
     height: 200px;
     background: linear-gradient(to left, #DBF9D8, #DBF2FF);
     margin-top: 20px;
     border-radius: 10px;
-}
+} */
