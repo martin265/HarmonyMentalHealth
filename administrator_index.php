@@ -106,11 +106,25 @@ $totalRecords = countPatientRecords($conn);
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- ========================= the table for showing the recent activities will be here =========== // -->
+                            <div class="recent-activities-panel">
+                                <div class="recent-activity-header">
+                                    <div class="header-icon">
+                                        <span><i class="bi bi-clock"></i></span>
+                                    </div>
+                                    <!-- =============== // ================== // -->
+                                    <div class="header-text">
+                                        <h1>recent activity</h1>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 </html>

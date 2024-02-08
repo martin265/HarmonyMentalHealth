@@ -600,3 +600,19 @@ body{
     font-size: 20px;
     font-weight: bolder;
 }
+
+/* =========================== // ============================ // */
+.main-dashboard-panel .recent-activities-panel {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+.main-dashboard-panel .recent-activities-panel .recent-activity-header {
+    display: flex;
+    align-items: center;
+}
+
+.main-dashboard-panel .header-text h1 {
+    font-size: 30px;
+    text-transform: capitalize;
+    color: #212121;
+}
