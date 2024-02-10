@@ -361,7 +361,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
             $patient->SavePatientDetails();
             $success_message = "Patient details saved successfully";
-
         }
     }
 }
@@ -395,7 +394,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <!-- Success message content goes here -->
                                 <div class="success-message mt-3 me-3 w-50 fw-bolder text-light">
                                     <?php if (isset($success_message)) : ?>
-                                        <div id="successAlert" class="alert alert-primary" role="alert">
+                                        <div id="successAlert" class="alert alert-success" role="alert">
                                             <?php echo $success_message; ?>
                                         </div>
                                         <script>

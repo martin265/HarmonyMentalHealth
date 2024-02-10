@@ -637,11 +637,39 @@ body{
     margin-right: 20px;
     border-radius: 10px;
     margin-top: 20px;
-    width: 100%;
 }
 
-@medi only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .main-dashboard-panel .recent-activity-data-table {
         display: none;
     }
+}
+
+/* ================ css for the client profile page =============== */
+.content-area .client-profile-main-page {
+    background: linear-gradient(to right,#f5f5f5, #f5f5f5);
+    border-radius: 8px;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.content-area .client-profile-main-page .client-profile-title h1 {
+    text-align: center;
+    padding-top: 30px;
+    text-transform: capitalize;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.content-area .client-profile-main-page .client-profile-cards {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.content-area .client-information-page .client-profile-cards .client-profile {
+    width: 250px;
+    height: 200px;
+    background-color: #679D4E;
+    border-radius: 10px;
 }

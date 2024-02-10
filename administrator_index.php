@@ -48,6 +48,7 @@ function fetchPatientDetails($conn) {
 $all_results = fetchPatientDetails($conn);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

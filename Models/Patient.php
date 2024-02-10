@@ -229,7 +229,7 @@ class Patient{
                     reviewed_by_signature, reviewed_by_signature_date 
                 ) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
-            $this->ensureNotNull();
+            //$this->ensureNotNull();
             // ============== the query will be executed here =============//
             $sqlCommand->bind_param(
                 "ssssssssssssssssssssssssssssss",

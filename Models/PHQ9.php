@@ -49,7 +49,7 @@ class PHQ9 {
                 )"
             );
             // ============== function to ensure not null values to be passed here ===== //
-            $this->ensureNotNull();
+            //$this->ensureNotNull();
             // ============ binding the parameters here ================ //
             $sqlCommand->bind_param(
                 "sssssssssssss",

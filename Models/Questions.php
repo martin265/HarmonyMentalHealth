@@ -75,7 +75,7 @@ class Question{
                 )"
             );
 
-            $this->ensureNotNull();
+            //$this->ensureNotNull();
             // ================= binding the parameters here ================== //
             $sqlCommand->bind_param(
                 "sssssssssssssss",
