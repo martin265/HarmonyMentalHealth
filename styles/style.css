@@ -677,7 +677,8 @@ body{
 }
 
 .content-area .client-profile {
-    width: 900px;
+    width: auto;
+    height: auto;
     background: linear-gradient(to left, #00A771, #00A771);
     border-radius: 8px;
     margin-top: 40px;
@@ -697,9 +698,8 @@ body{
 
 .content-area .all-client-details {
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
     flex-flow: row wrap;
-    justify-content: center;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
@@ -709,4 +709,19 @@ body{
     font-size: 30px;
     color: white;
     text-transform: capitalize;
+    padding-left: 30px;
+    font-weight: 500;
+    padding-top: 10px;
+}
+
+.content-area .all-client-details .main-text h1 {
+    padding-right: 50px;
+    font-size: 30px;
+    color: white;
+    text-transform: capitalize;
+    padding-left: 30px;
+    font-weight: 500;
+    padding-top: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }

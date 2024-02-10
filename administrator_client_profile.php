@@ -72,51 +72,74 @@ $all_results = fetchClientDetails($conn);
 
                                                     <h1><span><i class="bi bi-eye me-2"></i></span>guardian</h1>
 
-                                                    <h1><span><i class="bi bi-house-add ms-2"></i></span>address</h1>
+                                                    <h1><span><i class="bi bi-house-add me-2"></i></span>address</h1>
 
-                                                    <h1><span><i class="bi bi-reception-3"></i></span>cellphone</h1>
+                                                    <h1><span><i class="bi bi-reception-3 me-2"></i></span>cellphone</h1>
 
-                                                    <h1><span><i class="bi bi-phone"></i></span>other phone</h1>
+                                                    <h1><span><i class="bi bi-phone me-2"></i></span>other phone</h1>
 
-                                                    <h1><span><i class="bi bi-envelope-heart"></i></span>email</h1>
+                                                    <h1><span><i class="bi bi-envelope-heart me-2"></i></span>email</h1>
 
-                                                    <h1><span><i class="bi bi-phone-vibrate"></i></span>emergency contact</h1>
+                                                    <h1><span><i class="bi bi-phone-vibrate me-2"></i></span>emergency contact</h1>
 
-                                                    <h1><span><i class="bi bi-phone"></i></span>telephone number</h1>
+                                                    <h1><span><i class="bi bi-phone me-2"></i></span>telephone number</h1>
 
-                                                    <h1><span><i class="bi bi-calendar-check"></i></span>date of birth</h1>
+                                                    <h1><span><i class="bi bi-calendar-check me-2"></i></span>date of birth</h1>
 
-                                                    <h1><span><i class="bi bi-sort-numeric-up-alt"></i></span>age</h1>
+                                                    <h1><span><i class="bi bi-sort-numeric-up-alt me-2"></i></span>age</h1>
 
-                                                    <h1><span><i class="bi bi-gender-ambiguous"></i></span>gender</h1>
+                                                    <h1><span><i class="bi bi-gender-ambiguous me-2"></i></span>gender</h1>
 
-                                                    <h1><span><i class="bi bi-tree"></i></span>marital status</h1>
+                                                    <h1><span><i class="bi bi-tree me-2"></i></span>marital status</h1>
 
-                                                    <h1><span><i class="bi bi-house"></i></span>residence</h1>
+                                                    <h1><span><i class="bi bi-house me-2"></i></span>residence</h1>
 
-                                                    <h1><span><i class="bi bi-link-45deg"></i></span>referred by</h1>
+                                                    <h1><span><i class="bi bi-link-45deg me-2"></i></span>referred by</h1>
 
-                                                    <h1><span><i class="bi bi-person-wheelchair"></i></span>primary care</h1>
+                                                    <h1><span><i class="bi bi-person-wheelchair me-2"></i></span>primary care</h1>
 
-                                                    <h1><span><i class="bi bi-tools"></i></span>work place</h1>
+                                                    <h1><span><i class="bi bi-tools me-2"></i></span>work place</h1>
 
-                                                    <h1><span><i class="bi bi-tools"></i></span>current occupation</h1>
+                                                    <h1><span><i class="bi bi-tools me-2"></i></span>current occupation</h1>
 
-                                                    <h1><span><i class="bi bi-hourglass-top"></i></span>present position</h1>
+                                                    <h1><span><i class="bi bi-hourglass-top me-2"></i></span>present position</h1>
 
-                                                    <h1><span><i class="bi bi-backpack3"></i></span>current school</h1>
+                                                    <h1><span><i class="bi bi-backpack3 me-2"></i></span>current school</h1>
 
-                                                    <h1><span><i class="bi bi-calendar-week"></i></span>college year</h1>
+                                                    <h1><span><i class="bi bi-calendar-week me-2"></i></span>college year</h1>
 
-                                                    <h1><span><i class="bi bi-brightness-high"></i></span>previous therapist</h1>
+                                                    <h1><span><i class="bi bi-brightness-high me-2"></i></span>previous therapist</h1>
 
-                                                    <h1><span><i class="bi bi-ear"></i></span>Heard about us</h1>
+                                                    <h1><span><i class="bi bi-ear me-2"></i></span>Heard about us</h1>
 
-                                                    <h1><span><i class="bi bi-credit-card-2-front"></i></span>payment method</h1>
+                                                    <h1><span><i class="bi bi-credit-card-2-front me-2"></i></span>payment method</h1>
                                                 </div>
+                                                <!-- ============ getting the records from the database here ========== -->
                                                 <div class="main-text">
-                                                    <h1>martin</h1>
-                                                    <h1>silungwe</h1>
+                                                    <h1><?php echo($single_record["first_name"]); ?></h1>
+                                                    <h1><?php echo($single_record["last_name"]); ?></h1>
+                                                    <h1><?php echo($single_record["guardian"]); ?></h1>
+                                                    <h1><?php echo($single_record["address"]); ?></h1>
+                                                    <h1><?php echo($single_record["cell_phone"]); ?></h1>
+                                                    <h1><?php echo($single_record["other_phone"]); ?></h1>
+                                                    <h1><?php echo($single_record["email"]); ?></h1>
+                                                    <h1><?php echo($single_record["emergency_contact"]); ?></h1>
+                                                    <h1><?php echo($single_record["telephone_number"]); ?></h1>
+                                                    <h1><?php echo($single_record["date_birth"]); ?></h1>
+                                                    <h1><?php echo($single_record["age"]); ?></h1>
+                                                    <h1><?php echo($single_record["gender"]); ?></h1>
+                                                    <h1><?php echo($single_record["marital_status"]); ?></h1>
+                                                    <h1><?php echo($single_record["residence"]); ?></h1>
+                                                    <h1><?php echo($single_record["referred_by"]); ?></h1>
+                                                    <h1><?php echo($single_record["primary_care"]); ?></h1>
+                                                    <h1><?php echo($single_record["work_place"]); ?></h1>
+                                                    <h1><?php echo($single_record["current_occupation"]); ?></h1>
+                                                    <h1><?php echo($single_record["present_position"]); ?></h1>
+                                                    <h1><?php echo($single_record["current_school"]); ?></h1>
+                                                    <h1><?php echo($single_record["college_year"]); ?></h1>
+                                                    <h1><?php echo($single_record["previous_therapist"]); ?></h1>
+                                                    <h1><?php echo($single_record["heard_about_us"]); ?></h1>
+                                                    <h1><?php echo($single_record["payment_method"]); ?></h1>
                                                 </div>
                                             </div>
                                         </div>
