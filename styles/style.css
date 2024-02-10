@@ -643,6 +643,14 @@ body{
     .main-dashboard-panel .recent-activity-data-table {
         display: none;
     }
+    .content-area .client-profile {
+        width: 900px;
+        background-color: #00A771;
+        border-radius: 8px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 40px;
+    }
 }
 
 /* ================ css for the client profile page =============== */
@@ -665,11 +673,40 @@ body{
 .content-area .client-profile-main-page .client-profile-cards {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
 }
 
-.content-area .client-information-page .client-profile-cards .client-profile {
-    width: 250px;
-    height: 200px;
-    background-color: #679D4E;
-    border-radius: 10px;
+.content-area .client-profile {
+    width: 900px;
+    background: linear-gradient(to left, #00A771, #00A771);
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+.content-area .client-profile .client-profile-image{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-flow: row wrap;
+}
+
+.content-area .client-profile .client-profile-image img {
+    width: 150px;
+    height: 150px;
+}
+
+.content-area .all-client-details {
+    display: flex;
+    margin-top: 20px;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+.content-area .all-client-details .title-text h1 {
+    padding-right: 50px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 30px;
+    color: white;
+    text-transform: capitalize;
 }
