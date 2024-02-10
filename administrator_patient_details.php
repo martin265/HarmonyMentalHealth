@@ -316,38 +316,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $connection->EstablishConnection();
             $conn = $connection->get_connection(); //  getting the connection getter here
             // ========== the records will be saved here
-            $first_name = mysqli_real_escape_string($conn, $_POST["first_name"]);
-            $last_name = mysqli_real_escape_string($conn, $_POST["last_name"]);
-            $guardian = mysqli_real_escape_string($conn, $_POST["guardian"]);
-            $address = mysqli_real_escape_string($conn, $_POST["address"]);
-            $cell_phone = mysqli_real_escape_string($conn, $_POST["cell_phone"]);
-            $other_phone = mysqli_real_escape_string($conn, $_POST["other_phone"]);
-            $email = mysqli_real_escape_string($conn, $_POST["email"]);
-            $emergency_contact = mysqli_real_escape_string($conn, $_POST["emergency_contact"]);
-            $telephone_number = mysqli_real_escape_string($conn, $_POST["telephone_number"]);
-            $date_birth = mysqli_real_escape_string($conn, $_POST["date_birth"]);
+            $first_name = isset($conn, $_POST["first_name"]) ? mysqli_real_escape_string($conn, $_POST["first_name"]) : "";
+            $last_name = isset($conn, $_POST["last_name"]) ? mysqli_real_escape_string($conn, $_POST["last_name"]) : "";
+            $guardian = isset($conn, $_POST["guardian"]) ? mysqli_real_escape_string($conn, $_POST["guardian"]) : "";
+            $address = isset($conn, $_POST["address"]) ? mysqli_real_escape_string($conn, $_POST["address"]) : "";
+            $cell_phone = isset($conn, $_POST["cell_phone"]) ? mysqli_real_escape_string($conn, $_POST["cell_phone"]) : "";
+            $other_phone = isset($conn, $_POST["other_phone"]) ? mysqli_real_escape_string($conn, $_POST["other_phone"]) : "";
+            $email = isset($conn, $_POST["email"]) ? mysqli_real_escape_string($conn, $_POST["email"]) : "";
+            $emergency_contact = isset($conn, $_POST["emergency_contact"]) ? mysqli_real_escape_string($conn, $_POST["emergency_contact"]) : "";
+            $telephone_number = isset($conn, $_POST["telephone_number"]) ? mysqli_real_escape_string($conn, $_POST["telephone_number"]) : "";
+            $date_birth = isset($conn, $_POST["date_birth"]) ? mysqli_real_escape_string($conn, $_POST["date_birth"]) : "";
             // ========================// ==============================//
-            $age = mysqli_real_escape_string($conn, $_POST["age"]);
-            $gender = mysqli_real_escape_string($conn, $_POST["gender"]);
-            $marital_status = mysqli_real_escape_string($conn, $_POST["marital_status"]);
-            $residence = mysqli_real_escape_string($conn, $_POST["residence"]);
-            $referred_by = mysqli_real_escape_string($conn, $_POST["referred_by"]);
-            $primary_care = mysqli_real_escape_string($conn, $_POST["primary_care"]);
-            $work_place = mysqli_real_escape_string($conn, $_POST["work_place"]);
-            $current_occupation = mysqli_real_escape_string($conn, $_POST["current_occupation"]);
-            $present_position = mysqli_real_escape_string($conn, $_POST["present_position"]);
-            $current_school = mysqli_real_escape_string($conn, $_POST["current_school"]);
+            $age = isset($conn, $_POST["age"]) ? mysqli_real_escape_string($conn, $_POST["age"]) : "";
+            $gender = isset($conn, $_POST["gender"]) ? mysqli_real_escape_string($conn, $_POST["gender"]) : "";
+            $marital_status = isset($conn, $_POST["marital_status"]) ? mysqli_real_escape_string($conn, $_POST["marital_status"]) : "";
+            $residence = isset($conn, $_POST["residence"]) ? mysqli_real_escape_string($conn, $_POST["residence"]) : "";
+            $referred_by = isset($conn, $_POST["referred_by"]) ? mysqli_real_escape_string($conn, $_POST["referred_by"]) : "";
+            $primary_care = isset($conn, $_POST["primary_care"]) ? mysqli_real_escape_string($conn, $_POST["primary_care"]) : "";
+            $work_place = isset($conn, $_POST["work_place"]) ? mysqli_real_escape_string($conn, $_POST["work_place"]) : "";
+            $current_occupation = isset($conn, $_POST["current_position"]) ? mysqli_real_escape_string($conn, $_POST["current_occupation"]) : "";
+            $present_position = isset($conn, $_POST["present_position"]) ? mysqli_real_escape_string($conn, $_POST["present_position"]) : "";
+            $current_school = isset($conn, $_POST["current_school"]) ? mysqli_real_escape_string($conn, $_POST["current_school"]) : "";
             // =====================// ===========================//
-            $college_year = mysqli_real_escape_string($conn, $_POST["college_year"]);
-            $previous_therapist = mysqli_real_escape_string($conn, $_POST["previous_therapist"]);
-            $heard_about_us = mysqli_real_escape_string($conn, $_POST["heard_about_us"]);
-            $payment_method = mysqli_real_escape_string($conn, $_POST["payment_method"]);
-            $signature = mysqli_real_escape_string($conn, $_POST["signature"]);
-            $signature_date = mysqli_real_escape_string($conn, $_POST["signature_date"]);
-            $guardian_signature = mysqli_real_escape_string($conn, $_POST["guardian_signature"]);
-            $signature_date = mysqli_real_escape_string($conn, $_POST["guardian_signature_date"]);
-            $reviewed_by_signature = mysqli_real_escape_string($conn, $_POST["reviewed_by_signature"]);
-            $reviewed_signature_date = mysqli_real_escape_string($conn, $_POST["reviewed_signature_date"]);
+            $college_year = isset($conn, $_POST["college_year"]) ? mysqli_real_escape_string($conn, $_POST["college_year"]) : "";
+            $previous_therapist = isset($conn, $_POST["previous_therapist"]) ? mysqli_real_escape_string($conn, $_POST["previous_therapist"]) : "";
+            $heard_about_us = isset($conn, $_POST["heard_about_us"]) ? mysqli_real_escape_string($conn, $_POST["heard_about_us"]) : "";
+            $payment_method = isset($conn, $_POST["payment_method"]) ? mysqli_real_escape_string($conn, $_POST["payment_method"]) : "";
+            $signature = isset($conn, $_POST["signature"]) ? mysqli_real_escape_string($conn, $_POST["signature"]) : "";
+            $signature_date = isset($conn, $_POST["signature_date"]) ? mysqli_real_escape_string($conn, $_POST["signature_date"]) : "";
+            $guardian_signature = isset($conn, $_POST["guardian_signature"]) ? mysqli_real_escape_string($conn, $_POST["guardian_signature"]) : "";
+            $signature_date = isset($conn, $_POST["signature_date"]) ? mysqli_real_escape_string($conn, $_POST["guardian_signature_date"]) : "";
+            $reviewed_by_signature = isset($conn, $_POST["reviewed_by_signature"]) ? mysqli_real_escape_string($conn, $_POST["reviewed_by_signature"]) : "";
+            $reviewed_signature_date = isset($conn, $_POST["reviewed_signature_date"]) ? mysqli_real_escape_string($conn, $_POST["reviewed_signature_date"]) : "";
             // ================// help me GOD this will work in the name of our lord JESUS CHRIST=============//
             // ================ // calling the insert function here ===========//
             $patient = new Patient(
