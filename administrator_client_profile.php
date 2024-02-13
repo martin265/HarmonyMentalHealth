@@ -66,7 +66,7 @@ $all_results = fetchClientDetails($conn);
                                             <!-- =============== for the main client details ============= -->
                                             <div class="all-client-details">
                                                 <div class="title-text">
-                                                    <h1 class="lead"><span><i class="bi bi-body-text me-3"></i></span>first name</h1>
+                                                    <h1 class="lead display-5"><span><i class="bi bi-body-text me-3"></i></span>first name</h1>
 
                                                     <h1 class="lead"><span><i class="bi bi-person me-3"></i></span>last name</h1>
 
